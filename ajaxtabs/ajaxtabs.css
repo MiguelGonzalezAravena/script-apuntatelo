@@ -1,0 +1,107 @@
+/* ######### CSS for Shade Tabs. Remove if not using ######### */
+
+a{
+	outline:none;
+}
+.icon_img {height:16px; width:16px;overflow:hidden; border:0px solid white;} 
+.shadetabs{
+padding: 3px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+}
+
+.shadetabs li a{
+text-decoration: none;
+position: relative;
+z-index: 1;
+padding: 3px 7px;
+margin-right: 3px;
+border: 1px solid #778;
+color: #2d2b2b;
+background: white url(franja.JPG) top left repeat-x;
+}
+
+.shadetabs li a:visited{
+color: #2d2b2b;
+}
+
+.shadetabs li a:hover{
+text-decoration: underline;
+color: #2d2b2b;
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+position: relative;
+top: 1px;
+}
+
+.shadetabs li a.selected{ /*selected main tab style */
+background-image: url(franja_activo.JPG);
+border-bottom-color: white;
+}
+
+.shadetabs li a.selected:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+
+/* ######### CSS for Inverted Modern Bricks II Tabs. Remove if not using ######### */
+
+.modernbricksmenu2{
+padding: 0;
+width: 362px;
+height: 8px;
+background: transparent;
+voice-family: "\"}\"";
+voice-family: inherit;
+
+}
+
+.modernbricksmenu2 ul{
+margin:0;
+margin-left: 10px; /*margin between first menu item and left browser edge*/
+padding: 0;
+list-style: none;
+}
+
+.modernbricksmenu2 li{
+display: inline;
+margin: 0 2px 0 0;
+padding: 0;
+text-transform:uppercase;
+}
+
+.modernbricksmenu2 a{
+float: left;
+display: block;
+font: bold 11px Arial;
+color: white;
+text-decoration: none;
+margin: 0 1px 0 0; /*Margin between each menu item*/
+padding: 5px 10px;
+background-color: #d2d3d4; /*Brown color theme*/ 
+border-top: 1px solid white;
+}
+
+.modernbricksmenu2 a:hover{
+background-color: #ededed; /*Brown color theme*/ 
+color: white;
+}
+
+.modernbricksmenu2 a.selected{ /*currently selected tab*/
+background-color: #ededed; /*Brown color theme*/ 
+color: white;
+}
+
+/* ######### CSS for Indented CSS Tabs. Remove if not using ######### */
+
+

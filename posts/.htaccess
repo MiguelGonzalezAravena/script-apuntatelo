@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteBase /posts/
+RewriteRule ^.*$ mostrar.php
