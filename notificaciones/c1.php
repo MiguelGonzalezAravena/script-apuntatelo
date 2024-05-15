@@ -1,5 +1,5 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
 
 <html>
@@ -33,8 +33,8 @@ include("../header.php");
 		</tr>
 	</table>
 	<br>
-	<div align="center"><font size="2">Usuario/Contraseña incorrectos</font><br><br><br>
-	<a href="../datos/?action=recuperar"><font size="1" color="blue">Olvidaste tu contrase&ntilde;a</a></font></div> 
+	<div align="center"><font size="2">Usuario o Contrase&ntilde;a incorrectos</font><br><br><br>
+	<a href="<?php echo $url; ?>/datos/?action=recuperar"><font size="1" color="blue">Olvidaste tu contrase&ntilde;a</a></font></div> 
 </td>
 <td width="35%" height="30%" align="center">
 </td>
@@ -49,12 +49,9 @@ include("../header.php");
 </td>
 </tr>
 </table>
-
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
-
 </div>
 </body>
 </html>

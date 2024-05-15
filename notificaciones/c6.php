@@ -1,27 +1,28 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
+
 $id = $_GET['id'];
 $titulo = $_GET['t'];
 $categoria = $_GET['c'];
-switch($categoria){
-case "0": 
-$cat="Apuntes";
-break;
-case "1":
-$cat="Examenes";
-break;
-case "2":
-$cat="Info-Universidades";
-break;
-case "3":
-$cat="Softs-Estudiantiles";
-break;
-case "4":
-$cat="Ebooks";
-break;
+
+switch ($categoria) {
+	case "0":
+		$cat = "Apuntes";
+		break;
+	case "1":
+		$cat = "Examenes";
+		break;
+	case "2":
+		$cat = "Info-Universidades";
+		break;
+	case "3":
+		$cat = "Softs-Estudiantiles";
+		break;
+	case "4":
+		$cat = "Ebooks";
+		break;
 }
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -54,8 +55,8 @@ break;
 	</table>
 	<br>
 	<div align="center" style="font-size:12px;"><font size="2">Tu post ha sido editado</font><br><br>
-	<a href=".."><font color="blue">Ir a Inicio</font></a> - 
-	<a href="/posts/<?echo $id;?>/<?echo $cat?>/<?echo corregir($titulo).".html"?>"><font color="blue">Ir al Post</font></a>
+	<a href="<?php echo $url; ?>"><font color="blue">Ir a Inicio</font></a> - 
+	<a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $cat; ?>/<?php echo corregir($titulo) . ".html"; ?>"><font color="blue">Ir al Post</font></a>
 	<H3></div> 
 	<br>
 </td>
@@ -72,11 +73,9 @@ break;
 </td>
 </tr>
 </table>
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
 </div>
-
 </body>
 </html>

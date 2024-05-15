@@ -1,7 +1,6 @@
-<?php 
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -33,7 +32,7 @@ include("../header.php");
 		</tr>
 	</table>
 	<br><br>
-	<div align="center"><font size="2">Ocurrio un error.</font></div> 
+	<div align="center"><font size="2">Ocurri&oacute; un error.</font></div> 
 </td>
 <td width="35%" height="30%" align="center">
 </td>

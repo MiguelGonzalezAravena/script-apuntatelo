@@ -1,8 +1,8 @@
-		<table width="255" height="190"><font size="-2"> 
+<table width="255" height="190"><font size="-2"> 
 	    	<tr>
 				<td valign="top">
 
-				  	<?
+				  	<?php
 				  	$sql = "SELECT c.id, id_post, autor, p.categoria, p.titulo, cat.imagen, cat.link_categoria
 							FROM comentarios as c
 							INNER JOIN posts as p
@@ -11,23 +11,23 @@
 							on p.categoria=cat.id_categoria
 							where c.elim='0' and p.elim=0
 							ORDER BY c.id DESC limit 0,15 ";
-					$rs = mysql_query($sql, $con);
-				  	if(mysql_num_rows($rs)>0)
+					$rs = mysqli_query($con, $sql);
+				  	if(mysqli_num_rows($rs)>0)
 					{
-						while($row = mysql_fetch_array($rs))
+						while($row = mysqli_fetch_array($rs))
 						{
 							$id_post = $row['id_post'];
 							$titu = $row['titulo'];
 							?>
 				  				  				<font size="1"><b>
 
-							<?
+							<?php
 							echo "&nbsp;";
 							echo $row['autor'];
 							?>
 </b>
 
-							<?
+							<?php
 							$cant = strlen($titu);
 							if($cant > 24)
 			  					{
@@ -40,10 +40,10 @@
 			  					$tit=0;
 							}
 							?>
-														<a href="/posts/<?echo $id_post;?>/<?echo$row['link_categoria']?>/<?echo corregir($titu).".html#comentario_".$row['id'];?>"><font color="black"><?echo $titulo2; if ($tit==1) echo"...";?></font></a>
+														<a href="<?php echo $url; ?>/posts/<?php echo $id_post; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($titu) . ".html#comentario_" . $row['id']; ?>"><font color="black"><?php echo $titulo2; if ($tit==1)  { echo "..."; } ?></font></a>
 							</font>
 							<br>
-							<?
+							<?php
 						}
 					}
 				  	?>

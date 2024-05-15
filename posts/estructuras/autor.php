@@ -1,37 +1,36 @@
-<?
+<?php
 $sql = "SELECT * ";
-$sql.= "FROM usuarios where id='$id_autor'";
-$rs = mysql_query($sql, $con);
+$sql .= "FROM usuarios where id='$id_autor'";
+$rs = mysqli_query($con, $sql);
 
-$row = mysql_fetch_array($rs);
-$nick=$row['nick'];
-if ($row['rango']=="Administrador")
-$color="red";
-elseif ($row['rango']=="Moderador")
-$color="blue";
-elseif ($row['rango']=="Usuario Destacado")
-$color="green";
-else
-$color="black";
+$row = mysqli_fetch_array($rs);
+$nick = $row['nick'];
+
+if ($row['rango'] == "Administrador") {
+	$color = "red";
+} elseif ($row['rango'] == "Moderador") {
+	$color = "blue";
+} elseif ($row['rango'] == "Usuario Destacado") {
+	$color = "green";
+} else {
+	$color = "black";
+}
 
 $cant = strlen($nick);
-if($cant > 18)
-	{
-		$nick2=substr(stripslashes($nick), 0, 15);
-			$nick2=$nick2."...";
-}
-else
-	{
-		$nick2=$nick;
-}
-?>
-<?php
-function rango($valor)
-{
-			
-$valor = str_replace("Administrador", "<br clear=\"left\" /><img src=\"/imagenes/rangos/administrador.png\" alt=\"Administrador\" title=\"Administrador\" />", $valor);
 
-return $valor;
+if($cant > 18) {
+	$nick2 = substr(stripslashes($nick), 0, 15);
+	$nick2 = $nick2 . "...";
+} else {
+	$nick2 = $nick;
+}
+
+function rango($valor) {
+	global $images;
+		
+	$valor = str_replace("Administrador", "<br clear=\"left\" /><img src=\"" . $images . "/rangos/administrador.png\" alt=\"Administrador\" title=\"Administrador\" />", $valor);
+
+	return $valor;
 }
 
 function pais($valor)
@@ -78,19 +77,19 @@ return $valor;
 	</div>
 </div>
 <div align="left">
-<div class="box_perfil" <?$iexp = $_SERVER[HTTP_USER_AGENT];if(strstr($iexp,"MSIE")){echo 'style="width:160px;"';}?>>
-	<img src="<?echo $row['avatar']?>" style="display:block; margin: auto;" border="0" alt="" title="">
-	<b class="txt"><?echo "<a href='/perfil/?id=$nick'><font color='$color'><b>".$nick2."</b></font></a>";?></b>
-	<font size="1"><?echo $row['rango'];?><br />
-	<?echo rango($row['rango']);?> <img title="<?echo sexo($row['sexo']);?>" src="/imagenes/<?echo sexo($row['sexo']);?>.png" /> <img title="<?echo pais($row['pais']);?>" src="/imagenes/banderas/<?echo $row['pais'];?>.png" /><hr>
-	<?echo $row['numposts']?> Posts<br />
-	<?echo $row['numcomentarios']?> Comentarios<br />
-	<?echo $row['puntos']?> Puntos<br />
-	<?if ($_SESSION['id']!="") {?>
+<div class="box_perfil" <?php $iexp = $_SERVER['HTTP_USER_AGENT']; if (strstr($iexp, "MSIE")) { echo 'style="width:160px;"'; } ?>>
+	<img src="<?php echo $row['avatar']; ?>" style="display:block; margin: auto;" border="0" alt="" title="">
+	<b class="txt"><?php echo "<a href='" . $url . "/perfil/?id=" . $nick . "'><font color='" . $color . "'><b>" . $nick2 . "</b></font></a>"; ?></b>
+	<font size="1"><?php echo $row['rango']; ?><br />
+	<?php echo rango($row['rango']); ?> <img title="<?php echo sexo($row['sexo']); ?>" src="<?php echo $images; ?>/<?php echo sexo($row['sexo']);?>.png" /> <img title="<?php echo pais($row['pais']); ?>" src="<?php echo $images; ?>/banderas/<?php echo $row['pais']; ?>.png" /><hr />
+	<?php echo $row['numposts']; ?> Posts<br />
+	<?php echo $row['numcomentarios']; ?> Comentarios<br />
+	<?php echo $row['puntos']; ?> Puntos<br />
+	<?php if (isset($_SESSION['id'])) { ?>
 	
 	<hr>
-	<a href='/mensajes/redactar.php?para=<?=$nick?>'><img src='/imagenes/mp.png'> Enviar mensaje</a>
-	<?}?>
+	<a href='/mensajes/redactar.php?para=<?php echo $nick; ?>'><img src='<?php echo $images; ?>/mp.png'> Enviar mensaje</a>
+	<?php } ?>
 	</font>
 </div>						
 </div>

@@ -1,7 +1,6 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -27,13 +26,13 @@ include("../header.php");
 			<td></td>
 			<td> 
 				<div class="esq1" style="float:left;"></div>
-				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Confirmaci&oacute;n de Registro</div></div>
+				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Confirmaci&oacute;n de registro</div></div>
 				<div class="esq2" style="float:left;"></div>
 			</td>
 		</tr>
 	</table>
 	<br><br>
-	<div align="center"><font size="2">Recibirás en la casilla ingresada un mail de activación, así podras comenzar a utilizar nuestra web</font></div> 
+	<div align="center"><font size="2">Recibir&aacute;s en la casilla ingresada, un correo de activaci&oacute;n. As&iacute; podr&aacute;s comenzar a utilizar nuestra web.</font></div> 
 </td>
 <td width="35%" height="30%" align="center">
 </td>

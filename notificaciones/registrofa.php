@@ -1,7 +1,6 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -27,13 +26,13 @@ include("../header.php");
 			<td></td>
 			<td> 
 				<div class="esq1" style="float:left;"></div>
-				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Error en el Registro</div></div>
+				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Error en el registro</div></div>
 				<div class="esq2" style="float:left;"></div>
 			</td>
 		</tr>
 	</table>
 	<br>
-	<div align="center"><font size="2">Ha ocurrido un error al activar el usuario, revisá tu mail nuevamente y vuelve a confirmarlo. Si no funciona, favor de comunicarse con los administradores del sitio a <a href="mailto:contacto@apuntatelo.com.ar">contacto@apuntatelo.com.ar</a></font></div> 
+	<div align="center"><font size="2">Ha ocurrido un error al activar el usuario. Revisa tu correo nuevamente y vuelve a confirmarlo. Si no funciona, favor de comunicarse con los administradores del sitio a <a href="mailto:contacto@apuntatelo.com.ar">contacto@apuntatelo.com.ar</a></font></div> 
 </td>
 <td width="35%" height="30%" align="center">
 </td>

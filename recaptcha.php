@@ -3,9 +3,9 @@
     <form action="" method="post">
 <?php
 
-require_once('recaptcha/recaptchalib.php');
-$publickey = "6Ldb2AAAAAAAAP90qGpEqecjl9MEkLe6-S_l4rM8";
-$privatekey = "6Ldb2AAAAAAAADuNCKWbsDYHqyPl1D6nbJzUn7QM";
+require_once(dirname(__FILE__) . '/recaptcha/recaptchalib.php');
+$publickey = '6Ldb2AAAAAAAAP90qGpEqecjl9MEkLe6-S_l4rM8';
+$privatekey = '6Ldb2AAAAAAAADuNCKWbsDYHqyPl1D6nbJzUn7QM';
 
 # the response from reCAPTCHA
 $resp = null;
@@ -13,11 +13,13 @@ $resp = null;
 $error = null;
 
 # are we submitting the page?
-if ($_POST["submit"]) {
-  $resp = recaptcha_check_answer ($privatekey,
-                                  $_SERVER["REMOTE_ADDR"],
-                                  $_POST["recaptcha_challenge_field"],
-                                  $_POST["recaptcha_response_field"]);
+if ($_POST['submit']) {
+  $resp = recaptcha_check_answer(
+      $privatekey,
+      $_SERVER['REMOTE_ADDR'],
+      $_POST['recaptcha_challenge_field'],
+      $_POST['recaptcha_response_field']
+    );
 
   if ($resp->is_valid) {
     echo "You got it!";
@@ -29,6 +31,7 @@ if ($_POST["submit"]) {
     $error = $resp->error;
   }
 }
+
 echo recaptcha_get_html($publickey, $error);
 ?>
     <br/>

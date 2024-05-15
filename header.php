@@ -1,173 +1,181 @@
 <?php
-	//HEADER
-	include($_SERVER['DOCUMENT_ROOT'].'/includes/configuracion.php');
-	include($_SERVER['DOCUMENT_ROOT'].'/includes/funciones.php');
-	include($_SERVER['DOCUMENT_ROOT'].'/login.php');
-	if ($_SERVER['REQUEST_URI']!="/" and $_SERVER['REQUEST_URI']!="index.php")
-	include($_SERVER['DOCUMENT_ROOT'].'/online2.php');
+// HEADER
+require_once(dirname(__FILE__) . '/includes/configuracion.php');
+require_once(dirname(__FILE__) . '/includes/funciones.php');
+require_once(dirname(__FILE__) . '/login.php');
+
+if ($_SERVER['REQUEST_URI'] != '/' and $_SERVER['REQUEST_URI'] != 'index.php') {
+  require_once(dirname(__FILE__) . '/online.php');
+}
+
+$iexp = $_SERVER['HTTP_USER_AGENT'];
+$margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
 ?> 
 <!--APUNTATELO v 2.0 - TODOS LOS DERECHOS RESERVADOS-->
 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
 <html>
 <head>
-<link href='/imagenes/logo/icono.bmp' rel='shortcut icon'/>
+<link href="<?php echo $images; ?>/logo/icono.bmp" rel="shortcut icon"/>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link rel="stylesheet" type="text/css" href="/estilos/index.css" />
-<link href="/ultimos_posts/" title="eXtreme Zone - Ultimos Posts" type="application/rss+xml" rel="alternate">
+<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/index.css" />
+<link href="<?php echo $url; ?>/ultimos_posts/" title="eXtreme Zone - Ultimos Posts" type="application/rss+xml" rel="alternate">
 </head>
 <body bgcolor="white" text="#FFFFFF" link="#FFFFFF" topmargin="8">
 
 <div class="fondologo">
-<div class="esquina_sup_izq" style="font-size:0px;"></div>
-<div style="height: 8px; width: 958px; float:left; font-size:0px;">&nbsp;</div>
-<div class="esquina_sup_der" style="font-size:0px;"></div>
-<a href="/"><div class="logo"></div></a><div align="right"><br>
-
-<div style="padding-right: 20px;">
-
-</div>
-</div>
+  <div class="esquina_sup_izq" style="font-size: 0px;"></div>
+  <div style="height: 8px; width: 958px; float: left; font-size: 0px;">&nbsp;</div>
+  <div class="esquina_sup_der" style="font-size: 0px;"></div>
+  <a href="<?php echo $url; ?>/">
+    <div class="logo"></div>
+  </a>
+  <div align="right">
+    <br />
+    <div style="padding-right: 20px;">
+    </div>
+  </div>
 </div>
 <div class="bordes">
-<div class="menu">
-<div class="menu1"></div>
-<div class="menu2">
- 
-   <font color="black">
-
-   <?   
-	  if($_SESSION['user']!=null)
-	  {
-	  	  if($_SERVER['PHP_SELF'] == "/mensajes/mensajes_recibidos.php")
-		  include("mensajes/marcar_leido.php");
-		  ?>
-   		  <div class="user">
-		  <div class="size11">
-		  <a href='/perfil/?id=<?echo $_SESSION['user']?>' title="Perfil"><font color="black"><?echo $_SESSION['user']?></a>
-		  [<a href="/salir.php"><font color="black">x</a>] &nbsp;
-		  </font>
-		  </div>
-		  </div>
-		  <div class="user">
-		  &nbsp;<a href="/datos/" title="Datos"><font color="black"><img src="/imagenes/iconos/datos.png" alt="Datos"></font></a>
-		  </div>
-		  <div class="user">
-		  &nbsp;&nbsp;<a href="/mensajes/" title="MP"><font color="black"><img src="/imagenes/iconos/mensajes.png" alt="Mensajes Privado"></font></a>
-		  </div>
-		  <?
-		  	$sql_men = "select id_mensaje from mensajes where id_receptor='".$_SESSION['id']."' and leido_receptor='0'";
-			$rs_men = mysql_query($sql_men);
-			if (mysql_num_rows($rs_men)>0)
-		  	{
-			?>
-			<div class="ini size10" style="padding-top:1px;">
-		 	&nbsp;<a href="/mensajes/" style="font-weight: normal;" title="Nuevo Mensaje Privado"><font color="white">(<?echo mysql_num_rows($rs_men);?>)</font></a>
-		  	</div>
-		  	<?
-			}
-		  ?>
-		  		  <div class="user">
-		  &nbsp;&nbsp;<a href="/favoritos/" title="Favoritos"><font color="black"><img src="/imagenes/iconos/favoritos.png" alt="Favoritos"></font></a>
-		  </div>
-
-		  <?
-		  }
-		  else
-		  {
-		  ?>
-   		  <div class="user" style="margin-top:<?$iexp = $_SERVER[HTTP_USER_AGENT];if(strstr($iexp,"MSIE")){echo "0px;";}else{echo "1px";}?>">
-		  <table width="20" height="10" border="0" cellspacing="0" cellpadding="0">
-		  <FORM ACTION="/ingresar.php" METHOD="post">
-	      <tr>
-	      <td align="right">
-		  <div class="size11 negro">&nbsp;Usuario:&nbsp;</div>
-		  </td>
-		  <td>
-		  <INPUT TYPE="text" NAME="nick" SIZE="12" MAXLENGTH="20" style="font-size:9px"> 
-	      </td>
-
-		  <td>
-		  </td>
-		  <td>
-		  <div class="size11 negro">&nbsp;Contraseña:&nbsp;</div>
-		  </td>
-		  <td>
-		  <INPUT TYPE="password" NAME="password" SIZE="12" MAXLENGTH="20" style="font-size:9px">
-	      <input type="hidden" name="pagina" value="<?=$_SERVER['REQUEST_URI']?>">
-		  </td>
-		  <td>
-		  </td>
-		  <td>
-		  &nbsp;
-		  </td>
-		  <td>
-		  <INPUT TYPE="submit" class="submit_button" style="font-size:9px; font-weight: normal;" VALUE="Ingresar">
-	      </td>
-
-		  </tr>
-		  </FORM> 
-		  </table>
-		  </div>
-
-	<?	
-	}	
+  <div class="menu">
+    <div class="menu1"></div>
+    <div class="menu2">
+      <font color="black">
+<?php
+  if (isset($_SESSION['user'])) {
+    if ($_SERVER['PHP_SELF'] == '/mensajes/mensajes_recibidos.php') {
+      require_once(dirname(__FILE__) . '/mensajes/marcar_leido.php');
+    }
 ?>
-		
-<?
-	if($_SESSION['user']!=null)
-    {
-	?>
-	<div class="ini" style="padding-top: 0px; margin-top: 0px;">
+        <div class="user">
+          <div class="size11">
+            <a href="<?php echo $url; ?>/perfil/?id=<?php echo $_SESSION['user']; ?>" title="Perfil">
+              <font color="black"><?php echo $_SESSION['user']; ?></font>
+            </a>
+            [
+            <a href="<?php echo $url; ?>/salir.php"><font color="black">x</font></a>
+            ]
+          </div>
+        </div>
+      </font>
+      <div class="user">
+        <a href="<?php echo $url; ?>/datos/" title="Datos">
+          <font color="black">
+            &nbsp;<img src="<?php echo $images; ?>/iconos/datos.png" alt="Datos" />
+          </font>
+        </a>
+      </div>
+      <div class="user">
+        <a href="<?php echo $url; ?>/mensajes/" title="MP">
+          <font color="black">
+            &nbsp;<img src="<?php echo $images; ?>/iconos/mensajes.png" alt="Mensaje Privado" />
+          </font>
+        </a>
+      </div>
+      <?php
+        $sql_men = "SELECT id_mensaje FROM mensajes WHERE id_receptor = '" . $_SESSION['id'] . "' AND leido_receptor = '0'";
+        $rs_men = mysqli_query($con, $sql_men);
+        if (mysqli_num_rows($rs_men) > 0) {
+      ?>
+      <div class="ini size10" style="padding-top:1px;">
+        <a href="<?php echo $url; ?>/mensajes/" style="font-weight: normal;" title="Nuevo Mensaje Privado">
+          <font color="white">(<?php echo mysqli_num_rows($rs_men); ?>)</font>
+        </a>
+      </div>
+      <?php
+        }
+      ?>
+      <div class="user">
+        <a href="<?php echo $url; ?>/favoritos/" title="Favoritos">
+          <font color="black">
+            &nbsp;<img src="<?php echo $images; ?>/iconos/favoritos.png" alt="Favoritos">
+          </font>
+        </a>
+      </div>
+      <?php
+        } else {
+      ?>
+      <div class="user" style="margin-top: <?php echo $margin_top; ?>">
+      <table width="20" height="10" border="0" cellspacing="0" cellpadding="0">
+      <FORM ACTION="<?php echo $url; ?>/ingresar.php" METHOD="post">
+        <tr>
+        <td align="right">
+      <div class="size11 negro">&nbsp;Usuario:&nbsp;</div>
+      </td>
+      <td>
+        <INPUT TYPE="text" NAME="nick" SIZE="12" MAXLENGTH="20" style="font-size: 9px" /> 
+      </td>
+      <td></td>
+      <td>
+        <div class="size11 negro">&nbsp;Contrase&ntilde;a:&nbsp;</div>
+      </td>
+      <td>
+        <INPUT TYPE="password" NAME="password" SIZE="12" MAXLENGTH="20" style="font-size: 9px" />
+        <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
+      </td>
+      <td></td>
+      <td>&nbsp;</td>
+      <td>
+        <INPUT TYPE="submit" class="submit_button" style="font-size: 9px; font-weight: normal;" VALUE="Ingresar" />
+      </td>
+      </tr>
+      </FORM> 
+      </table>
+      </div>
 
-		<div class="size11">
-			<table valign="top" border="0" style="color: #000000;">
-				<tr>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/" style="color: #000000;" title="Inicio"><img src="/imagenes/inicio.png" alt="Inicio"></a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/busqueda/" style="color: #000000;" title="B&uacute;squeda"><img src="/imagenes/busqueda.png" alt="Busqueda"></a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/protocolo.php" style="color: #000000;">Protocolo</a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/agregar_post/" style="color: #000000;">Agregar</a></td>
-					<td class="size11" valign="middle">|</td>
-				</tr>
-			</table>
-		</div>
+  <?php
+  }	
+?>
 
-	</div>
-	  
+<?php
+  if(isset($_SESSION['user'])) {
+  ?>
+  <div class="ini" style="padding-top: 0px; margin-top: 0px;">
 
-	<?
-	}
-	else
-	{
-	?>
-	<div class="ini" style="padding-top: 0px; margin-top: 0px;">
-		<div class="size11">
-			<table valign="top" border="0" style="color: #000000;">
-				<tr>
-					<td class="size11" valign="middle">|</td>
+    <div class="size11">
+      <table valign="top" border="0" style="color: #000000;">
+        <tr>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/" style="color: #000000;" title="Inicio"><img src="<?php echo $images; ?>/inicio.png" alt="Inicio"></a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/busqueda/" style="color: #000000;" title="B&uacute;squeda"><img src="<?php echo $images; ?>/busqueda.png" alt="Busqueda"></a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/protocolo.php" style="color: #000000;">Protocolo</a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/agregar_post/" style="color: #000000;">Agregar</a></td>
+          <td class="size11" valign="middle">|</td>
+        </tr>
+      </table>
+    </div>
 
-					<td class="size11" valign="middle"><a href="/" style="color: #000000;" title="Inicio"><img src="/imagenes/inicio.png" alt="Inicio"></a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/busqueda/" style="color: #000000;" title="B&uacute;squeda"><img src="/imagenes/busqueda.png" alt="Busqueda"></a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/protocolo.php" style="color: #000000;">Protocolo</a></td>
-					<td class="size11" valign="middle">|</td>
-					<td class="size11" valign="middle"><a href="/registro/" style="color: #000000;">Registrarse</a></td>
-					<td class="size11" valign="middle">|</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	  
+  </div>
+    
 
-	<?
-	}	
-?>  
-	 	</font>
-		</b>
+  <?php
+  } else {
+  ?>
+  <div class="ini" style="padding-top: 0px; margin-top: 0px;">
+    <div class="size11">
+      <table valign="top" border="0" style="color: #000000;">
+        <tr>
+          <td class="size11" valign="middle">|</td>
+
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/" style="color: #000000;" title="Inicio"><img src="<?php echo $images; ?>/inicio.png" alt="Inicio"></a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/busqueda/" style="color: #000000;" title="B&uacute;squeda"><img src="<?php echo $images; ?>/busqueda.png" alt="Busqueda"></a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/protocolo.php" style="color: #000000;">Protocolo</a></td>
+          <td class="size11" valign="middle">|</td>
+          <td class="size11" valign="middle"><a href="<?php echo $url; ?>/registro/" style="color: #000000;">Registrarse</a></td>
+          <td class="size11" valign="middle">|</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <?php
+    }
+  ?>  
+     </font>
+    </b>
 </div>
 <div class="menu3"></div>
 </div>

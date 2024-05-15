@@ -1,9 +1,13 @@
 <?php
-$bd_host = "localhost";
-$bd_usuario = "usuario";
-$bd_password = "Contraseña";
-$bd_base = "nombre";
+$bd_host = 'localhost';
+$bd_usuario = 'root';
+$bd_password = '';
+$bd_base = 'apuntatelo';
+$url = 'http://localhost/apuntatelo';
+$images = $url . '/imagenes';
+
 session_start();
-$con = mysql_connect($bd_host, $bd_usuario, $bd_password);
-mysql_select_db($bd_base, $con);
+
+$con = mysqli_connect($bd_host, $bd_usuario, $bd_password);
+mysqli_select_db($con, $bd_base);
 ?>

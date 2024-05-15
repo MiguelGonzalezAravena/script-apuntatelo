@@ -1,14 +1,14 @@
-<?
-	include('includes/configuracion.php');
-	$sql = "Update usuarios Set puntosdar='30' where rango='Administrador'";
-	mysql_query($sql);
-	$sql = "Update usuarios Set puntosdar='25' where rango='Moderador'";
-	mysql_query($sql);
-	$sql = "Update usuarios Set puntosdar='18' where rango='Usuario Destacado'";
-	mysql_query($sql);
-	$sql = "Update usuarios Set puntosdar='12' where rango='Usuario Full'";
-	mysql_query($sql);
-	$sql = "delete from visitas";
-	mysql_query($sql);
-	mysql_close($con); 
+<?php
+	require_once(dirname(__FILE__) . '/includes/configuracion.php');
+
+	// Actualizar puntos según rango de cada usuario
+	mysqli_query($con, "UPDATE usuarios SET puntosdar = '30' WHERE rango = 'Administrador'");
+	mysqli_query($con, "UPDATE usuarios SET puntosdar = '25' WHERE rango = 'Moderador'");
+	mysqli_query($con, "UPDATE usuarios SET puntosdar = '18' WHERE rango = 'Usuario Destacado'");
+	mysqli_query($con, "UPDATE usuarios SET puntosdar = '12' WHERE rango = 'Usuario Full'");
+
+	// Eliminar las visitas registradas
+	mysqli_query($con, "DELETE FROM visitas");
+
+	mysqli_close($con); 
 ?>

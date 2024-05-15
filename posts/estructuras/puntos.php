@@ -12,49 +12,49 @@
 	<tr> 
     	<td class="fondo_cuadro" style="padding-left: 20px;">
 			<br>
-			<?
-			$user=$_SESSION['user'];
-			$id_user=$_SESSION['id'];
-			if ($id_user!="" and $id_user!=$id_autor)
-			{
-				$sql = "SELECT puntosdar ";
-				$sql.= "FROM usuarios where id='$id_user'";
-				$rs = mysql_query($sql, $con);
-				$row = mysql_fetch_array($rs);
+			<?php
+			$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+			$id_user = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+			if ($id_user!="" && $id_user!=$id_autor) {
+				$sql = "
+					SELECT puntosdar 
+					FROM usuarios where id='$id_user'
+					LIMIT 10";
+
+				$rs = mysqli_query($con, $sql);
+				$row = mysqli_fetch_array($rs);
 				?>
 				<font size="1">
 				Puntos:			
-				<FORM name="puntos" action="/posts_acciones/darpuntos.php" method="post">
-				<input type="hidden" name="dador" value=<?=$id_user?>>
-				<input type="hidden" name="id_post" value=<?=$id?>>
-				<input type="hidden" name="titu" value=<?=$titulo?>>
-				<input type="hidden" name="pagina" value=<?=$_SERVER['REQUEST_URI']?>>
+				<FORM name="puntos" action="<?php echo $url; ?>/posts_acciones/darpuntos.php" method="post">
+				<input type="hidden" name="dador" value=<?php echo $id_user; ?>>
+				<input type="hidden" name="id_post" value=<?php echo $id; ?>>
+				<input type="hidden" name="titu" value=<?php echo $titulo; ?>>
+				<input type="hidden" name="pagina" value=<?php echo $_SERVER['REQUEST_URI']; ?>>
 				<select id="cantpuntos" name="cantpuntos">
-				<?
-				$cont=1;
-				while ($cont<=$row['puntosdar'] and $cont<=10)
-				{
-					?>
-					<option value="<?echo $cont?>"><?echo $cont?></option>
-					<?
-					$cont=$cont+1;
-				}
+				<?php
+					$cont = 1;
+					while ($cont <= $row['puntosdar']) {
+				?>
+					<option value="<?php echo $cont; ?>"><?php echo $cont; ?></option>
+				<?php
+						$cont = $cont+1;
+					}
 				?>
 				</select>
-				de <?echo $row['puntosdar']?> disponibles.
+				de <?php echo $row['puntosdar']; ?> disponibles.
 				</font>
 				<INPUT TYPE="submit" CLASS="submit_button" VALUE="Dar">
 				</FORM>
-				<?
-			}
-			else
-			{	
-				if ($id_user==$id_autor)
-				echo "<br><div align='center'><font size='1'>No podés dar puntos a un post propio<br><br><br></font></div>";
-				else
-				echo "<br><div align='center'><font size='1'>Los usuarios no registrados no pueden dar puntos<br><br><br></font></div>";
+				<?php
+			} else {	
+				if ($id_user==$id_autor) {
+					echo "<br><div align='center'><font size='1'>No puedes dar puntos a un post propio<br><br><br></font></div>";
+				} else {
+					echo "<br><div align='center'><font size='1'>Los usuarios no registrados no pueden dar puntos<br><br><br></font></div>";
+				}
 			}
 			?>
-		</td>	
+		</td>
 	</tr>
 </table>

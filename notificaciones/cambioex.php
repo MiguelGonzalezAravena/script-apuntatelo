@@ -1,7 +1,6 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -27,7 +26,7 @@ include("../header.php");
 			<td></td>
 			<td> 
 				<div class="esq1" style="float:left;"></div>
-				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Cambios Aceptados</div></div>
+				<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Cambios aceptados</div></div>
 				<div class="esq2" style="float:left;"></div>
 			</td>
 		</tr>
@@ -48,11 +47,9 @@ include("../header.php");
 </td>
 </tr>
 </table>
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
 </div>
-
 </body>
 </html>

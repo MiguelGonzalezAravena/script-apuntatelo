@@ -1,7 +1,6 @@
-<?php 
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -48,9 +47,8 @@ include("../header.php");
 </td>
 </tr>
 </table>
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
 </div>
 

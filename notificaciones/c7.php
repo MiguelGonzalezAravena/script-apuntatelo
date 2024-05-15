@@ -1,7 +1,6 @@
-<?
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -33,7 +32,7 @@ include("../header.php");
 		</tr>
 	</table>
 	<br><br>
-	<div align="center"><font size="2">El mail se ha enviado correctamente.</font></div> 
+	<div align="center"><font size="2">El correo se ha enviado correctamente.</font></div> 
 </td>
 <td width="35%" height="30%" align="center">
 </td>
@@ -48,11 +47,9 @@ include("../header.php");
 </td>
 </tr>
 </table>
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
 </div>
-
 </body>
 </html>

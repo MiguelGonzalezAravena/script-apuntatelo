@@ -1,9 +1,16 @@
 <?php
-$bd_host = "localhost";
-$bd_usuario = "usuario";
-$bd_password = "contraseña";
-$bd_base = "nombre";
+$bd_host = 'localhost';
+$bd_usuario = 'root';
+$bd_password = '';
+$bd_base = 'apuntatelo';
+$url = 'http://localhost/apuntatelo';
+$images = $url . '/imagenes';
 
-$con = mysql_connect($bd_host, $bd_usuario, $bd_password);
-mysql_select_db($bd_base, $con);
+// TO-DO: Agregar correo de administrador
+// TO-DO: Agregar nombre del sitio web
+// TO-DO: Agregar llave md5 a encriptar para passwords en BD
+
+$con = mysqli_connect($bd_host, $bd_usuario, $bd_password);
+mysqli_select_db($con, $bd_base);
+
 ?>

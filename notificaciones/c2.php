@@ -1,7 +1,6 @@
-<?php 
-include("../header.php");
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
-
 <html>
 <head>
 <title>Apuntatelo - Tu link-sharing de apuntes</title>
@@ -32,8 +31,12 @@ include("../header.php");
 				</tr>
 			</table>
 			<br>
-			<div align="center"><font size="2">Usuario sin activación. Revis&aacute; tu mail y activ&aacute; la cuenta.<br>(No te olvides de revisar el correo que llega como spam).<br> Si el mail no lleg&oacute;, avisanos escribiendo a <a href="mailto:contacto@apuntatelo.com.ar">contacto@apuntatelo.com.ar</a> con tu nick de asunto. </font></div> 
-		
+			<div align="center">
+				<font size="2">
+					Usuario sin activaci&oacute;n. Revisa tu correo y activa la cuenta.<br>(No te olvides de revisar el correo que llega como spam).<br />
+					Si el correo no lleg&oacute;, av&iacute;sanos escribiendo a <a href="mailto:contacto@apuntatelo.com.ar">contacto@apuntatelo.com.ar</a> con tu nick de asunto.
+				</font>
+			</div>
 		</td>
 		<td width="35%" height="30%" align="center">
 		</td>
@@ -47,10 +50,8 @@ include("../header.php");
 		</td>
 	</tr>
 </table>
-
-
-<?
-include ('../footer.html');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
 </div>
 
