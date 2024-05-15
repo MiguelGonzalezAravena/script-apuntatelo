@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /apuntatelo/
+RewriteRule ^posts/(.*)/(.*)/(.*)$ posts/mostrar.php?id=$1
+RewriteRule ^ingresar/$ ingresar.php$1
