@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-05-2009 a las 01:52:45
--- Versión del servidor: 5.1.33
--- Versión de PHP: 5.2.9
+-- Tiempo de generaciï¿½n: 09-05-2009 a las 01:52:45
+-- Versiï¿½n del servidor: 5.1.33
+-- Versiï¿½n de PHP: 5.2.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `cantidad` (
   `id` tinyint(1) NOT NULL AUTO_INCREMENT,
   `cant` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `categorias`
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `imagen` varchar(30) DEFAULT NULL,
   `link_categoria` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcar la base de datos para la tabla `categorias`
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `causa` varchar(40) NOT NULL DEFAULT '',
   `fecha` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   KEY `id` (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `favoritos`
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
   `id_usuario` bigint(11) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `mensajes`
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `fecha` datetime DEFAULT NULL,
   `fecha_papelera` datetime DEFAULT NULL,
   PRIMARY KEY (`id_mensaje`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `pedidos`
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `id_post` bigint(11) DEFAULT NULL,
   `id_comp` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `posts`
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `categoria` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `posts`
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `posts_eliminados` (
   `causa` varchar(210) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `puntos`
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `puntos` (
   `id_punteador` bigint(20) NOT NULL DEFAULT '0',
   `puntos` bigint(20) NOT NULL DEFAULT '0',
   `fecha` datetime DEFAULT '0000-00-00 00:00:00'
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `stickies`
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `stickies` (
   `fecha` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `suspendidos`
@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `suspendidos` (
   `fecha2` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `activo` int(11) NOT NULL DEFAULT '0',
   KEY `id` (`id`)
-) TYPE=MyISAM;
+);
 
 --
 -- Estructura de tabla para la tabla `usuarios`
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `numcomentarios` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `usuarios`
@@ -257,4 +257,4 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `ip` varchar(20) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id_post`)
-) TYPE=MyISAM;
+);
