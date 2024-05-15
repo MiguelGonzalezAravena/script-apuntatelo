@@ -1,9 +1,17 @@
+<?php
+require_once(dirname(__FILE__) . '/includes/configuracion.php');
+?>
 <table cellpadding="0" cellspacing="0" width="980" border="0" align="center" style="padding-bottom: 0px; font-size:10px; background-color: #ffffff;">
 <tr>
     <td align="center">
 		<div style="height: 70px; width: 980px;">
 			<div style="height: 70px; width: 11px; float:left; background-color: #ededed;"></div>
-			<div style="height: 40px; width: 958px; float:left; padding-top: 5px;">Para una visualizaci&oacute;n &oacute;ptima, te recomendamos una resoluci&oacute;n de pantalla <br> de 1024x768 píxeles o superior y navegador Mozilla Firefox<br><img src="/imagenes/firefox.gif"><br><br></div>
+			<div style="height: 40px; width: 958px; float:left; padding-top: 5px;">
+				Para una visualizaci&oacute;n &oacute;ptima, te recomendamos una resoluci&oacute;n de pantalla <br> de 1024x768 p&iacute;xeles o superior y navegador Mozilla Firefox
+				<br />
+				<img src="<?php echo $images; ?>/firefox.gif" />
+				<br /><br />
+			</div>
 
 			<div style="height: 70px; width: 11px; float:left; background-color: #ededed;"></div>
 		</div>
@@ -14,7 +22,7 @@
     <td align="center" style="background-color: #ededed;">
 		<div style="height: 20px; width: 980px;">
 			<div style="height: 20px; width: 11px; float:left; background-color: #ededed;"></div>
-			<div style="height: 20px; width: 958px; float:left; background-color: #d2d3d4; padding-top: 5px;">Apuntatelo v2.0 - Copyright © 2008 - Todos los derechos reservados</div>
+			<div style="height: 20px; width: 958px; float:left; background-color: #d2d3d4; padding-top: 5px;">Ap&uacute;ntatelo v2.0 - Copyright &copy; 2008 - Todos los derechos reservados</div>
 
 			<div style="height: 20px; width: 11px; float:left; background-color: #ededed;"></div>
 		</div>
