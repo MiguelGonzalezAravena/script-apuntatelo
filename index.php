@@ -243,17 +243,17 @@ while ($row = mysqli_fetch_array($rs)) {
                         <font size="1">
 
             <?php
-            $contcom=$contcom+1;
+            $contcom = $contcom+1;
             $cant = strlen($titu);
-            if($cant > 41) {
-              $titulo2=substr(stripslashes($titu), 0, 38);
-              $tit=1;
+            if ($cant > 41) {
+              $titulo2 = substr(stripslashes($titu), 0, 38);
+              $tit = 1;
             } else {
-              $titulo2=$titu;
-              $tit=0;
+              $titulo2 = $titu;
+              $tit = 0;
             }
             ?>
-                          <a href="/posts/<?php echo $id; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . ".html"; ?>"><font color="black"><?php echo $titulo2; if ($tit==1) { echo"..."; } ?></a><?php echo " (".$puntos.")"; ?></font>
+                          <a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . ".html"; ?>"><font color="black"><?php echo $titulo2; if ($tit==1) { echo"..."; } ?></a><?php echo " (".$puntos.")"; ?></font>
               </font>
               <br>
             <?php
