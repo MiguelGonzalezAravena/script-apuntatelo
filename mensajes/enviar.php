@@ -4,7 +4,7 @@ include('../login.php');
 $para = trim(htmlentities($_POST['para']));
 $asunto = htmlentities($_POST['asunto']);
 if (trim($asunto)=="")
-	$asunto = "Sin Título";
+	$asunto = "Sin Tï¿½tulo";
 $contenido = htmlentities($_POST['contenido']);
 $id_user = $_SESSION['id'];
 if ($id_user!="")
@@ -18,24 +18,24 @@ if ($id_user!="")
 		$sql = "INSERT INTO mensajes (id_emisor, id_receptor, asunto, contenido, fecha) ";
 		$sql.= "VALUES ('$id_user', '$para_id', '$asunto', '$contenido', NOW())";
 		$rs = mysql_query($sql, $con) or die("Error al enviar el mensaje");
-		echo '<SCRIPT LANGUAGE="javascript">
+		echo ' <script type="text/javascript">
         location.href = "correcto.php?t=1";
-        </SCRIPT>';
+        </script>';
 	}
 	else
 	{
 		echo "<script>alert('El usuario es inexistente.')</script>";
-		echo '<SCRIPT LANGUAGE="javascript">
+		echo ' <script type="text/javascript">
         		location.href = "redactar.php";
-        	  </SCRIPT>';
+        	  </script>';
 	}
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

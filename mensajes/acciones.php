@@ -51,17 +51,17 @@ if ($id_user!="")
 		mysql_query($sql,$con);
 	}
 	?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "<?=$_POST['pag']?>";
-       				</SCRIPT>
+       				</script>
 	<?
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

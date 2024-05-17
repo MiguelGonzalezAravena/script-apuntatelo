@@ -141,9 +141,9 @@ if ($rango=="Administrador")
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

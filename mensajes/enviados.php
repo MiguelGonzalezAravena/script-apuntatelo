@@ -101,7 +101,7 @@ include('paginator.inc.php');
 						<br>
 						<input type="hidden" name="cant_check" value="<?=$i?>">
 						<input type="hidden" name="accion" value="elim_env">
-						<input type="submit" value="Eliminar" class="submit_button"> (Los mensajes seleccionados no irán a la papelera, se eliminaran automáticamente) 
+						<input type="submit" value="Eliminar" class="submit_button"> (Los mensajes seleccionados no irï¿½n a la papelera, se eliminaran automï¿½ticamente) 
 					</td>
 				</tr>
 			</table>
@@ -115,9 +115,9 @@ include('paginator.inc.php');
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 include ('../footer.html');

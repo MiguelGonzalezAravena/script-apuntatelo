@@ -31,32 +31,32 @@ if ($var==1)
 			
 			$cadena=$id."?".$id_extreme;
 			$email="";
-			$asunto="Recuperación de contraseña de EXTREME";
+			$asunto="Recuperaciï¿½n de contraseï¿½a de EXTREME";
 			$mensaje="<a href='http://www.extreme-zone.cl/datos/re-password.php?id=$cadena'>http://www.extreme-zone.cl/datos/re-password.php?id=$cadena</a>";
 			$encabezados = "From: $email\nReply-To: $email\nContent-Type: text/html; charset=iso-8859-1"; 
 			mail($mail, $asunto, $mensaje, $encabezados);
 			?>
-				<SCRIPT LANGUAGE="javascript">
+				 <script type="text/javascript">
     			location.href = "../notificaciones/c7.php";
-    			</SCRIPT> 
+    			</script> 
 			<?
 		}
 	}
 	else
 	{
 	?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
     	location.href = "index.php?action=recuperar&mensaje=error";
-    	</SCRIPT> 	
+    	</script> 	
 	<?
 	}
 }
 else
 {
 	?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
     	location.href = "index.php?action=recuperar&mensaje=error2";
-    	</SCRIPT> 	
+    	</script> 	
 	<?
 }
 ?>

@@ -79,7 +79,7 @@ return $valor;
 <div align="left">
 <div class="box_perfil" <?php $iexp = $_SERVER['HTTP_USER_AGENT']; if (strstr($iexp, "MSIE")) { echo 'style="width:160px;"'; } ?>>
 	<img src="<?php echo $row['avatar']; ?>" style="display:block; margin: auto;" border="0" alt="" title="">
-	<b class="txt"><?php echo "<a href='" . $url . "/perfil/?id=" . $nick . "'><font color='" . $color . "'><b>" . $nick2 . "</b></font></a>"; ?></b>
+	<b class="txt"><?php echo "<a href='" . $url . "/perfil/" . $nick . "/'><font color='" . $color . "'><b>" . $nick2 . "</b></font></a>"; ?></b>
 	<font size="1"><?php echo $row['rango']; ?><br />
 	<?php echo rango($row['rango']); ?> <img title="<?php echo sexo($row['sexo']); ?>" src="<?php echo $images; ?>/<?php echo sexo($row['sexo']);?>.png" /> <img title="<?php echo pais($row['pais']); ?>" src="<?php echo $images; ?>/banderas/<?php echo $row['pais']; ?>.png" /><hr />
 	<?php echo $row['numposts']; ?> Posts<br />

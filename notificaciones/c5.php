@@ -45,7 +45,7 @@ switch ($categoria) {
 			<td></td>
 			<td> 
 				<div class="esq1" style="float: left;"></div>
-				<div class="franja" style="float: left; width: 371px;"><div style="padding-top: 2px;">Listo!</div></div>
+				<div class="franja" style="float: left; width: 371px;"><div style="padding-top: 2px;">&iexcl;Listo!</div></div>
 				<div class="esq2" style="float: left;"></div>
 			</td>
 		</tr>
@@ -53,7 +53,7 @@ switch ($categoria) {
 	<br>
 	<div align="center" style="font-size:12px;">Tu post ha sido agregado<br><br>
 	<a href="<?php echo $url; ?>"><font color="blue">Ir a Inicio</font></a> - 
-	<a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $cat; ?>/<?php echo corregir($titulo) . ".html"; ?>"><font color="blue">Ir al Post</font></a>
+	<a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $categoria; ?>/<?php echo corregir($titulo) . '.html'; ?>"><font color="blue">Ir al post</font></a>
 	<H3></div> 
 	<br>
 </td>

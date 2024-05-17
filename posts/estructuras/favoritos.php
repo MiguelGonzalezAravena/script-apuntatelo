@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
 		</form>
 		<?php
 	} else {
-		echo "<div style=\"font-size: 11px; text-align: center;\">El Post ya se encuentra en favoritos</div>";
+		echo "<div style=\"font-size: 11px; text-align: center;\">El post ya se encuentra en favoritos</div>";
 	}
 }
 ?>

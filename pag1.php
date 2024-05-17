@@ -65,7 +65,7 @@ echo"<table width='100%'><tr><td width='100%'><div class='box_icono4'><img title
 echo"<span title='", $MostrarFila2['subject'], "'><a href='http://www.extreme-zone.cl/post/".$MostrarFila2['ID_TOPIC']."'>",$MostrarFila2['subject'], "</a></span></td></tr></table>";}}
 
  
- //******--------determinar las páginas---------******//
+ //******--------determinar las pï¿½ginas---------******//
  if($id == ''){
  $NroRegistros=mysql_num_rows(mysql_query("SELECT * FROM smf_messages",$con));}
  else

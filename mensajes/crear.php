@@ -11,17 +11,17 @@ if ($id_user!="")
 		$sql = "INSERT INTO carpetas (id_usuario, nom_carpeta) ";
 		$sql.= "VALUES ('$id_user', '$nom_carpeta')";
 		$rs = mysql_query($sql, $con) or die("Error al enviar el mensaje");
-		echo '<SCRIPT LANGUAGE="javascript">
+		echo ' <script type="text/javascript">
         location.href = "../mensajes";
-        </SCRIPT>';
+        </script>';
 	}
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

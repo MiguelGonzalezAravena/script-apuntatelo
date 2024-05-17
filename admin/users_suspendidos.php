@@ -44,7 +44,7 @@ echo "No existe el usuario.";
 if ($action=="error3")
 echo "El usuario NO se encuentra suspendido.";
 if ($action=="error4")
-echo "Operaci&oacute;n no válida. Revisá no haber dejado alguno de los campos vacíos.";
+echo "Operaci&oacute;n no vï¿½lida. Revisï¿½ no haber dejado alguno de los campos vacï¿½os.";
 ?>
 </font>
 <?
@@ -87,7 +87,7 @@ if ($rango=="Moderador" or $rango=="Administrador")
 <tr>
 <td>
 	<div class="esq1" style="float:left;"></div>
-	<div class="franja" style="float:left; width: 884px;"><div style="padding-top:2px;">Historial de suspensión <?if ($tipo=="usuario") echo "de ".$a; if($tipo=="moderador") echo "realizado por ".$a;?></div></div>
+	<div class="franja" style="float:left; width: 884px;"><div style="padding-top:2px;">Historial de suspensiï¿½n <?if ($tipo=="usuario") echo "de ".$a; if($tipo=="moderador") echo "realizado por ".$a;?></div></div>
 	<div class="esq2" style="float:left;"></div>
 </td>
 </tr>
@@ -108,13 +108,13 @@ if ($rango=="Moderador" or $rango=="Administrador")
 <font size="2" color="black"><b>Moderador</b></font>
 </td>
 <td width="160">
-<font size="2" color="black"><b>Fecha supensión:</b></font>
+<font size="2" color="black"><b>Fecha supensiï¿½n:</b></font>
 </td>
 <td width="125">
 <font size="2" color="black"><b>Moderador</b></font>
 </td>
 <td width="160">
-<font size="2" color="black"><b>Fecha reactivación</b></font>
+<font size="2" color="black"><b>Fecha reactivaciï¿½n</b></font>
 </td>
 </tr>
 <?
@@ -271,9 +271,9 @@ else if ($tipo=="usuario" or $tipo=="moderador")
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

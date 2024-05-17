@@ -34,17 +34,17 @@ if (trim($password1)!="" and trim($password1)==trim($password2) and strlen($pass
 			$sql2 = "Update usuarios Set id_extreme='".$id_extreme."', password='".$password."' where id='".$id."'";
 			$rs2 = mysql_query($sql2,$con);
 		?>	
-			<SCRIPT LANGUAGE="javascript">
+			 <script type="text/javascript">
  			location.href = "../notificaciones/re-password-correcto.php";
- 			</SCRIPT>
+ 			</script>
 		<?
 		}
 		else
 		{
 		?>	
-			<SCRIPT LANGUAGE="javascript">
+			 <script type="text/javascript">
  			location.href = "../notificaciones/re-password-error.php";
- 			</SCRIPT>
+ 			</script>
 		<?
 		}
 	mysql_close($con);
@@ -52,9 +52,9 @@ if (trim($password1)!="" and trim($password1)==trim($password2) and strlen($pass
 	else
 	{
 		?>	
-			<SCRIPT LANGUAGE="javascript">
+			 <script type="text/javascript">
  			location.href = "re-password.php?id=<?echo $id?>?<?echo $id_extreme?>&action=error";
- 			</SCRIPT>
+ 			</script>
 		<?
 	}
 

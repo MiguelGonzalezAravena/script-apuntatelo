@@ -35,17 +35,17 @@ if ($rango=="Administrador")
 		}
 	}
 	?>
-			<SCRIPT LANGUAGE="javascript">
+			 <script type="text/javascript">
 	   				location.href = "stickies.php";
-					</SCRIPT>
+					</script>
 	<?
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

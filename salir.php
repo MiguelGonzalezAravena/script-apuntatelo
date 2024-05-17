@@ -1,4 +1,6 @@
 <?php
+require_once(dirname(__FILE__) . '/includes/configuracion.php');
+
 session_start();
 
 // Borrar cookie
@@ -11,6 +13,5 @@ $_SESSION['id'] = null;
 unset($_SESSION);
 session_destroy();
 
-header('Location: /');
-
+header('Location: ' . $url);
 ?>

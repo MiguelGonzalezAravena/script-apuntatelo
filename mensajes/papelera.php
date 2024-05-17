@@ -116,7 +116,7 @@ include('paginator.inc.php');
 				<tr>
 					<td colspan="3" style="font-size:10px;">
 					<br>
-					* Los mensajes se auto-eliminaran después de 10 días en la papelera.
+					* Los mensajes se auto-eliminaran despuï¿½s de 10 dï¿½as en la papelera.
 					</td>
 				</tr>
 			</table>
@@ -130,9 +130,9 @@ include('paginator.inc.php');
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 include ('../footer.html');

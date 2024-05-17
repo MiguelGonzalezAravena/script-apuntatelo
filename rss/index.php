@@ -1,3 +1,3 @@
-<SCRIPT LANGUAGE="javascript">
+ <script type="text/javascript">
        		location.href = "ultimos_posts/";
-       		</SCRIPT>
+       		</script>

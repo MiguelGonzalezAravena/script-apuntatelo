@@ -4,21 +4,21 @@ require_once(dirname(__FILE__) . '/includes/configuracion.php');
 require_once(dirname(__FILE__) . '/includes/funciones.php');
 require_once(dirname(__FILE__) . '/login.php');
 
-if ($_SERVER['REQUEST_URI'] != '/' and $_SERVER['REQUEST_URI'] != 'index.php') {
+if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != 'index.php') {
   require_once(dirname(__FILE__) . '/online.php');
 }
 
 $iexp = $_SERVER['HTTP_USER_AGENT'];
 $margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
 ?> 
-<!--APUNTATELO v 2.0 - TODOS LOS DERECHOS RESERVADOS-->
+<!--APUNTATELO v 3.0 - TODOS LOS DERECHOS RESERVADOS-->
 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
 <html>
 <head>
 <link href="<?php echo $images; ?>/logo/icono.bmp" rel="shortcut icon"/>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/index.css" />
-<link href="<?php echo $url; ?>/ultimos_posts/" title="eXtreme Zone - Ultimos Posts" type="application/rss+xml" rel="alternate">
+<link href="<?php echo $url; ?>/ultimos_posts/" title="eXtreme Zone - Últimos Posts" type="application/rss+xml" rel="alternate">
 </head>
 <body bgcolor="white" text="#FFFFFF" link="#FFFFFF" topmargin="8">
 
@@ -58,16 +58,18 @@ $margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
         </div>
       </font>
       <div class="user">
+        &nbsp;
         <a href="<?php echo $url; ?>/datos/" title="Datos">
           <font color="black">
-            &nbsp;<img src="<?php echo $images; ?>/iconos/datos.png" alt="Datos" />
+            <img src="<?php echo $images; ?>/iconos/datos.png" alt="Datos" />
           </font>
         </a>
       </div>
       <div class="user">
+        &nbsp;
         <a href="<?php echo $url; ?>/mensajes/" title="MP">
           <font color="black">
-            &nbsp;<img src="<?php echo $images; ?>/iconos/mensajes.png" alt="Mensaje Privado" />
+            <img src="<?php echo $images; ?>/iconos/mensajes.png" alt="Mensaje Privado" />
           </font>
         </a>
       </div>
@@ -85,9 +87,10 @@ $margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
         }
       ?>
       <div class="user">
+        &nbsp;
         <a href="<?php echo $url; ?>/favoritos/" title="Favoritos">
           <font color="black">
-            &nbsp;<img src="<?php echo $images; ?>/iconos/favoritos.png" alt="Favoritos">
+            <img src="<?php echo $images; ?>/iconos/favoritos.png" alt="Favoritos">
           </font>
         </a>
       </div>
@@ -95,31 +98,31 @@ $margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
         } else {
       ?>
       <div class="user" style="margin-top: <?php echo $margin_top; ?>">
-      <table width="20" height="10" border="0" cellspacing="0" cellpadding="0">
-      <FORM ACTION="<?php echo $url; ?>/ingresar.php" METHOD="post">
-        <tr>
-        <td align="right">
-      <div class="size11 negro">&nbsp;Usuario:&nbsp;</div>
-      </td>
-      <td>
-        <INPUT TYPE="text" NAME="nick" SIZE="12" MAXLENGTH="20" style="font-size: 9px" /> 
-      </td>
-      <td></td>
-      <td>
-        <div class="size11 negro">&nbsp;Contrase&ntilde;a:&nbsp;</div>
-      </td>
-      <td>
-        <INPUT TYPE="password" NAME="password" SIZE="12" MAXLENGTH="20" style="font-size: 9px" />
-        <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
-      </td>
-      <td></td>
-      <td>&nbsp;</td>
-      <td>
-        <INPUT TYPE="submit" class="submit_button" style="font-size: 9px; font-weight: normal;" VALUE="Ingresar" />
-      </td>
-      </tr>
-      </FORM> 
-      </table>
+        <form action="<?php echo $url; ?>/ingresar.php" method="post">
+          <table width="20" height="10" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="right">
+                <div class="size11 negro">&nbsp;Usuario:&nbsp;</div>
+              </td>
+              <td>
+                <input type="text" name="nick" size="12" maxlength="20" style="font-size: 9px" /> 
+              </td>
+              <td></td>
+              <td>
+                <div class="size11 negro">&nbsp;Contrase&ntilde;a:&nbsp;</div>
+              </td>
+              <td>
+                <input type="password" name="password" size="12" maxlength="20" style="font-size: 9px" />
+                <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
+              </td>
+              <td></td>
+              <td>&nbsp;</td>
+              <td>
+                <input type="submit" class="submit_button" style="font-size: 9px; font-weight: normal;" value="Ingresar" />
+              </td>
+            </tr>
+          </table>
+        </form> 
       </div>
 
   <?php

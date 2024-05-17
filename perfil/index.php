@@ -1,5 +1,5 @@
 <?php
-//PERFIL
+// PERFIL
 require_once(dirname(dirname(__FILE__)) . '/header.php');
 ?>
 <html>
@@ -9,17 +9,18 @@ require_once(dirname(dirname(__FILE__)) . '/header.php');
 <body>
 <div class="bordes">
 <?php
-$id = no_injection($_GET["id"]); 
-$sql = "SELECT id, nick, rango, puntos, avatar, pais, ciudad, sexo, mensajero, mensaje, fecha, numposts, numcomentarios ";
-$sql.= "FROM usuarios where nick='$id'";
+$id = isset($_GET['id']) ? no_injection($_GET['id']) : '';
+$sql = "
+	SELECT id, nick, rango, puntos, avatar, pais, ciudad, sexo, mensajero, mensaje, fecha, numposts, numcomentarios
+	FROM usuarios
+	WHERE nick = '" . $id . "'";
+
 $rs = mysqli_query($con, $sql);
 
-if (mysqli_num_rows($rs) >0)
-{
-while($row = mysqli_fetch_array($rs))
-{
-	$id_autor = $row['id'];
-	?>
+if (mysqli_num_rows($rs) > 0) {
+	while($row = mysqli_fetch_array($rs)) {
+		$id_autor = $row['id'];
+?>
 	<div align="center">
 	<br>
 	PERFIL DE <?php echo $row['nick']; ?>
@@ -95,40 +96,42 @@ function pais($valor) {
 	<td align="right"><div class="size12"><b>Posts:</b></div> </td><td align="left"><div class="size12"><?php echo $row['numposts']; ?></div></td>
 	</tr>
 	<tr>
-	<td align="right"><div class="size12"><b>Comentarios:</b></div> </td><td align="left"><div class="size12"><?php echo $row['numcomentarios'];?></div></td>
+	<td align="right"><div class="size12"><b>Comentarios:</b></div> </td><td align="left"><div class="size12"><?php echo $row['numcomentarios']; ?></div></td>
 	</tr>
 	</table>
 	<br>
 	<table width="900" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<td colspan="2"> 
-				<div class="esq1" style="float:left;"></div>
-				<div class="franja" style="float:left; width: 884px;"><div style="padding-top:2px;">&Uacute;ltimos posts</div></div>
-				<div class="esq2" style="float:left;"></div>
+				<div class="esq1" style="float: left;"></div>
+				<div class="franja" style="float: left; width: 884px;"><div style="padding-top: 2px;">&Uacute;ltimos posts</div></div>
+				<div class="esq2" style="float: left;"></div>
 			</td>
 		</tr>
 
-	<?php
-	$sql="SELECT id, id_autor, titulo, fecha, privado, categoria, puntos, c.imagen, c.link_categoria
-		  FROM posts as p  
-		  inner join categorias as c
-		  on p.categoria=c.id_categoria
-		  where id_autor='$id_autor' and elim='0'
-		  ORDER BY id desc
-			LIMIT 10";
-	$rs = mysqli_query($con, $sql);
+<?php
+	$sql = "
+		SELECT id, id_autor, titulo, fecha, privado, categoria, puntos, c.imagen, c.link_categoria
+		FROM posts AS p  
+		INNER JOIN categorias AS c ON p.categoria = c.id_categoria
+		WHERE id_autor = $id_autor
+		AND elim = 0
+		ORDER BY id DESC
+		LIMIT 10";
+
+	$request = mysqli_query($con, $sql);
 	
-	while ($row = mysqli_fetch_array($rs)) {
+	while ($row = mysqli_fetch_array($request)) {
 		$privado = $row['privado'];
 
 		$cant = strlen($row['titulo']);
 	
 		if ($cant > 38) {
-			$titulo2=substr(stripslashes($row['titulo']), 0, 38);
-			$tit=1;
+			$titulo2 = substr(stripslashes($row['titulo']), 0, 38);
+			$tit = 1;
 		} else {
-			$titulo2=$row['titulo'];
-			$tit=0;
+			$titulo2 = $row['titulo'];
+			$tit = 0;
 		}
 	?>	 
 		<tr>
@@ -149,9 +152,9 @@ function pais($valor) {
 	}
 ?>
 	<tr>
-	<td>
-	<a href="<?php echo $url; ?>/perfil/verposts.php?id=<?php echo $id; ?>"><font size="2" color="black">Ver todos!</font></a>
-	</td>
+		<td>
+			<a href="<?php echo $url; ?>/perfil/verposts.php?id=<?php echo $id; ?>"><font size="2" color="black">Ver todos!</font></a>
+		</td>
 	</tr>
 	</table>
 	</div>
@@ -162,11 +165,12 @@ function pais($valor) {
 
 require_once(dirname(dirname(__FILE__)) . '/footer.php');
 } else {
+	echo $_GET['id'];
 ?>
-Password incorrecto
-			<SCRIPT LANGUAGE="javascript">
-       		location.href = "..";
-       		</SCRIPT> 
+Contrase&ntilde;a incorrecta
+<!--script type="text/javascript">
+	location.href = "..";
+</script-->
 <?php
 }
 ?>

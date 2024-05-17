@@ -51,42 +51,42 @@ if(trim($_POST["nick"]) != "" && trim($_POST["password"]) != "") {
 					$query = mysqli_query($con, "UPDATE usuarios SET id_extreme = '$id_extreme' WHERE nick = '$user'");
 					?>
 		    		<!--Ingreso exitoso, ahora sera dirigido a la pagina principal.-->
-					<SCRIPT LANGUAGE="javascript">
+					 <script type="text/javascript">
 					location.href = "<?php echo $pag; ?>";
-					</SCRIPT>
+					</script>
 					<?php
 				}
 				else
 				{
 					?>
 					<!--Usuario suspendido-->
-					<SCRIPT LANGUAGE="javascript">
+					 <script type="text/javascript">
 								location.href = "notificaciones/c4.php";
-								</SCRIPT>
+								</script>
 					<?php
 				}
 			} else {
 				?>
 				<!--Usuario sin activaci�n-->
-				<SCRIPT LANGUAGE="javascript">
+				 <script type="text/javascript">
 						location.href = "notificaciones/c2.php";
-						</SCRIPT> 	
+						</script> 	
 				<?php
 			}
 		} else {
 			?>
 			<!--Password incorrecto-->
-			<SCRIPT LANGUAGE="javascript">
+			 <script type="text/javascript">
 				location.href = "notificaciones/c1.php";
-				</SCRIPT> 		
+				</script> 		
 			<?php
 		}
 	} else {
 		?>
 		<!--Usuario no existente en la base de datos-->
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
 		location.href = "notificaciones/c1.php";
-		</SCRIPT>
+		</script>
 		<?php
 	}
 
@@ -94,9 +94,9 @@ if(trim($_POST["nick"]) != "" && trim($_POST["password"]) != "") {
 } else {
 ?>		
 	<!--Espacio en blanco-->
-	<SCRIPT LANGUAGE="javascript">
+	 <script type="text/javascript">
 	location.href = "notificaciones/c1.php";
-	</SCRIPT>
+	</script>
 <?php
 }
 

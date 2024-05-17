@@ -21,8 +21,8 @@ require_once(dirname(__FILE__) . '/includes/configuracion.php');
 <tr>
     <td align="center" style="background-color: #ededed;">
 		<div style="height: 20px; width: 980px;">
-			<div style="height: 20px; width: 11px; float:left; background-color: #ededed;"></div>
-			<div style="height: 20px; width: 958px; float:left; background-color: #d2d3d4; padding-top: 5px;">Ap&uacute;ntatelo v2.0 - Copyright &copy; 2008 - Todos los derechos reservados</div>
+			<div style="height: 20px; width: 11px; float: left; background-color: #ededed;"></div>
+			<div style="height: 20px; width: 958px; float: left; background-color: #d2d3d4; padding-top: 5px;">Ap&uacute;ntatelo v3.0 - Copyright &copy; 2008 - Todos los derechos reservados</div>
 
 			<div style="height: 20px; width: 11px; float:left; background-color: #ededed;"></div>
 		</div>

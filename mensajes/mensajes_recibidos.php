@@ -96,16 +96,16 @@ mysql_close();
 </table>
 <br><br>
 <?
-//Marco como leído en el header asi se actualiza el numero del menu.
+//Marco como leï¿½do en el header asi se actualiza el numero del menu.
 //$sql = "Update mensajes Set leido_receptor='1' where id_mensaje='".$id_mensaje."' and id_receptor = '".$id_user."'"; 	
 //mysql_query($sql,$con);
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 include ('../footer.html');

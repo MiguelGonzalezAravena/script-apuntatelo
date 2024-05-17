@@ -1,11 +1,11 @@
 <br>
 <table width=420 border='0' align='center' cellpadding='0' cellspacing='0'>
 	<tr>
-		<td style="background-color:#d2d3d4; font-size: 10px;">
-			<div class="box_txt" style="width:420px; text-align:left;">
-				<div class="esq1" style="float:left;"></div>
-				<div style="float:left; padding-top: 4px;">Informaci&oacute;n del Post</div>
-				<div class="esq2" style="float:right;"></div>
+		<td style="background-color: #D2D3D4; font-size: 10px;">
+			<div class="box_txt" style="width: 420px; text-align: left;">
+				<div class="esq1" style="float: left;"></div>
+				<div style="float: left; padding-top: 4px;">Informaci&oacute;n del post</div>
+				<div class="esq2" style="float: right;"></div>
 			</div>
 		</td>
 	</tr>
@@ -24,28 +24,82 @@
 			
 			$tags2 = explode(',', $tags);
 			$cant_tags = count($tags2);
-			
+
 			?>
-			<font size="1">
-			&nbsp;<b>Puntos:</b>
-			<?php echo $row['puntos']; ?>
-			<br>
-			&nbsp;<b>Comentarios:</b>
-			<?php echo $row['comentarios']; ?>
-			<br>
-			&nbsp;<b>Visitas:</b>
-			<?php echo $row['visitas']; ?>
-			<br>
-			&nbsp;<b>Creado el d&iacute;a:</b>
-			<?php echo $row['fecha']; ?>
-			<br><br>
-			&nbsp;<b>Categor&iacute;a:</b>
-			<?php  echo $row['nom_categoria']; ?>
-			<br>
-			&nbsp;<b>Tags:</b>
-			<?php  echo $row['tags']; ?>
-			<br><br>
-			</font>
+			<table>
+				<tr>
+					<td style="width: 100px">
+						<font size="1">
+							<b>Puntos:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['puntos']; ?>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<font size="1">
+							<b>Comentarios:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['comentarios']; ?>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<font size="1">
+							<b>Visitas:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['visitas']; ?>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<font size="1">
+							<b>Creado el d&iacute;a:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['fecha']; ?>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<font size="1">
+							<b>Categor&iacute;a:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['nom_categoria']; ?>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<font size="1">
+							<b>Tags:</b>
+						</font>
+					</td>
+					<td>
+						<font size="1">
+							<?php echo $row['tags']; ?>
+						</font>
+					</td>
+				</tr>
+			</table>
 		</td>	
 	</tr>
 </table>

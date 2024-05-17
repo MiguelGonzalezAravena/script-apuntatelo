@@ -1,20 +1,19 @@
-<?
-include('../includes/configuracion.php');
-include('../includes/funciones.php');
-$idcoment = no_injection($_POST["idcoment"]);
-$idpost = no_injection($_POST["idpost"]);
-$causa = no_injection($_POST["causa"]);
-$mod = no_injection($_POST["mod"]);
-$id_mod = no_injection($_POST["id_mod"]);
-$elim=1;
-$pag = $_POST["pagina"];
-$sql = "Update comentarios Set elim='".$elim."', id_modera='".$id_mod."', modera='".$mod."', causa='".$causa."' Where id='".$idcoment."'"; 	
-mysql_query($sql);
-$sql = "Update cantidad Set cant=cant-'1' where id='2'";
-mysql_query($sql);
-mysql_close($con);
-?>
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
 
-<SCRIPT LANGUAGE="javascript">
-       location.href = "..<?echo$pag?>";
-       </SCRIPT>
+$idcoment = (int) $_POST['idcoment'];
+$idpost = (int) $_POST['idpost'];
+$causa = isset($_POST['causa']) ? no_injection($_POST['causa']) : '';
+$mod = isset($_POST['mod']) ? no_injection($_POST['mod']) : '';
+$id_mod = (int) $_POST['id_mod'];
+$elim = 1;
+$pag = isset($_POST['pagina']) ? no_injection($_POST['pagina']) : '';
+
+mysqli_query($con, "UPDATE comentarios SET elim = $elim, id_modera = $id_mod, modera = '" . $mod . "', causa = '" . $causa . "' WHERE id = " . $idcoment);
+mysqli_query($con, "UPDATE cantidad SET cant = cant - 1 WHERE id = 2");
+mysqli_close($con);
+?>
+<script type="text/javascript">
+  location.href = "<?php echo $pag; ?>";
+</script>

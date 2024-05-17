@@ -76,9 +76,9 @@ if ($_SESSION['user']!="")
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 include ('../footer.html');

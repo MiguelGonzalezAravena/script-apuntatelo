@@ -102,9 +102,9 @@ mysql_query($sql,$con);
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 include ('../footer.html');

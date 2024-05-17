@@ -1,4 +1,4 @@
-<?
+<?php
 include('../includes/configuracion.php');
 include('../login.php');
 include('../includes/funciones.php');
@@ -53,7 +53,7 @@ if ($user!=null)
 	}
 	else
 	{
-		echo "<div align='center'>Datos incorrectos. Acordate que la contraseña tiene que tener más de 6 caractéres.</div>";
+		echo "<div align='center'>Datos incorrectos. Acordate que la contraseï¿½a tiene que tener mï¿½s de 6 caractï¿½res.</div>";
 		echo "<br>";
 		echo "<br>";
 		echo "<div align='center'>Para intentar nuevamente presione <a href=\"password.php\"><font color=\"gray\">aqu&iacute;</font></a></div>";

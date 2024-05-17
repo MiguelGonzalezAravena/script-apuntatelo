@@ -34,9 +34,9 @@ if ($rango=="Moderador" or $rango=="Administrador")
 	<font size="2">
 	<div align="center">Bienvenido <b><?echo$_SESSION['user']?></b></div>
 	<br><br><br>
-	&nbsp;Ir a panel <a href="usuarios.php">Usuarios</a> - (Sólo admins)<br><br><br>
-	&nbsp;Ir a panel <a href="">Información Moderadores</a><br><br><br>
-	&nbsp;Ir a panel <a href="stickies.php">Stickies</a> - (Sólo admins)<br><br><br>
+	&nbsp;Ir a panel <a href="usuarios.php">Usuarios</a> - (Sï¿½lo admins)<br><br><br>
+	&nbsp;Ir a panel <a href="">Informaciï¿½n Moderadores</a><br><br><br>
+	&nbsp;Ir a panel <a href="stickies.php">Stickies</a> - (Sï¿½lo admins)<br><br><br>
 	&nbsp;Ir a panel <a href="users_suspendidos.php">Usuarios Suspendidos</a><br><br><br>
 	&nbsp;Ir a panel <a href="">Denuncias</a>
 	<br><br>
@@ -50,9 +50,9 @@ if ($rango=="Moderador" or $rango=="Administrador")
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

@@ -16,17 +16,17 @@ if ($rango=="Moderador" or $rango=="Administrador")
 	mysql_query($sql);
 	mysql_close();
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "stickies.php";
-       				</SCRIPT>
+       				</script>
 <?
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 <?
 }
 ?>

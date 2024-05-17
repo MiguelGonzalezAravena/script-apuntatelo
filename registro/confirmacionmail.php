@@ -11,17 +11,17 @@ $sql = "Update usuarios Set activacion='1' Where id='".$id."' and id_apuntatelo 
 if(mysql_query($sql))
 {
 	?>	
-	<SCRIPT LANGUAGE="javascript">
+	 <script type="text/javascript">
 	location.href = "../notificaciones/registroexi.php";
-	</SCRIPT>
+	</script>
 	<?
 }
 else
 {
 	?>				
-	<SCRIPT LANGUAGE="javascript">
+	 <script type="text/javascript">
 	location.href = "../notificaciones/registrofa.php";
-	</SCRIPT>
+	</script>
 	<?
 }
 ?>

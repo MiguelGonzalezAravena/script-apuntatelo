@@ -45,17 +45,17 @@ else
 	$action="error4";
 }
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "users_suspendidos.php?user=<?echo $nick?>&action=<?echo $action?>";
-       				</SCRIPT>
+       				</script>
 <?
 }
 else
 {
 ?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 
 <?
 }

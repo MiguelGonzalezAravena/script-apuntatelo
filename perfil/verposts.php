@@ -88,7 +88,7 @@ if (mysqli_num_rows($rs) > 0) {
 } else {
 ?>
 Password incorrecto
-<script language="javascript">
+ <script type="text/javascript">
 		location.href = "..";
 </script> 
 <?php

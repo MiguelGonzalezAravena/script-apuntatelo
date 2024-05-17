@@ -49,6 +49,6 @@ mysql_close();
 
 }
 ?>	
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "stickies.php";
-       				</SCRIPT>
+       				</script>

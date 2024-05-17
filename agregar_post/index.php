@@ -158,7 +158,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 							<a href="javascript:void(0)" onclick="smile(':bye:')">
 								<img src="<?php echo $images; ?>/smileys/bye.gif" hspace="2" vspace="4" align="absmiddle" border="0" />
 							</a>
-							<a href="" onclick="window.open('../smileys.html','window','width=200,height=600,scrollbars=yes'); return false;">
+							<a href="" onclick="window.open('<?php echo $url; ?>/smileys.php','window','width=200,height=600,scrollbars=yes'); return false;">
 								<font color="gray">M&aacute;s</font>
 							</a>
 							<br /><br />
@@ -193,20 +193,24 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 					<tr>
 						<td width="30%" align="right"></td>
 						<td>
-							<div class="size11" style="font-weight:bold;"><input type="checkbox" name="privado" />Privado</div>
+							<div class="size11" style="font-weight: bold;">
+								<input type="checkbox" name="privado" />
+								Privado
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<td width="30%" align="right"></td>
 						<td>
 							<div class="size11" style="font-weight: bold;">
-								<input type="checkbox" name="coments" value="coments"> Cerrar los comentarios
+								<input type="checkbox" name="coments" value="coments" />
+								Cerrar los comentarios
 							</div>
 						</td>
 					</tr>
 					<tr> 
 						<td colspan="2" align="center">
-							<input type="button" onclick="show_preview(this.form.titulo.value, this.form.cuerpo.value, this.form.tipo.value, this.form.id.value, this.form.variable.value, this.form.categoria.value, this.form.tags.value, this.form.privado.value, this.form.coments.value, this.form)" class="submit_button" value="   Vista Previa   " title="Preview" tabindex="8">
+							<input type="button" onclick="show_preview(this.form.titulo.value, this.form.cuerpo.value, this.form.tipo.value, this.form.id.value, this.form.variable.value, this.form.categoria.value, this.form.tags.value, this.form.privado.value, this.form.coments.value, this.form)" class="submit_button" value="   Vista previa   " title="Preview" tabindex="8" />
 						</td>
 					</tr>
 				</form> 
@@ -214,7 +218,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 <?php
 } else {
 ?>
-			<script language="javascript">
+			 <script type="text/javascript">
 				location.href = '..';
 			</script>
 <?php

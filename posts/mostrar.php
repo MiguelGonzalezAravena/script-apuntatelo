@@ -6,7 +6,7 @@ $iexp = $_SERVER['HTTP_USER_AGENT'];
 $margin_left = (strstr($iexp, 'MSIE 6')) ? '7px' : '15px';
 
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-$sql = "SELECT id, elim, id_autor, titulo, contenido, privado, coments, visitas, tags FROM posts where id = '$id'";
+$sql = "SELECT id, elim, id_autor, titulo, contenido, privado, coments, visitas, tags FROM posts where id = $id";
 $rs = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($rs);
 
@@ -19,8 +19,9 @@ $coments = $row['coments'];
 $visitas = $row['visitas'];
 $tags = $row['tags'];
 
-if ($id_autor!="")
-	$esta=1;
+if ($id_autor != "") {
+	$esta = 1;
+}
 
 $cant = strlen($titulo);
 if($cant > 50) {
@@ -32,19 +33,18 @@ if($cant > 50) {
 }
 ?>
 <html>
-<head>
-<title>eXtreme Zone - <?echo $titulo2; if ($tit==1) echo"...";?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
-</head>
-<body>
-
+	<head>
+		<title>eXtreme Zone - <?php echo $titulo2; if ($tit == 1) echo "..."; ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
+	</head>
+	<body>
 <?php
 if ($elim == 0 && $esta == 1) {
 	if ($user != "" || $privado == 0) {
 ?>
 		<div class="bordes" style="height: auto;">
-		<br />
+			<br />
 <?php
 		if (!isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 			$ip = getenv('REMOTE_ADDR');
@@ -72,7 +72,7 @@ if ($elim == 0 && $esta == 1) {
 		
 				<div id="post-centro">
 					<div class="fondo_cuadro">
-						<div style="width:781px;float:left;text-align:center;font-size:13px;">
+						<div style="width: 781px; float: left; text-align: center; font-size: 13px;">
 							<div class="esq1" style="float:left;"></div>
 							<div  class="franja" style="float:left; width:765px; text-align:center;"><div style="padding-top:2px;"><a href="<?php echo $url; ?>/posts/<?php echo ($id - 1); ?>/"><img src="<?php echo $images; ?>/izq.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $titulo2; if ($tit==1) { echo"..."; } ?>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/posts/<?php echo ($id + 1); ?>/"><img src="<?php echo $images; ?>/der.png"></a></div></div>
 							<div class="esq2" style="float:right;"></div>
@@ -144,7 +144,7 @@ if ($elim == 0 && $esta == 1) {
 		<div class="bordes">
 		<table width="100%" height="365" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td width="25%" height"120" align="center">
+				<td width="25%" height="120" align="center">
 				</td>
 				<td>
 				</td>
@@ -159,14 +159,14 @@ if ($elim == 0 && $esta == 1) {
 						<tr>
 							<td></td>
 							<td> 
-								<div class="esq1" style="float:left;"></div>
-								<div class="franja" style="float:left; width: 371px;"><div style="padding-top:2px;">Error</div></div>
-								<div class="esq2" style="float:left;"></div>
+								<div class="esq1" style="float: left;"></div>
+								<div class="franja" style="float: left; width: 371px;"><div style="padding-top: 2px;">Error</div></div>
+								<div class="esq2" style="float: left;"></div>
 							</td>
 						</tr>
 					</table>
 					<br>
-					<div align="center"><font size="2">El post es privado. Deb�s ser un usuario registrado para poder acceder.</font></div> 
+					<div align="center"><font size="2">El post es privado. Debes ser un usuario registrado para poder acceder.</font></div> 
 				
 				</td>
 				<td width="35%" height="30%" align="center">
@@ -217,7 +217,7 @@ else
 					</tr>
 				</table>
 				<br>
-				<div align="center"><font size="2"><?php if ($esta==1) { echo "Post Eliminado"; } else { echo "No existe el Post"; } ?></font></div> 
+				<div align="center"><font size="2"><?php if ($esta==1) { echo "Post eliminado"; } else { echo "No existe el post"; } ?></font></div> 
 			
 			</td>
 			<td width="35%" height="30%" align="center">

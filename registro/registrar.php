@@ -68,9 +68,9 @@ if ($var == 1) {
 				$encabezados = "From: $email\nReply-To: $email\nContent-Type: text/html; charset=iso-8859-1"; 
 				mail($mail1, $asunto, $mensaje, $encabezados);
 				?>
-				<SCRIPT LANGUAGE="javascript">
+				 <script type="text/javascript">
 				location.href = "../notificaciones/registrocon.php";
-				</SCRIPT>
+				</script>
 				<?
 			}	
 		}

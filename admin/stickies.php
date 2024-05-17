@@ -32,13 +32,13 @@ if ($rango=="Administrador")
 	<table border="1">
 	<tr>
 	<td>
-	<font size="1">Órden</font>
+	<font size="1">ï¿½rden</font>
 	</td>
 	<td>
 	<font size="1">Id</font>
 	</td>
 	<td>
-	<font size="1">Título</font>
+	<font size="1">Tï¿½tulo</font>
 	</td>
 	<td>
 	<font size="1">Sticky por</font>
@@ -111,9 +111,9 @@ if ($rango=="Administrador")
 else
 {
 	?>
-		<SCRIPT LANGUAGE="javascript">
+		 <script type="text/javascript">
        				location.href = "..";
-       				</SCRIPT>
+       				</script>
 	<?
 }
 ?>

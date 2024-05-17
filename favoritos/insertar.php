@@ -1,25 +1,33 @@
-<?
-include('../includes/configuracion.php');
-include('../login.php');
-include('../includes/funciones.php');
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/login.php');
+require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
+
 $id_user = $_SESSION['id'];
-$id_post = no_injection($_POST['post']);
-if ($id_user!="")
-{
-	$sql = "select id from favoritos where id_post=".$id_post." and id_usuario=".$id_user;
-	$rs = mysql_query($sql);
-	if (mysql_num_rows($rs)<=0)
-	{
-		$sql = "insert into favoritos (id_post, id_usuario, fecha) values (".$id_post.",".$id_user.",NOW())";
-		mysql_query($sql);
+$id_post = isset($_POST['post']) ? (int) $_POST['post'] : '';
+
+if (isset($id_user)) {
+	$sql = "
+		SELECT id
+		FROM favoritos
+		WHERE id_post = " . $id_post . "
+		AND id_usuario = " . $id_user;
+	$rs = mysqli_query($con, $sql);
+
+	if (mysqli_num_rows($rs) <= 0) {
+		$sql = "
+			INSERT INTO favoritos (id_post, id_usuario, fecha)
+			VALUES (" . $id_post . ", " . $id_user . ", NOW())";
+
+		mysqli_query($con, $sql);
 	}
-	?>
-	<SCRIPT LANGUAGE="javascript">
-       				location.href = "<?=$_POST['pag']?>";
-       				</SCRIPT>
-	<?
+?>
+ <script type="text/javascript">
+	location.href = "<?php echo $_POST['pag']; ?>";
+</script>
+<?php
 }
 ?>
-<SCRIPT LANGUAGE="javascript">
+ <script type="text/javascript">
 	location.href = "..";
-</SCRIPT>
+</script>
