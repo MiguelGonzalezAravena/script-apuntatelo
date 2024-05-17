@@ -3,7 +3,9 @@
 <?php 
 // Copyright Cgixp Team
 // Do not modify anything in this script as you don't need to do so
-$log_file = 'online.txt';
+require_once(dirname(__FILE__) . '/includes/configuracion.php');
+
+$log_file = dirname(__FILE__) . '/online.txt';
 $min_online = '1';
 $ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? getenv('REMOTE_ADDR') : getenv('HTTP_X_FORWARDED_FOR');
 
@@ -79,7 +81,7 @@ $users = $info->getOnlineNick(NULL);
 $info = '';
 $nb_users = count($users);
 
-echo '<meta http-equiv="Refresh" content="30; URL=online.php" />';
+echo '<meta http-equiv="Refresh" content="30; URL=' . $url . '/online.php" />';
 ?>
 </body>
 </html>
