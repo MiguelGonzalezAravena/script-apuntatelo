@@ -10,9 +10,9 @@ $rango = rango_propio($user);
 if ($rango == 'Moderador' || $rango == 'Administrador') {
 	mysqli_query($con, "UPDATE stickies SET elim = 1, modera = '$user' WHERE id = $id");
 	mysqli_close($con);
-	header('Location: ' . $url . '/admin/stickies.php');
+	redirect($url . '/admin/stickies.php');
 } else {
-	header('Location: ' . $url . '/admin/');
+	redirect($url . '/admin/');
 }
 
 ?>

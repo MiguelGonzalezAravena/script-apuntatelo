@@ -13,10 +13,10 @@ $day = date('d');
 $month = date('m');
 $year = date('Y');
 $date = "$day-$month-$year";
-$ora = date('H');
-$minuti = date('i');
-$secondi = date('s');
-$time = "$ora:$minuti:$secondi";
+$hour = date('H');
+$minutes = date('i');
+$seconds = date('s');
+$time = "$hour:$minutes:$seconds";
 $users_read = fopen($log_file, 'r');
 $users = fread($users_read, filesize($log_file));
 fclose($users_read);
@@ -31,19 +31,19 @@ if ($users == 0) {
   $users = explode("\n", $users);
   $user_da_tenere = array();
 
-  while (list($key, $val) = each($users)) {
+  foreach ($users as $val) {
     $user_sing = explode("|", $val);
 
-    if ($date==$user_sing[2]) {
+    if ($date == $user_sing[2]) {
       $h = explode(":", $user_sing[1]);
 
-      if ($ip!=$user_sing[0]) {
-        if (($h[0]==$ora)and(($minuti-$h[1])<=$min_online)) {
-          $user_da_tenere[]=$val;
+      if ($ip != $user_sing[0]) {
+        if (($h[0] == $hour) && (($minutes - $h[1]) <= $min_online)) {
+          $user_da_tenere[] = $val;
         }
 
-        if (($h[0]==($ora-1))and((($minuti+2)-$h[1])<=$min_online)) {
-          $user_da_tenere[]=$val;
+        if (($h[0] == ($hour - 1)) && ((($minutes + 2) - $h[1]) <= $min_online)) {
+          $user_da_tenere[] = $val;
         }
       }
     }
@@ -54,7 +54,7 @@ if ($users == 0) {
   fputs($user_write, '');
   fclose($user_write);
 
-  while (list($k, $v) = each($user_da_tenere)) {
+  foreach ($user_da_tenere as $v) {
     $new_file_log = fopen($log_file, 'a');
     fwrite($new_file_log, "$v\n");
     fclose($new_file_log);
@@ -74,14 +74,14 @@ echo '
   </div>';
 
 require_once(dirname(__FILE__) . '/chat/src/pfcinfo.class.php');
-$info  = new pfcInfo(md5('APUNTATELO'));
+$info = new pfcInfo(md5('APUNTATELO'));
 // NULL is used to get all the connected users, but you can specify
 // a channel name to get only the connected user on a specific channel
 $users = $info->getOnlineNick(NULL);
 $info = '';
 $nb_users = count($users);
 
-echo '<meta http-equiv="Refresh" content="30; URL=' . $url . '/online.php" />';
+/* echo '<meta http-equiv="Refresh" content="30; URL=' . $url . '/online.php" />'; */
 ?>
 </body>
 </html>

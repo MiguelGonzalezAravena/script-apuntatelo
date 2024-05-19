@@ -16,8 +16,8 @@ require_once(dirname(__FILE__) . '/header.php');
 2.	<a href="#2"><font color="blue">&iquest;Cu&aacute;l es el objetivo?</font></a><br><br>
 3.	<a href="#3"><font color="blue">&iquest;C&oacute;mo hacer un post?</font></a><br><br>
 4.	<a href="#4"><font color="blue">&iquest;Es necesario estar registrado?</font></a><br><br>
-5.	<a href="#5"><font color="blue">&iquest;Por qu&eacute; no veo el post que hice, alguien me lo borr&oacute;?</font></a><br><br>
-6.	<a href="#6"><font color="blue">&iquest;Estoy suspendido? &iquest;que hice mal?</font></a><br><br>
+5.	<a href="#5"><font color="blue">&iquest;Por qu&eacute; no veo el post que hice? &iquest;alguien me lo borr&oacute;?</font></a><br><br>
+6.	<a href="#6"><font color="blue">&iquest;Estoy suspendido? &iquest;qu&eacute; hice mal?</font></a><br><br>
 7.	<a href="#7"><font color="blue">&iquest;Para qu&eacute; sirven los puntos?</font></a><br><br>
 8.	<a href="#8"><font color="blue">&iquest;Qu&eacute; es un repost?</font></a><br><br>
 <br>
@@ -32,7 +32,7 @@ Es que cada usuario pueda tener desde su casa las herramientas necesarias para e
 Es necesario estar registrado, se empieza yendo al enlace "Agregar", (previamente de leer el <a href="<?php echo $url; ?>/protocolo/"><font color="blue">protocolo</font></a>). <br>El uso del editor de texto es muy intuitivo, se utiliza BBcode. Se pueden agregar im&aacute;genes y direcciones enlazadas muy f&aacute;cilmente.<br><br>
 <br><a name="4"><div class="size15 negro"><b>&iquest;Es necesario estar registrado?</b></div></a><br><br>
 Para ver post privados, postear, comentar y votar: s&iacute;, es necesario. Para ver los post que no son privados, no.<br><br>
-<br><a name="5"><div class="size15 negro"><b>&iquest;Por qu&eacute; no veo el post que hice, alguien me lo borr&oacute;?</b></div></a><br><br>
+<br><a name="5"><div class="size15 negro"><b>&iquest;Por qu&eacute; no veo el post que hice? &iquest;alguien me lo borr&oacute;?</b></div></a><br><br>
 Si no cumple con el protocolo, un moderador puede borrarlo.<br><br>
 <br><a name="6"><div class="size15 negro"><b>&iquest;Estoy suspendido? &iquest;qu&eacute; hice mal?</b></div></a><br><br>
 B&aacute;sicamente es porque no respetaste el protocolo, deber&iacute;as leerlo.<br><br>

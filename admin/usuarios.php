@@ -135,7 +135,7 @@ if ($rango == 'Administrador') {
   </table>
 <?php
 } else {
-  header('Location: ' . $url . '/admin/');
+  redirect($url . '/admin/');
 }
 ?>
 </div>

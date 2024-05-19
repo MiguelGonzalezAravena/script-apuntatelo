@@ -42,9 +42,11 @@ if ($rango == 'Moderador' || $rango == 'Administrador') {
     $action = 'error4';
   }
 
-  header('Location: ' . $url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
+  // redirect($url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
+  // header('Refresh: 0; URL=' . $url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
+  redirect($url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
 } else {
-  header('Location: ' . $url . '/admin/users_suspendidos.php');
+  redirect($url . '/admin/users_suspendidos.php');
 }
 
 ?>

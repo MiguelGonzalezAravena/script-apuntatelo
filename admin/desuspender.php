@@ -38,9 +38,9 @@ if ($rango == 'Moderador' || $rango == 'Administrador') {
 		}
 	}
 
-	header('Location: ' . $url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
+	redirect($url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
 } else {
-	header('Location: ' . $url . '/admin/users_suspendidos.php');
+	redirect($url . '/admin/users_suspendidos.php');
 }
 
 ?>

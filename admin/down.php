@@ -50,6 +50,6 @@ if ($rango == 'Moderador' || $rango == 'Administrador') {
 	mysqli_close($con);
 }
 
-header('Location: ' . $url . '/admin/stickies.php');
+redirect($url . '/admin/stickies.php');
 
 ?>

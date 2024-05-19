@@ -1,27 +1,26 @@
-<?
-include('../includes/configuracion.php');
-include('../includes/funciones.php');
-$cadena = no_injection($_GET["id"]);
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
 
-$cad = explode("?", $cadena);
+$cadena = isset($_GET['id']) ? no_injection($_GET['id']) : '';
+
+$cad = explode('?', $cadena);
 $id = $cad[0];
-$id_apuntatelo = $cad[1];
+$id_secret = $cad[1];
 
-$sql = "Update usuarios Set activacion='1' Where id='".$id."' and id_apuntatelo = '".$id_apuntatelo."'";
-if(mysql_query($sql))
-{
-	?>	
-	 <script type="text/javascript">
-	location.href = "../notificaciones/registroexi.php";
-	</script>
-	<?
+// TO-DO: Cambiar id_extreme a id_secret
+$sql = "
+	UPDATE usuarios
+	SET activacion = 1
+	WHERE id = '" . $id . "'
+	AND id_extreme = '" . $id_secret . "'";
+
+$request = mysqli_query($con, $sql);
+
+if ($request) {
+	redirect($url . '/notificaciones/registroexi.php');
+} else {
+	redirect($url . '/notificaciones/registrofa.php');
 }
-else
-{
-	?>				
-	 <script type="text/javascript">
-	location.href = "../notificaciones/registrofa.php";
-	</script>
-	<?
-}
+
 ?>

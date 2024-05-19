@@ -38,9 +38,9 @@ if ($rango == 'Administrador' && isset($id)) {
     mysqli_close($con);
   }
 
-  header('Location: ' . $url . '/admin/stickies.php');
+  redirect($url . '/admin/stickies.php');
 } else {
-  header('Location: ' . $url . '/admin/');
+  redirect($url . '/admin/');
 }
 
 ?>

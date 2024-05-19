@@ -12,6 +12,6 @@ $_SESSION['pass'] = null;
 $_SESSION['id'] = null;
 unset($_SESSION);
 session_destroy();
+redirect($url);
 
-header('Location: ' . $url);
 ?>
