@@ -1,56 +1,46 @@
-<?include('../header.php');
-include('../configuracion.php');
-$user = $_SESSION['user'];
-$nick = $_POST['nick'];
-$sql = "SELECT rango ";
-$sql.= "FROM usuarios where nick='$user' ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-	{
-	$rango = $row['rango'];
-	}
-if ($rango=="Moderador" or $rango=="Administrador")
-{
-if (trim($nick)!="")
-{
-$sql3 = "select * from usuarios where nick='$nick' ";
-$rs3 = mysql_query($sql3,$con);
-	if (mysql_num_rows($rs3)>0)
-	{
-		$sql2 = "select * from suspendidos where nick='$nick' and activo='1' ";
-		$rs2 = mysql_query($sql2,$con);
-		if (mysql_num_rows($rs2)>0)
-		{
-			$sql = "Update suspendidos set activo='0', activa='$user', fecha2=NOW() where nick='$nick'and activo='1' ";
-			mysql_query($sql);
+<?php
+require_once(dirname(dirname(__FILE__)) . '/header.php');
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
 
-			$sql = "Update usuarios set ban='0' where nick='$nick'";
-			mysql_query($sql);
-			$action="correcto2";
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+$nick = isset($_POST['nick']) ? no_injection($_POST['nick']) : '';
+$rango = rango_propio($user);
+
+if ($rango == 'Moderador' || $rango == 'Administrador') {
+	if ($nick != '') {
+		$sql = "
+			SELECT *
+			FROM usuarios
+			WHERE nick = '$nick'";
+
+		$request = mysqli_query($con, $sql);
+
+		if (mysqli_num_rows($request) > 0) {
+			$sql = "
+				SELECT *
+				FROM suspendidos
+				WHERE nick = '$nick'
+				AND activo = 1";
+
+			$request = mysqli_query($con, $sql);
+
+			if (mysqli_num_rows($request) > 0) {
+				mysqli_query($con, "UPDATE suspendidos SET activo = 0, activa = '$user', fecha2 = NOW() WHERE nick = '$nick' AND activo = 1");
+				mysqli_query($con, "UPDATE usuarios SET ban = 0 WHERE nick = '$nick'");
+				$action = 'correcto2';
+			} else {
+				$action = 'error3';
+			}
+
+			mysqli_close($con);
+		} else {
+			$action = 'error2';
 		}
-		else
-		{
-		$action="error3";
-		}
-	mysql_close();
 	}
-	else
-	{
-	$action="error2";
-	}
-}	
-?>
-		 <script type="text/javascript">
-       				location.href = "users_suspendidos.php?user=<?echo $nick?>&action=<?echo $action?>";
-       				</script>
-<?
+
+	header('Location: ' . $url . '/admin/users_suspendidos.php?user=' . $nick . '&action=' . $action);
+} else {
+	header('Location: ' . $url . '/admin/users_suspendidos.php');
 }
-else
-{
-?>
-		 <script type="text/javascript">
-       				location.href = "..";
-       				</script>
-<?
-}
+
 ?>

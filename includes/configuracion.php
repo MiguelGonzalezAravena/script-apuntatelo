@@ -5,9 +5,9 @@ $bd_password = '';
 $bd_base = 'apuntatelo';
 $url = 'http://localhost/apuntatelo';
 $images = $url . '/imagenes';
+$name = 'Ap&uacute;ntatelo';
+$email = 'miguel.gonzalez.93@gmail.com';
 
-// TO-DO: Agregar correo de administrador
-// TO-DO: Agregar nombre del sitio web
 // TO-DO: Agregar llave md5 a encriptar para passwords en BD
 
 $con = mysqli_connect($bd_host, $bd_usuario, $bd_password);

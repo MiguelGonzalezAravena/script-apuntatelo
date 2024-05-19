@@ -1,12 +1,7 @@
 <?php
 $id_user = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$sql = "SELECT rango ";
-$sql.= "FROM usuarios where id = '$id_user'";
-$rs = mysqli_query($con, $sql);
-$rango = '';
-while($row = mysqli_fetch_array($rs)) {	
-	$rango = $row['rango'];
-}
+$user = $_SESSION['user'];
+$rango = rango_propio($user);
 ?>
 <table>
 	<tr>

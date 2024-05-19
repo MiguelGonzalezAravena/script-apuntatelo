@@ -90,7 +90,7 @@ if (isset($_SESSION['user'])) {
 								$request = mysqli_query($con, "SELECT id_categoria, nom_categoria FROM categorias ORDER BY nom_categoria ASC");
 								while ($row = mysqli_fetch_array($request)) {
 							?>
-							<option value="<?php echo $row['id_categoria']; ?>" <?php if ($categoria == $row['id_categoria']) { echo "selected='true'"; } ?>><?php echo $row['nom_categoria']; ?></option>
+							<option value="<?php echo $row['id_categoria']; ?>" <?php if ($categoria == $row['id_categoria']) { echo "selected='selected'"; } ?>><?php echo $row['nom_categoria']; ?></option>
 							<?php
 								}
 							?>
@@ -150,7 +150,7 @@ if ($_pagi_totalReg > 0) {
 					<?php echo $puntos; ?> pts
 				</td>
 				<td align="right" width="200">
-					Guardado: <?php echo date("d-m-Y H-m-s", strtotime($fecha_guardado)); ?>&nbsp;						
+					Guardado: <?php echo date("d-m-Y H:m:s", strtotime($fecha_guardado)); ?>&nbsp;						
 				</td>
 				<td width="30" align="right">
 					<input type="checkbox" name="i_<?php echo $i; ?>" value="<?php echo $id_favorito; ?>">

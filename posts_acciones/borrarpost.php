@@ -10,9 +10,9 @@ $pag = isset($_POST['pagina']) ? no_injection($_POST['pagina']) : '';
 
 if ($id_user == $id_autor) {
 	// TO-DO: Agregar registro a tabla "cantidad" donde el id 1 es para posts
-	mysqli_query($con, "UPDATE posts SET elim = '1' WHERE id = " . $num);
+	mysqli_query($con, "UPDATE posts SET elim = 1 WHERE id = " . $num);
 	mysqli_query($con, "UPDATE usuarios SET numposts = numposts - 1 WHERE id = " . $id_autor);
-	mysqli_query($con, "UPDATE cantidad SET cant=cant-'1' WHERE id = 1");
+	mysqli_query($con, "UPDATE cantidad SET cant = cant - 1 WHERE id = 1");
 	mysqli_close($con);
 }
 ?>

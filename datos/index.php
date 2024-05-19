@@ -71,15 +71,14 @@ if ($action != 'recuperar') {
 			$mensajerobis = $row['mensajero'];
 			$mensajebis = $row['mensaje'];
 		}
-		echo $paisbis;
 ?>
 		<div class="bordes">
 		<br>
 		<div align="center">MIS DATOS</div>
 		<br>
-		<table width="90%"  border="0" cellspacing="2" cellpadding="2">   
+		<table width="90%" border="0" cellspacing="2" cellpadding="2">   
 		      
-			<FORM name="reg" method="post" onsubmit="return validate_data();">
+			<form name="reg" method="post" onsubmit="return validate_data();">
 		     <tr>
 		      <td width="50%" align="right">
 			  <font size="2"><b>Usuario:</b></font> 
@@ -194,35 +193,34 @@ if ($action != 'recuperar') {
 			  <font size="2"><b>Mensajero:</b></font> 
 		   	 </td>
 		   	<td>
-			<INPUT TYPE="text" NAME="mensajero" SIZE="20" MAXLENGTH="42" value="<?php echo $mensajerobis; ?>">	
+					<input type="text" name="mensajero" size="20" maxlength="42" value="<?php echo $mensajerobis; ?>" />
 		    </td>
 		   </tr>
-		       
 			   <tr>
 		     <td width="50%" align="right">
 			  <font size="2"><b>Mensaje Personal:</b></font> 
 		   	 </td>
 		   	<td>
-			<INPUT TYPE="text" NAME="mensaje" SIZE="20" MAXLENGTH="105" value="<?php echo $mensajebis; ?>">	
+					<input type="text" name="mensaje" size="20" maxlength="105" value="<?php echo $mensajebis; ?>" />
 		    </td>
 		   </tr>
 			 <tr>
 			  <td width="50%" align="center">
 			  </td>
 			  <td>	
-			 <font size="2">Al modificar mis datos acepto los t&eacute;rminos de Extreme-Zone
+			 <font size="2">Al modificar mis datos acepto los t&eacute;rminos de <?php echo $name; ?>
 			  </td>
 		   	 </tr>
 			 <tr>
 			  <td width="50%" align="center">
 			  </td>
 			  <td>
-			  <input type="hidden" name="var" value= "1" >
+			  <input type="hidden" name="var" value= "1" />
 			  <br>
-			  <INPUT TYPE="submit" class="submit_button" VALUE="Guardar cambios">
+			  <input type="submit" class="submit_button" value="Guardar cambios" />
 		  	  </td>
 		   </tr>  
-		  </FORM>
+			</form>
 		</font>
 		</table>
 		<br>

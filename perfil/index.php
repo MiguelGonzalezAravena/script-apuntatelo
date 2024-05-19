@@ -35,43 +35,10 @@ if (mysqli_num_rows($rs) > 0) {
 	<tr>
 	<td align="right"><div class="size12"><b>Usuario N°:</b> </div></td><td align="left"><div class="size12"><?php echo $row['id']; ?></div></td>
 	</tr>
-<?php
-function sexo($valor) {
-	$valor = str_replace("m", "Hombre", $valor);
-	$valor = str_replace("f", "Mujer", $valor);
-
-	return $valor;
-}
-?>
 	<tr>
 	<td align="right"><div class="size12"><b>Sexo:</b></div> </td><td align="left"><div class="size12"><img title="<?php echo sexo($row['sexo']); ?>" src="<?php echo $images; ?>/<?php echo sexo($row['sexo']); ?>.png"></div></td>
 	</tr>
 	</tr>
-<?php
-function pais($valor) {
-	$valor = str_replace("ar", "Argentina", $valor);
-	$valor = str_replace("bo", "Bolivia", $valor);
-	$valor = str_replace("br", "Brasil", $valor);
-	$valor = str_replace("cl", "Chile", $valor);
-	$valor = str_replace("co", "Colombia", $valor);
-	$valor = str_replace("cr", "Costa Rica", $valor);
-	$valor = str_replace("cu", "Cuba", $valor);
-	$valor = str_replace("ec", "Ecuador", $valor);
-	$valor = str_replace("es", "Espa&ntilde;a", $valor);
-	$valor = str_replace("gt", "Guatemala", $valor);
-	$valor = str_replace("it", "Italia", $valor);
-	$valor = str_replace("mx", "M&eacute;xico", $valor);
-	$valor = str_replace("py", "Paraguay", $valor);
-	$valor = str_replace("pe", "Per&uacute;", $valor);
-	$valor = str_replace("pt", "Portugal", $valor);
-	$valor = str_replace("pr", "Puerto Rico", $valor);
-	$valor = str_replace("uy", "Uruguay", $valor);
-	$valor = str_replace("ve", "Venezuela", $valor);
-	$valor = str_replace("ot", "Otro", $valor);
-
-	return $valor;
-}
-?>
 	<tr>
 	<td align="right"><div class="size12"><b>Pa&iacute;s:</b></div> </td><td align="left"><div class="size12"><img title="<?php echo pais($row['pais']); ?>" src="<?php echo $images; ?>/banderas/<?php echo $row['pais']; ?>.png"></div></td>
 	</tr>
@@ -152,8 +119,8 @@ function pais($valor) {
 	}
 ?>
 	<tr>
-		<td>
-			<a href="<?php echo $url; ?>/perfil/verposts.php?id=<?php echo $id; ?>"><font size="2" color="black">Ver todos!</font></a>
+		<td style="padding-top: 10px">
+			<input type="button" class="submit_button" value="Ver todos" onclick="location.href='<?php echo $url; ?>/perfil/verposts.php?id=<?php echo $id; ?>'" />
 		</td>
 	</tr>
 	</table>

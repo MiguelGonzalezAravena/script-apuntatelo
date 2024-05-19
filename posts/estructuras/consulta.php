@@ -1,15 +1,7 @@
 <?php
 $var = 0;
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-$sql = "
-	SELECT rango 
-	FROM usuarios
-	WHERE nick = '$user'";
-$request = mysqli_query($con, $sql);
-$rango = '';
-while($row = mysqli_fetch_array($request)) {	
-	$rango = $row['rango'];
-}
+$rango = rango_propio($user);
 
 if ($rango == 'Administrador' || $rango == 'Moderador') {
 	$var = 1;

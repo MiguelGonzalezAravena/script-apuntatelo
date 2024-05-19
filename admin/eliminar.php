@@ -1,33 +1,18 @@
-<?
-include('../includes/configentrada.php');
-$user = $_SESSION['user'];
-$id_user = $_SESSION['id'];
-$id = $_GET['id'];
-$sql = "SELECT rango ";
-$sql.= "FROM usuarios where id='$id_user' ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-{
-	$rango = $row['rango'];
-}
-if ($rango=="Moderador" or $rango=="Administrador")
-{
-	$sql = "Update stickies Set elim='1', modera='$user' Where id='$id'"; 	
-	mysql_query($sql);
-	mysql_close();
-?>
-		 <script type="text/javascript">
-       				location.href = "stickies.php";
-       				</script>
-<?
-}
-else
-{
-?>
-		 <script type="text/javascript">
-       				location.href = "..";
-       				</script>
-<?
-}
-?>
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/login.php');
 
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+$id_user = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$rango = rango_propio($user);
+
+if ($rango == 'Moderador' || $rango == 'Administrador') {
+	mysqli_query($con, "UPDATE stickies SET elim = 1, modera = '$user' WHERE id = $id");
+	mysqli_close($con);
+	header('Location: ' . $url . '/admin/stickies.php');
+} else {
+	header('Location: ' . $url . '/admin/');
+}
+
+?>

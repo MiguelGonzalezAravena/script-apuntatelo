@@ -63,7 +63,7 @@ if ($var == 1) {
 						mysqli_query($con, $sql);
 						$ult_id = mysqli_insert_id($con);
 				$email="soporte@extreme-zone.cl";
-				$asunto="Confirmaci�n de Extreme-Zone";
+				$asunto="Confirmaci&oacute;n de " . $name;
 				$mensaje="<a href='http://www.extreme-zone.cl/registro/confirmacionmail.php?id=".$ult_id."?".$id_extreme."'>http://www.extreme-zone.cl/registro/confirmacionmail.php?id=".$ult_id."?".$id_extreme."</a>  <br><br>";
 				$encabezados = "From: $email\nReply-To: $email\nContent-Type: text/html; charset=iso-8859-1"; 
 				mail($mail1, $asunto, $mensaje, $encabezados);

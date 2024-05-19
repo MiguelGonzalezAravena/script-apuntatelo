@@ -198,7 +198,7 @@ echo recaptcha_get_html($publickey);
 	<tr> 
 		<td></td>
 		<td>
-	 		<input type="checkbox" name="terminos" CHECKED value="checkbox"><font size="2">Acepto haber le&iacute;do y estar de acuerdo con los t&eacute;rminos de Extreme-Zone.
+	 		<input type="checkbox" name="terminos" CHECKED value="checkbox"><font size="2">Acepto haber le&iacute;do y estar de acuerdo con los t&eacute;rminos de <?php echo $name; ?>.
 		</td>
 	</tr>
 	<tr>

@@ -154,4 +154,78 @@ function quitar($mensaje) {
   return $mensaje;
 }
 
+function sexo($valor) {
+	$valor = str_replace('m', 'Hombre', $valor);
+	$valor = str_replace('f', 'Mujer', $valor);
+
+	return $valor;
+}
+
+function pais($valor) {
+	$valor = str_replace('ar', 'Argentina', $valor);
+	$valor = str_replace('bo', 'Bolivia', $valor);
+	$valor = str_replace('br', 'Brasil', $valor);
+	$valor = str_replace('cl', 'Chile', $valor);
+	$valor = str_replace('co', 'Colombia', $valor);
+	$valor = str_replace('cr', 'Costa Rica', $valor);
+	$valor = str_replace('cu', 'Cuba', $valor);
+	$valor = str_replace('ec', 'Ecuador', $valor);
+	$valor = str_replace('es', 'Espa&ntilde;a', $valor);
+	$valor = str_replace('gt', 'Guatemala', $valor);
+	$valor = str_replace('it', 'Italia', $valor);
+	$valor = str_replace('mx', 'M&eacute;xico', $valor);
+	$valor = str_replace('py', 'Paraguay', $valor);
+	$valor = str_replace('pe', 'Per&uacute;', $valor);
+	$valor = str_replace('pt', 'Portugal', $valor);
+	$valor = str_replace('pr', 'Puerto Rico', $valor);
+	$valor = str_replace('uy', 'Uruguay', $valor);
+	$valor = str_replace('ve', 'Venezuela', $valor);
+	$valor = str_replace('ot', 'Otro', $valor);
+
+	return $valor;
+}
+
+function rango($valor) {
+	global $images;
+
+  $template = '
+    <br clear="left" />
+    <img src="' . $images . '/rangos/administrador.png" alt="Administrador" title="Administrador" />';
+
+	$valor = str_replace('Administrador', $template, $valor);
+
+	return $valor;
+}
+
+function rango_color($valor) {
+	switch($valor) {
+		case 'Administrador':
+			return 'red';
+		case 'Moderador':
+			return 'blue';
+		case 'Usuario Destacado':
+			return 'green';
+		default:
+			return 'black';
+  }
+}
+
+function rango_propio($user) {
+  global $con;
+
+  if ($user == '') {
+    return '';
+  } else {
+    // Obtener rango del usuario
+    $sql = "
+    SELECT rango
+    FROM usuarios
+    WHERE nick = '$user'";
+
+    $request = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($request);
+    return $row['rango'];
+  }
+}
+
 ?>

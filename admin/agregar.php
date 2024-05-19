@@ -1,52 +1,46 @@
-<?
-include('../includes/configentrada.php');
-$user = $_SESSION['user'];
-$id_user = $_SESSION['id'];
-$id = $_POST['id'];
-$sql = "SELECT rango ";
-$sql.= "FROM usuarios where id='$id_user' ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-	{
-	$rango = $row['rango'];
-	}
-if ($rango=="Administrador")
-{
-	if (trim($id)!="")
-	{
-		$sql2 = "SELECT id ";
-		$sql2.= "FROM stickies where id_post='$id' and elim='0'";
-		$rs2 = mysql_query($sql2,$con);
-		if (!mysql_num_rows($rs2)>0)
-		{
-			$sql = "SELECT orden ";
-			$sql.= "FROM stickies order by orden desc limit 0,1 ";
-			$rs = mysql_query($sql, $con);
-			while($row = mysql_fetch_array($rs))
-			{
-				$ult_orden = $row['orden'];
-			}
-			
-			$orden = $ult_orden + 1;
-			$sql = "INSERT INTO stickies (id_post,orden,elim,creador,fecha)";
-			$sql.= "VALUES ('$id','$orden','0','$user',NOW())";
-			mysql_query($sql);
-			mysql_close();
-		}
-	}
-	?>
-			 <script type="text/javascript">
-	   				location.href = "stickies.php";
-					</script>
-	<?
-}
-else
-{
-?>
-		 <script type="text/javascript">
-       				location.href = "..";
-       				</script>
-<?
-}
-?>
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/login.php');
 
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+$id_user = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+$id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
+$rango = rango_propio($user);
+
+if ($rango == 'Administrador' && isset($id)) {
+  $sql = "
+    SELECT id 
+    FROM stickies
+    WHERE id_post = $id
+    AND elim = 0";
+
+  $request = mysqli_query($con, $sql);
+  if (!mysqli_num_rows($request) > 0) {
+    $sql = "
+      SELECT orden 
+      FROM stickies
+      ORDER BY orden DESC
+      LIMIT 0, 1";
+
+    $request = mysqli_query($con, $sql);
+
+    while ($row = mysqli_fetch_array($request)) {
+      $ult_orden = $row['orden'];
+    }
+
+    $orden = $ult_orden + 1;
+
+    $sql = "
+      INSERT INTO stickies (id_post, orden, elim, creador, fecha)
+      VALUES ($id, $orden, 0, '$user', NOW())";
+
+    mysqli_query($con, $sql);
+    mysqli_close($con);
+  }
+
+  header('Location: ' . $url . '/admin/stickies.php');
+} else {
+  header('Location: ' . $url . '/admin/');
+}
+
+?>

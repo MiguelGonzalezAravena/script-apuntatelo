@@ -1,54 +1,54 @@
-<?
-include('../configuracion.php');
-include('../login.php');
-$id_sticky = $_GET['id_sticky'];
-$user = $_SESSION['user'];
-$sql = "SELECT rango ";
-$sql.= "FROM usuarios where nick='$user' ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-	{
-	$rango = $row['rango'];
-	}
-if ($rango=="Moderador" or $rango=="Administrador")
-{
-$sql = "SELECT orden ";
-$sql.= "FROM stickies where id='$id_sticky' ";
-$rs = mysql_query($sql, $con);
-$row = mysql_fetch_array($rs);
-$orden = $row['orden'];
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/login.php');
 
-$sql = "SELECT id, orden ";
-$sql.= "FROM stickies where elim='0' order by orden desc limit 0,1 ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-{
-		$nuevo_orden = $row['orden'];
-		$nuevo_id = $row['id'];
-}
+$id_sticky = isset($_GET['id_sticky']) ? (int) $_GET['id_sticky'] : 0;
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+$rango = rango_propio($user);
 
-$sql = "SELECT id, orden ";
-$sql.= "FROM stickies where elim='0' order by orden desc ";
-$rs = mysql_query($sql, $con);
-while($row = mysql_fetch_array($rs))
-{
-	if ($row['orden']>$orden and $row['orden']<$nuevo_orden)
-	{
+if ($rango == 'Moderador' || $rango == 'Administrador') {
+	$sql = "
+		SELECT orden 
+		FROM stickies 
+		WHERE id = " . $id_sticky;
+
+	$request = mysqli_query($con, $sql);
+	$row = mysqli_fetch_array($request);
+	$orden = $row['orden'];
+
+	$sql = "
+		SELECT id, orden
+		FROM stickies
+		WHERE elim = 0
+		ORDER BY orden DESC
+		LIMIT 0, 1";
+
+	$request = mysqli_query($con, $sql);
+
+	while ($row = mysqli_fetch_array($request)) {
 		$nuevo_orden = $row['orden'];
 		$nuevo_id = $row['id'];
 	}
+
+	$sql = "
+		SELECT id, orden
+		FROM stickies
+		WHERE elim = 0
+		ORDER BY orden DESC";
+
+	$request = mysqli_query($con, $sql);
+
+	while ($row = mysqli_fetch_array($request)) {
+		if ($row['orden'] > $orden && $row['orden'] < $nuevo_orden) {
+			$nuevo_orden = $row['orden'];
+			$nuevo_id = $row['id'];
+		}
+	}
+
+	mysqli_query($con, "UPDATE stickies SET orden = $orden WHERE id = $nuevo_id");
+	mysqli_query($con, "UPDATE stickies SET orden = $nuevo_orden WHERE id = $id_sticky");
+	mysqli_close($con);
 }
 
-$sql = "Update stickies Set orden='$orden' Where id='$nuevo_id'"; 	
-mysql_query($sql);
-$sql = "Update stickies Set orden='$nuevo_orden' Where id='$id_sticky'"; 	
-mysql_query($sql);
-
-
-mysql_close();
-
-}
-?>	
-		 <script type="text/javascript">
-       				location.href = "stickies.php";
-       				</script>
+header('Location: ' . $url . '/admin/stickies.php');
+?>
