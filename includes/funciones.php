@@ -228,4 +228,23 @@ function rango_propio($user) {
   }
 }
 
+function redirect($url) {
+  if (!headers_sent()) {
+    redirect($url);
+    exit();
+  } else {
+    echo '
+      <script type="text/javascript">
+        window.location.href = \'' . $url . '\';
+      </script>';
+  }
+}
+
+function alert($text) {
+  echo '
+    <script type="text/javascript">
+      alert(\'' . $text . '\');
+    </script>';
+}
+
 ?>
