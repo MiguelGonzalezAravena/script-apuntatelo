@@ -1,7 +1,9 @@
 RewriteEngine on
 RewriteBase /apuntatelo/
+RewriteRule ^faq/$ faq.php
 RewriteRule ^perfil/(.*)/$ perfil/index.php?id=$1
 RewriteRule ^posts/(.*)/(.*)/(.*)\.html$ posts/mostrar.php?id=$1
 RewriteRule ^posts/(.*)/$ posts/mostrar.php?id=$1
+RewriteRule ^protocolo/$ protocolo.php
 RewriteRule ^ingresar/$ ingresar.php
 RewriteRule ^salir/$ salir.php
