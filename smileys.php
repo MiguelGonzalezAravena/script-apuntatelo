@@ -104,7 +104,7 @@ $smileys = array(
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>APUNTATELO Tu link-sharing de apuntes</title>
+    <title><?php echo $name; ?> - Tu link-sharing de apuntes</title>
   </head>
   <body>
     <table>
