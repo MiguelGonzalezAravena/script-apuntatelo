@@ -4,15 +4,8 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 
 ### TO-DO
 
-- [ ] Mejorar sintaxis en archivos de directorio `/admin/`.
-- [ ] Mejorar sintaxis en archivos de directorio `/busqueda/`.
-- [ ] Mejorar sintaxis en archivos de directorio `/ajaxtabs/`.
 - [ ] Mejorar sintaxis en archivos de directorio `/recaptcha/`.
 - [ ] Mejorar sintaxis en archivos de directorio `/rss/`.
-- [ ] Agregar archivo `protocolo.php`.
-- [ ] Agregar archivo `faq.php`.
-- [ ] Cambiar redireccionamiento de Javascript a PHP con función `header()`.
-- [ ] Eliminar funciones duplicadas y centralizar funciones en archivo `funciones.php`.
 - [ ] Mejorar formularios de registro y edición de perfil de usuario.
 
 ### In Progress
@@ -25,14 +18,21 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 - [ ] Mejorar sintaxis en archivos de directorio `/notificaciones/`.
 - [ ] Mejorar sintaxis en archivos de directorio `/perfil/`.
 - [ ] Mejorar sintaxis en archivos de directorio `/posts/`.
-- [ ] Mejorar sintaxis en archivos de directorio `/registro/`.
 - [ ] Aplicar redireccionamiento con archivo `.htaccess`.
+- [ ] Eliminar funciones duplicadas y centralizar funciones en archivo `funciones.php`.
+- [ ] Cambiar redireccionamiento de Javascript a PHP con función `header()`.
 
 ### Done ✓
 
 - [x] Crear archivo TODO.md
 - [x] Agregar directorio `/chat/`.
+- [x] Mejorar sintaxis en archivos de directorio `/admin/`.
+- [x] Mejorar sintaxis en archivos de directorio `/ajaxtabs/`.
+- [x] Mejorar sintaxis en archivos de directorio `/busqueda/`.
 - [x] Mejorar sintaxis en archivos de directorio `/editar_post/`.
 - [x] Mejorar sintaxis en archivos de directorio `/favoritos/`.
 - [x] Mejorar sintaxis en archivos de directorio `/includes/`.
 - [x] Mejorar sintaxis en archivos de directorio `/posts_acciones/`.
+- [x] Mejorar sintaxis en archivos de directorio `/registro/`.
+- [x] Agregar archivo `protocolo.php`.
+- [x] Agregar archivo `faq.php`.
