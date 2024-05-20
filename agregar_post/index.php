@@ -1,5 +1,5 @@
 <?php
-// AGREGAR POST
+// Agregar post
 require_once(dirname(dirname(__FILE__)) . '/header.php');
 
 $iexp = $_SERVER['HTTP_USER_AGENT'];
@@ -10,16 +10,16 @@ $titulo = isset($_POST['titulo']) ? no_injection($_POST['titulo']) : '';
 $tags = isset($_POST['tags']) ? no_injection($_POST['tags']) : '';
 ?>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
-  <script src="<?php echo $url; ?>/includes/funciones.js" type="text/javascript"></script>
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
+    <script src="<?php echo $url; ?>/includes/funciones.js" type="text/javascript"></script>
+  </head>
+  <body>
 <?php
 if (isset($_SESSION['user'])) {
 ?>
-  <div class="bordes">
-    <br />
+    <div class="bordes">
+      <br />
 <?php
 if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
   echo '
@@ -47,7 +47,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
           </tr>
           <tr> 
             <td width="30%" align="right">
-              <div class="size11" style="font-weight:bold;">T&iacute;tulo</div>
+              <div class="size11" style="font-weight: bold;">T&iacute;tulo</div>
             </td>
             <td>
               <input type="text" name="titulo" size="50" maxlength="150" value="<?php echo $titulo; ?>" />
@@ -184,7 +184,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
 
   while ($row = mysqli_fetch_array($request)) {
 ?>
-      <option value="<?php echo $row['id_categoria']; ?>"><?php echo $row['nom_categoria']; ?></option>
+                  <option value="<?php echo $row['id_categoria']; ?>"><?php echo $row['nom_categoria']; ?></option>
 <?php
 }
 ?>
@@ -226,11 +226,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
       </table>
 <?php
 } else {
-?>
-       <script type="text/javascript">
-        location.href = '..';
-      </script>
-<?php
+  redirect($url);
 }
 ?>
       <br />
@@ -243,10 +239,11 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
     </table>';
 }
 ?>
-  </div>
-  <div class="bordes" style="height: 30px">
+    </div>
+    <div class="bordes" style="height: 30px">
 <?php
 require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
+    </div>
   </div>
-</div>
+</body>

@@ -4,7 +4,12 @@ session_start();
 // Comprobar si existe sesión
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
-	$query = mysqli_query($con, "SELECT id_extreme, ban FROM usuarios WHERE nick = '$user'") or die(mysqli_error($con));
+	$sql = "
+		SELECT id_extreme, ban
+		FROM usuarios
+		WHERE nick = '$user'";
+
+	$query = mysqli_query($con, $sql);
 	$data = mysqli_fetch_array($query);
 
 	if ($data['ban'] != 0 || $data['id_extreme'] != $_SESSION['id2'] ) {
@@ -19,18 +24,20 @@ if (isset($_SESSION['user'])) {
 // Comprobar si hay cookie.  Si está bien, se le asigna una sesión
 if(isset($_COOKIE['id_extreme'])) {
 	$cookie = mysqli_real_escape_string($con, $_COOKIE['id_extreme']);
-	$cookie = explode("%",$cookie);
+	$cookie = explode('%', $cookie);
 	$user = $cookie[0];
 	$id = $cookie[1];
 	$ip = $cookie[2];
-	if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-		$ip2 = getenv('REMOTE_ADDR');
-	} else {
-		$ip2 = getenv('HTTP_X_FORWARDED_FOR');
-	}
+	$ip2 = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? getenv('REMOTE_ADDR') : getenv('HTTP_X_FORWARDED_FOR');
 
 	if ($ip == $ip2) {
-		$query = mysqli_query($con, "SELECT * FROM usuarios WHERE id_extreme = '" . $id . "' AND id = '" . $user . "'") or die(mysqli_error($con));
+		$sql = "
+			SELECT *
+			FROM usuarios
+			WHERE id_extreme = '$id'
+			AND id = '$user'";
+
+		$query = mysqli_query($con, $sql);
 		$data = mysqli_fetch_array($query);
 
  		if (isset($data['nick']) && $data['ban'] == 0) {

@@ -22,7 +22,7 @@ if ($_POST['submit']) {
     );
 
   if ($resp->is_valid) {
-    echo "You got it!";
+    echo 'You got it!';
     # in a real application, you should send an email, create an account, etc
   } else {
     # set the error code so that we can display it. You could also use

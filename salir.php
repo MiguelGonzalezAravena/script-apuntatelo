@@ -10,6 +10,7 @@ setcookie('id_extreme', 'x', time() - 3600, '/');
 $_SESSION['user'] = null;
 $_SESSION['pass'] = null;
 $_SESSION['id'] = null;
+
 unset($_SESSION);
 session_destroy();
 redirect($url);

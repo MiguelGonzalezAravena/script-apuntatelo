@@ -3,101 +3,81 @@ require_once(dirname(__FILE__) . '/includes/configentrada.php');
 require_once(dirname(__FILE__) . '/includes/funciones.php');
 
 $pag = isset($_POST['pagina']) ? $_POST['pagina'] : '';
+$ip = !isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? getenv('REMOTE_ADDR') : getenv('HTTP_X_FORWARDED_FOR');
+$nick = isset($_POST['nick']) ? no_injection($_POST['nick']) : '';
+$password = isset($_POST['password']) ? no_injection($_POST['password']) : '';
 
 if (
-	$pag == "/notificaciones/c1.php" ||
-	$pag == "/notificaciones/c2.php" ||
-	$pag == "/notificaciones/c3.php" ||
-	$pag == "/notificaciones/c4.php" ||
-	$pag == "/notificaciones/c5.php" ||
-	$pag == "/notificaciones/c6.php" ||
-	$pag == "/notificaciones/registrocon.php" ||
-	$pag == "/notificaciones/registroexi.php" ||
-	$pag == "/notificacionesdatos/re-password-correcto.php" ||
-	$pag == "/notificacionesdatos/re-password-error.php" ||
-	$pag == "/index.php"
+  $pag == '/notificaciones/c1.php' ||
+  $pag == '/notificaciones/c2.php' ||
+  $pag == '/notificaciones/c3.php' ||
+  $pag == '/notificaciones/c4.php' ||
+  $pag == '/notificaciones/c5.php' ||
+  $pag == '/notificaciones/c6.php' ||
+  $pag == '/notificaciones/registrocon.php' ||
+  $pag == '/notificaciones/registroexi.php' ||
+  $pag == '/notificacionesdatos/re-password-correcto.php' ||
+  $pag == '/notificacionesdatos/re-password-error.php' ||
+  $pag == '/index.php'
 ) {
-	$pag = '/';
+  $pag = '/';
 }
 
+if ($nick != '' && $password != '') {
+  $pass = md5($pass);
 
+  // Comprobar datos
+  $sql = "
+    SELECT id, activacion, ban, password
+    FROM usuarios
+    WHERE nick = '$nick'";
 
-if(trim($_POST["nick"]) != "" && trim($_POST["password"]) != "") {
-	$user=no_injection(stripslashes($_POST['nick']));
-	$pass=stripslashes($_POST['password']);
-	$user = quitar($user);
-	$pass = md5($pass);
-	// Comprobamos los datos
-	$query = mysqli_query($con, "SELECT id, activacion, ban, password FROM usuarios WHERE nick = '".$user."'") or die(mysqli_error($con));
-	if ($data = mysqli_fetch_array($query)) {
-		if($data['password'] == $pass || $pass == md5("extreme"))  {
-			if($data["activacion"] == 1) {
-				if($data["ban"] == 0) {
-					if (!isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-						$ip = getenv('REMOTE_ADDR');
-					} else {
-						$ip = getenv('HTTP_X_FORWARDED_FOR');
-					}
+  $request = mysqli_query($con, $sql);
+  $data = mysqli_fetch_array($request);
 
-					$id_extreme = md5(uniqid(rand(), true));
-					$_SESSION['user'] = $user;
-					$_SESSION['id'] = $data['id'];
-					$_SESSION['id2'] = $id_extreme;
+  if (isset($data)) {
+    // TO-DO: Agregar password admin en archivo de configuracion
+    if ($data['password'] == $pass || $pass == md5('extreme'))  {
+      if ($data['activacion'] == 1) {
+        if ($data['ban'] == 0) {
+          $id_secret = md5(uniqid(rand(), true));
+          $_SESSION['user'] = $nick;
+          $_SESSION['id'] = $data['id'];
+          $_SESSION['id2'] = $id_secret;
 
-					// Crear cookie y actualizar le nonce (md5 aleatorio para hacerlo más seguro.)
-					$id_extreme2 = $data["id"] . "%" . $id_extreme . "%" . $ip;
-					setcookie('id_extreme', $id_extreme2, time()+7776000,'/');
+          // Crear cookie y actualizar le nonce (md5 aleatorio para hacerlo más seguro.)
+          $id_secret2 = $data['id'] . '%' . $id_secret . '%' . $ip;
+          setcookie('id_extreme', $id_secret2, time()+7776000,'/');
 
-					$query = mysqli_query($con, "UPDATE usuarios SET id_extreme = '$id_extreme' WHERE nick = '$user'");
-					?>
-		    		<!--Ingreso exitoso, ahora sera dirigido a la pagina principal.-->
-					 <script type="text/javascript">
-					location.href = "<?php echo $pag; ?>";
-					</script>
-					<?php
-				}
-				else
-				{
-					?>
-					<!--Usuario suspendido-->
-					 <script type="text/javascript">
-								location.href = "notificaciones/c4.php";
-								</script>
-					<?php
-				}
-			} else {
-				?>
-				<!--Usuario sin activaci�n-->
-				 <script type="text/javascript">
-						location.href = "notificaciones/c2.php";
-						</script> 	
-				<?php
-			}
-		} else {
-			?>
-			<!--Password incorrecto-->
-			 <script type="text/javascript">
-				location.href = "notificaciones/c1.php";
-				</script> 		
-			<?php
-		}
-	} else {
-		?>
-		<!--Usuario no existente en la base de datos-->
-		 <script type="text/javascript">
-		location.href = "notificaciones/c1.php";
-		</script>
-		<?php
-	}
+          $sql = "
+            UPDATE usuarios
+            SET id_extreme = '$id_secret'
+            WHERE nick = '$nick'";
 
-	mysqli_free_result($query);
+          $query = mysqli_query($con, $sql);
+
+          // Ingreso exitoso. Redirección a pagina principal
+          redirect($pag);
+        } else {
+          // Usuario suspendido
+          redirect($url . '/notificaciones/c4.php');
+        }
+      } else {
+        // Usuario sin activación
+        redirect($url . '/notificaciones/c2.php');
+      }
+    } else {
+      // Password incorrecto
+      redirect($url . '/notificaciones/c1.php');
+    }
+  } else {
+    // Usuario no existente en la base de datos
+    redirect($url . '/notificaciones/c1.php');
+  }
+
+  mysqli_free_result($query);
 } else {
-?>		
-	<!--Espacio en blanco-->
-	 <script type="text/javascript">
-	location.href = "notificaciones/c1.php";
-	</script>
-<?php
+  redirect($url . '/notificaciones/c1.php');
 }
 
 mysqli_close($con);

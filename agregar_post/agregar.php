@@ -30,7 +30,7 @@ if ($id_autor == $id_autor2) {
     $sql = "
       INSERT INTO posts (elim, id_autor, titulo, contenido, fecha, privado, coments, comentarios, categoria, tags) 
       VALUES ($elim, $id_autor, '$titulo', '$mensaje', NOW(), $privado, $coments, $comentarios, $categoria, '$tags')";
-    mysqli_query($con, $sql) or die('Error al publicar el post: ' . mysqli_error($con));
+    mysqli_query($con, $sql);
 
     // Obtener el último id insertado
     $ult_id = mysqli_insert_id($con);

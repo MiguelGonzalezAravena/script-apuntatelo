@@ -20,50 +20,41 @@ if ($a == '' && $b == '') {
 ?>
 <div class="bordes">
   <br />
-    <font size="2" color="green">
 <?php
 switch($action) {
   case 'correcto':
-    echo 'El usuario ha sido suspendido.';
+    echo '<font size="2" color="green">El usuario ha sido suspendido.</font>';
     break;
   case 'correcto2':
-    echo 'El usuario ha sido restaurado.';
+    echo '<font size="2" color="green">El usuario ha sido restaurado.</font>';
     break;
-}
-?>
-    </font>
-    <font size="2" color="red">
-<?php
-switch($action) {
   case 'error':
-    echo 'El usuario se encuentra suspendido. Revise el historial del mismo.';
+    echo '<font size="2" color="red">El usuario se encuentra suspendido. Revise el historial del mismo.</font>';
     break;
   case 'error2':
-    echo 'No existe el usuario.';
+    echo '<font size="2" color="red">No existe el usuario.</font>';
     break;
   case 'error3':
-    echo 'El usuario NO se encuentra suspendido.';
+    echo '<font size="2" color="red">El usuario NO se encuentra suspendido.</font>';
     break;
   case 'error4':
-    echo 'Operaci&oacute;n no v&aacute;lida. Revisa no haber dejado alguno de los campos vac&iacute;os.';
+    echo '<font size="2" color="red">Operaci&oacute;n no v&aacute;lida. Revisa no haber dejado alguno de los campos vac&iacute;os.</font>';
     break;
 }
-?>
-    </font>
-<?php
+
 if ($rango == 'Moderador' || $rango == 'Administrador') {
 ?>
-    <table width="325" align="center" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>
-          <div class="esq1" style="float: left;"></div>
-          <div class="franja" style="float: left; width: 309px;"><div style="padding-top: 2px;">Buscar suspensiones del usuario:</div></div>
-          <div class="esq2" style="float: left;"></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="fondo_cuadro" valign="top" style="padding: 3px;">
-          <form name="buscar" action="<?php echo $url; ?>/admin/users_suspendidos.php" method="post">
+  <table width="325" align="center" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div class="esq1" style="float: left;"></div>
+        <div class="franja" style="float: left; width: 309px;"><div style="padding-top: 2px;">Buscar suspensiones del usuario:</div></div>
+        <div class="esq2" style="float: left;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="fondo_cuadro" valign="top" style="padding: 3px;">
+        <form name="buscar" action="<?php echo $url; ?>/admin/users_suspendidos.php" method="post">
           <table width="300" height="50"><font size="-2">
             <tr>
               <td align="center" valign="middle">
@@ -78,47 +69,48 @@ if ($rango == 'Moderador' || $rango == 'Administrador') {
                 </font>
               </td>
             </tr>
-      </table> 
-      </div>
-      </form> 
+          </table>
+        </form> 
       </td>
-      </tr>
-    </table>
-    <br />
-<table align="center" width="900" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>
-      <div class="esq1" style="float: left;"></div>
-      <div class="franja" style="float: left; width: 884px;"><div style="padding-top: 2px;">Historial de suspensi&oacute;n <?php if ($tipo=="usuario") echo "de ".$a; if($tipo=="moderador") echo "realizado por ".$a; ?></div></div>
-      <div class="esq2" style="float: left;"></div>
-    </td>
-  </tr>
-<tr>
-  <td class="fondo_cuadro" valign="top" style="padding: 0px;">
-    <table border="0"  width="900" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="10">
-          <font size="2" color="black"><b>&nbsp;A</font>
-        </td>
-        <td width="125">
-          &nbsp;<font size="2" color="black"><b>User</b></font>
-        </td>
-        <td width="245">
-          <font size="2" color="black"><b>Especificaciones</b></font>
-        </td>
-        <td width="125">
-          <font size="2" color="black"><b>Moderador</b></font>
-        </td>
-        <td width="160">
-          <font size="2" color="black"><b>Fecha supensi&oacute;n:</b></font>
-        </td>
-        <td width="125">
-          <font size="2" color="black"><b>Moderador</b></font>
-        </td>
-        <td width="160">
-          <font size="2" color="black"><b>Fecha reactivaci&oacute;n</b></font>
-        </td>
-      </tr>
+    </tr>
+  </table>
+  <br />
+  <table align="center" width="900" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div class="esq1" style="float: left;"></div>
+        <div class="franja" style="float: left; width: 884px;">
+          <div style="padding-top: 2px;">Historial de suspensi&oacute;n<?php echo ($tipo == 'usuario' ? ' de ' . $a : ''); ?><?php echo ($tipo == 'moderador' ? ' realizado por ' . $a : ''); ?></div>
+        </div>
+        <div class="esq2" style="float: left;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="fondo_cuadro" valign="top" style="padding: 0px;">
+        <table border="0"  width="900" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="10">
+              <font size="2" color="black"><b>&nbsp;A</font>
+            </td>
+            <td width="125">
+              &nbsp;<font size="2" color="black"><b>Usuario</b></font>
+            </td>
+            <td width="245">
+              <font size="2" color="black"><b>Especificaciones</b></font>
+            </td>
+            <td width="125">
+              <font size="2" color="black"><b>Moderador</b></font>
+            </td>
+            <td width="160">
+              <font size="2" color="black"><b>Fecha supensi&oacute;n:</b></font>
+            </td>
+            <td width="125">
+              <font size="2" color="black"><b>Moderador</b></font>
+            </td>
+            <td width="160">
+              <font size="2" color="black"><b>Fecha reactivaci&oacute;n</b></font>
+            </td>
+          </tr>
 <?php
 if ($tipo == 'ultimos') {
   $sql = "
@@ -138,29 +130,29 @@ if ($tipo == 'ultimos') {
     $activa = $row['activa'];
     $fecha2 = $row['fecha2'];
 ?>
-      <tr>
-        <td>
-          <font size="1" color="black">&nbsp;<?php echo $activo; ?></font>
-        </td>
-        <td>
-          &nbsp;<font size="1" color="black"><?php echo $nick; ?></font>
-        </td>
-        <td>
-          <font size="1" color="black"><?php echo $causa; ?></font>
-        </td>
-        <td>
-          <font size="1 color="black"><?php echo $moderador; ?></font>
-        </td>
-        <td>
-          <font size="1" color="black"><?php echo $fecha1; ?></font>
-        </td>
-        <td>
-          <font size="1" color="black"><?php echo $activa; ?></font>
-        </td>
-        <td>
-          <font size="1" color="black"><?php echo $fecha2; ?></font>
-        </td>
-      </tr>
+          <tr>
+            <td>
+              <font size="1" color="black">&nbsp;<?php echo $activo; ?></font>
+            </td>
+            <td>
+              &nbsp;<font size="1" color="black"><?php echo $nick; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $causa; ?></font>
+            </td>
+            <td>
+              <font size="1 color="black"><?php echo $moderador; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $fecha1; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $activa; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $fecha2; ?></font>
+            </td>
+          </tr>
 <?php
   }
 
@@ -201,97 +193,95 @@ if ($tipo == 'ultimos') {
       $activa = $row['activa'];
       $fecha2 = $row['fecha2'];
 ?>	
-      <tr>
-      <td>
-      <font size="1" color="black">&nbsp;<?php echo $activo; ?></font>
-      </td>
-      <td>
-      &nbsp;<font size="1" color="black"><?php echo $nick; ?></font>
-      </td>
-      <td>	
-      <font size="1" color="black"><?php echo $causa; ?></font>
-      </td>
-      <td>
-      <font size="1" color="black"><?php echo $moderador; ?></font>
-      </td>
-      <td>
-      <font size="1" color="black"><?php echo $fecha1; ?></font>
-      </td>
-      <td>
-      <font size="1" color="black"><?php echo $activa; ?></font>
-      </td>
-      <td>
-      <font size="1" color="black"><?php echo $fecha2; ?></font>
-      </td>
-      </tr>
+          <tr>
+            <td>
+              <font size="1" color="black"><?php echo $activo; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $nick; ?></font>
+            </td>
+            <td>	
+              <font size="1" color="black"><?php echo $causa; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $moderador; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $fecha1; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $activa; ?></font>
+            </td>
+            <td>
+              <font size="1" color="black"><?php echo $fecha2; ?></font>
+            </td>
+          </tr>
 <?php
     }
   } else {
-?>
-<script>alert("El usuario <?php echo $a; ?> no existe!");</script>
-<?php
+    alert('&iexcl;El usuario ' . $a . ' no existe!');
   }
+
   mysqli_close($con);
 }
 ?>
-</table>
-</td>
-</tr>
-</table>
-<br>
-<table align="center" width="400" cellspacing="0" cellpadding="0">
-<tr>
-<td>
-  <div class="esq1" style="float: left;"></div>
-  <div class="franja" style="float: left; width: 384px;"><div style="padding-top:2px;">Suspender a usuario</div></div>
-  <div class="esq2" style="float: left;"></div>
-</td>
-</tr>
-<tr>
-<td class="fondo_cuadro" valign="top" style="padding: 3px;">
-<form name="sticky" method="post" action="<?php echo $url; ?>/admin/suspender.php">
-&nbsp;<font size="2">Nick: </font><br><input type="text" name="nick" maxlength="20" size="22"><br><br>
-&nbsp;<font size="2">Especificaciones: </font><br><textarea name="razon" rows="10" cols="40"></textarea><br><br>
-<INPUT class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro queres suspender al usuario?'))this.form.submit();" class="button" NAME='botonsuspender' VALUE='Suspender'>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-</tr>
-</table>
-<br>
-<table align="center" width="400" cellspacing="0" cellpadding="0">
-<tr>
-<td>
-  <div class="esq1" style="float: left;"></div>
-  <div class="franja" style="float: left; width: 384px;"><div style="padding-top:2px;">Restaurar usuario</div></div>
-  <div class="esq2" style="float: left;"></div>
-</td>
-</tr>
-<tr>
-<td class="fondo_cuadro" valign="top" style="padding: 3px;">
-<form name="sticky" method="post" action="<?php echo $url; ?>/admin/desuspender.php">
-&nbsp;<font size="2">Nick: </font><br><input type="text" name="nick" maxlength="20" size="22"><br><br>
-<INPUT class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro queres restaurar al usuario?'))this.form.submit();" class="button" NAME='botonsuspender' VALUE='Restaurar'>
-</form>
-</td>
-</tr>
-</table>
-<br><br>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <table align="center" width="400" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div class="esq1" style="float: left;"></div>
+        <div class="franja" style="float: left; width: 384px;"><div style="padding-top:2px;">Suspender a usuario</div></div>
+        <div class="esq2" style="float: left;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="fondo_cuadro" valign="top" style="padding: 3px;">
+        <form name="sticky" method="post" action="<?php echo $url; ?>/admin/suspender.php">
+          <font size="2">Nick: </font><br />
+          <input type="text" name="nick" maxlength="20" size="22" />
+          <br /><br />
+          <font size="2">Especificaciones: </font><br />
+          <textarea name="razon" rows="10" cols="40"></textarea>
+          <br /><br />
+          <input class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro que deseas suspender al usuario?')) this.form.submit();" class="button" name="botonsuspender" value="Suspender" />
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+  </table>
+  <br />
+  <table align="center" width="400" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div class="esq1" style="float: left;"></div>
+        <div class="franja" style="float: left; width: 384px;"><div style="padding-top:2px;">Restaurar usuario</div></div>
+        <div class="esq2" style="float: left;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="fondo_cuadro" valign="top" style="padding: 3px;">
+        <form name="sticky" method="post" action="<?php echo $url; ?>/admin/desuspender.php">
+          <font size="2">Nick: </font><br/>
+          <input type="text" name="nick" maxlength="20" size="22" />
+          <br /><br />
+          <input class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro queres restaurar al usuario?')) this.form.submit();" class="button" name="botonsuspender" value="Restaurar" />
+        </form>
+      </td>
+    </tr>
+  </table>
+  <br /><br />
 <?php
 } else {
-?>
-<script type="text/javascript">
-  location.href = '..';
-</script>
-<?php
+  redirect($url);
 }
 ?>
 </div>
 <?php
 require_once(dirname(dirname(__FILE__)) . '/footer.php');
 ?>
-</body>
-</html>

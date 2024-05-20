@@ -15,6 +15,7 @@ if ($rango == 'Administrador' && isset($id)) {
     AND elim = 0";
 
   $request = mysqli_query($con, $sql);
+
   if (!mysqli_num_rows($request) > 0) {
     $sql = "
       SELECT orden 

@@ -23,7 +23,7 @@ if ($rango == 'Administrador') {
     <tr>
       <td class="fondo_cuadro" valign="top" style="padding: 3px;"><br>
         <form name="buscar_user" method="post" action="">
-          <font size="2">Id Usuario: </font>
+          <font size="2">ID Usuario:</font>
           <input type="text" name="id_buscar" size="15" value="<?php echo $id_buscar; ?>" />
           <input type="submit" class="submit_button" name="Filtrar" value="Filtrar" />
         </form>

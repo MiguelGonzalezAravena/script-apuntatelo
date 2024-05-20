@@ -8,11 +8,11 @@ $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $rango = rango_propio($user);
 
 if ($rango == 'Moderador' || $rango == 'Administrador') {
-	mysqli_query($con, "UPDATE stickies SET elim = 1, modera = '$user' WHERE id = $id");
-	mysqli_close($con);
-	redirect($url . '/admin/stickies.php');
+  mysqli_query($con, "UPDATE stickies SET elim = 1, modera = '$user' WHERE id = $id");
+  mysqli_close($con);
+  redirect($url . '/admin/stickies.php');
 } else {
-	redirect($url . '/admin/');
+  redirect($url . '/admin/');
 }
 
 ?>
