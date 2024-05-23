@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/includes/configuracion.php');
+require_once(dirname(__FILE__) . '/includes/funciones.php');
 
 session_start();
 

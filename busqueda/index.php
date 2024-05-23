@@ -51,6 +51,7 @@ $sql = "
   SELECT id_categoria, nom_categoria
   FROM categorias
   ORDER BY nom_categoria ASC";
+
 $request = mysqli_query($con, $sql);
 
 while ($row = mysqli_fetch_array($request)) {
@@ -69,7 +70,7 @@ while ($row = mysqli_fetch_array($request)) {
                       </select>
                     </td>
                   </tr>
-                  <tr>	
+                  <tr>
                     <td colspan="2" align="center">
                       <br />
                       <input type="submit" name="Submit" class="submit_button" value="Buscar" />
@@ -100,7 +101,7 @@ if ($palabra == '' && $usuario == '') {
         <div class="size12">Debes especificar la b&uacute;squeda</div>
       </td>
       <td class="fondo_cuadro"></td>
-    </tr>	
+    </tr>
 <?php
 } else {
   $trozos = explode(' ', $palabra);
@@ -112,6 +113,7 @@ if ($palabra == '' && $usuario == '') {
     WHERE nick = '$usuario'";
 
   $request = mysqli_query($con, $sql);
+
   if (mysqli_num_rows($request) > 0) {
     $row = mysqli_fetch_array($request);
     $id_usuario = $row['id'];
@@ -163,8 +165,13 @@ if ($palabra == '' && $usuario == '') {
       SELECT id, id_autor, titulo, privado, fecha, puntos, categoria, c.imagen, c.link_categoria
       FROM posts AS p
       INNER JOIN categorias AS c ON p.categoria = c.id_categoria
-      WHERE (titulo LIKE '%$palabra%' OR contenido LIKE '%$palabra%')" . $cadena_usuario . " AND elim = 0" . $cadena_categoria . " " . $cadena_subcategoria . " " . $cadena_universidad . "
-      ORDER BY " . $orden . "id DESC";
+      WHERE (titulo LIKE '%$palabra%' OR contenido LIKE '%$palabra%')
+      $cadena_usuario
+      AND elim = 0
+      $cadena_categoria
+      $cadena_subcategoria
+      $cadena_universidad
+      ORDER BY $orden id DESC";
   } else if ($numero > 1) {
     $longi = strlen($palabra); // Cogemos la longitud de la cadena
     // echo $longi."<br>";
@@ -176,7 +183,7 @@ if ($palabra == '' && $usuario == '') {
     $ncadenas = 0; // Cuenta el n° de cadenas, condicionado por el espacio en blanco
 
     for ($x = 0; $x <= $longi; $x++) {
-      if($palabra[$x] == ' ' || $palabra[$x] == '$') { // Si encuentra espacio en blanco o fin de cadena
+      if ($palabra[$x] == ' ' || $palabra[$x] == '$') { // Si encuentra espacio en blanco o fin de cadena
         $ncadenas++; // Aumentamos el n° de cadenas que vamos creando
 
         for ($y = 0; $y < $cont; $y++) {
@@ -204,7 +211,9 @@ if ($palabra == '' && $usuario == '') {
 
     for ($x = 1; $x <= $ncadenas; $x++) {
        // echo $cadena[$x]; 
-       $_pagi_sql .= " (titulo LIKE '%$cadena[$x]%' OR contenido LIKE '%$cadena[$x]%') AND";
+       $_pagi_sql .= "
+        (titulo LIKE '%$cadena[$x]%' OR contenido LIKE '%$cadena[$x]%')
+        AND";
       // Estos son los campos que yo use, puedes poner los que quieras 
     }
 
@@ -228,7 +237,7 @@ if ($palabra == '' && $usuario == '') {
     <tr>
       <td background="<?php echo $images; ?>/cuadro.JPG" width="440" style="padding: 2px;">
         <img src="<?php echo $images; ?>/iconos/<?php echo $row['imagen']; ?>" border="0" />
-        <?php echo ($privado == 1 ? '&nbsp;<img src="' . $images . '/iconos/candado.gif" border="0" />' : ''); ?>
+        <?php echo ($privado == 1 ? '<img src="' . $images . '/iconos/candado.gif" border="0" />' : ''); ?>
         <a href="<?php echo $url; ?>/posts/<?php echo$row['id']; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . '.html'; ?>">
           <font size="2" color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
         </a>

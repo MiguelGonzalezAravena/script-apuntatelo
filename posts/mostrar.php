@@ -19,29 +19,24 @@ $coments = $row['coments'];
 $visitas = $row['visitas'];
 $tags = $row['tags'];
 
-if ($id_autor != "") {
+if ($id_autor != '') {
   $esta = 1;
 }
 
 $cant = strlen($titulo);
-if($cant > 50) {
-  $titulo2 = substr(stripslashes($titulo), 0, 50);
-  $tit = 1;
-} else {
-  $titulo2 = $titulo;
-  $tit = 0;
-}
+$titulo2 = $cant > 50 ? substr(stripslashes($titulo), 0, 50) : $titulo;
+$tit = $cant > 50 ? 1 : 0;
 ?>
 <html>
   <head>
-    <title>eXtreme Zone - <?php echo $titulo2; if ($tit == 1) echo "..."; ?></title>
+    <title>eXtreme Zone - <?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
   </head>
   <body>
 <?php
 if ($elim == 0 && $esta == 1) {
-  if ($user != "" || $privado == 0) {
+  if ($user != '' || $privado == 0) {
 ?>
     <div class="bordes" style="height: auto;">
       <br />
@@ -57,13 +52,13 @@ if ($elim == 0 && $esta == 1) {
           <td>";
     }
 ?>
-    <div id="maincontainer">	
+    <div id="maincontainer">
       <div id="cuerpocontainer">
-    <!-- inicio cuerpocontainer -->
-      <a name="arriba"></a>
+        <!-- inicio cuerpocontainer -->
+        <a name="arriba"></a>
         <div id="post-izquierda" style="_margin-left: <?php echo $margin_left; ?>;">
-        <?php require_once(dirname(__FILE__) . '/estructuras/autor.php'); ?>
-        <br clear="left">
+          <?php require_once(dirname(__FILE__) . '/estructuras/autor.php'); ?>
+          <br clear="left">
         </div>
     
         <div id="post-centro">
@@ -86,12 +81,12 @@ if ($elim == 0 && $esta == 1) {
             </td>
             <td valign="top">
               <?php require_once(dirname(__FILE__) . '/estructuras/puntos.php'); ?>
-              <br>
+              <br />
               <?php require_once(dirname(__FILE__) . '/estructuras/favoritos.php'); ?>
             </td>
             </tr>
             </table>
-            <br>
+            <br />
             <?php
             require_once(dirname(__FILE__) . '/estructuras/botonboryedi.php');
             ?>
@@ -112,7 +107,7 @@ if ($elim == 0 && $esta == 1) {
                 </div>
               </div>
               <div style="width: 100%; float: left; margin-top: 11px;">
-              <br>
+              <br />
               <?php
               require_once(dirname(__FILE__) . '/estructuras/comentario.php');
               ?>
@@ -161,9 +156,8 @@ if ($elim == 0 && $esta == 1) {
               </td>
             </tr>
           </table>
-          <br>
+          <br />
           <div align="center"><font size="2">El post es privado. Debes ser un usuario registrado para poder acceder.</font></div> 
-        
         </td>
         <td width="35%" height="30%" align="center">
         </td>
@@ -186,7 +180,7 @@ if ($elim == 0 && $esta == 1) {
 } else {
   ?>
   <div class="bordes">
-  <br>
+  <br />
   <table width="100%" height="365" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="25%" height"120" align="center">
@@ -210,20 +204,15 @@ if ($elim == 0 && $esta == 1) {
             </td>
           </tr>
         </table>
-        <br>
-        <div align="center"><font size="2"><?php if ($esta==1) { echo "Post eliminado"; } else { echo "No existe el post"; } ?></font></div> 
-      
+        <br />
+        <div align="center"><font size="2"><?php echo ($esta == 1 ? 'Post eliminado' : 'No existe el post'); ?></font></div>
       </td>
-      <td width="35%" height="30%" align="center">
-      </td>
+      <td width="35%" height="30%" align="center"></td>
     </tr>
     <tr>
-      <td width="25%" height="30%" align="center">
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
+      <td width="25%" height="30%" align="center"></td>
+      <td></td>
+      <td></td>
     </tr>
   </table>
   <?php

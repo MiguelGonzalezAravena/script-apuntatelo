@@ -33,7 +33,7 @@ if ($privado != 0 && $privado != 1) {
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
   </head>
   <body>
-    <div id="maincontainer">	
+    <div id="maincontainer">
       <div id="cuerpocontainer">
         <div id="post-izquierda" style="_margin-left: <?php echo $margin_left; ?>;">
 <?php

@@ -76,6 +76,6 @@ echo '
       </table>
       ' . (isset($_SESSION['id']) ? '<hr /><a href="' . $url . '/mensajes/redactar.php?para=' . $nick . '"><img style="margin-right: 5px" src="' . $images . '/mp.png" />Enviar mensaje</a>' : '') . '
     </font>
-  </div>						
+  </div>
 </div>';
 ?>

@@ -81,7 +81,7 @@ if ($rango == 'Administrador') {
               </a>
             </td>
           </tr>
-<?php	
+<?php
   }
 
   mysqli_close($con);

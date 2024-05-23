@@ -87,10 +87,10 @@ while ($row = mysqli_fetch_array($rs)) {
                     <font size="2" color="black"><?php echo correcciones($titulo2) . ($tit == 1 ? '...' : ''); ?></font>
                   </a>
                 </td>
-              </tr>         
+              </tr>
 <?php
   }
-?>	
+?>
             </table>
             <div id="contenido"></div>
           </div>
@@ -109,7 +109,7 @@ while ($row = mysqli_fetch_array($rs)) {
           <!-- Comienzo Cuadro Novedades-->
           <div class="esq1 novedad2"></div>
           <div class="franja novedad"><div class="size11 negro" style="margin-top:3px; text-align: center;">Destacados</div></div>
-          <div class="esq2 novedad3"></div>	
+          <div class="esq2 novedad3"></div>
           <div class="destacados">
             <table cellspacing="0" cellpadding="0" width="300" height="180">
               <font size="-2"> 
@@ -217,7 +217,7 @@ while ($row = mysqli_fetch_array($rs)) {
           <!-- Fin Cuadro Publicidad-->
 
           <!-- Comienzo Cuadro Comentarios-->
-          <div class="esq1 comentarios2"></div> 	
+          <div class="esq1 comentarios2"></div>
           <div class="franja comentarios"><div class="size11 negro" style="margin-top: 3px; text-align: center;">&Uacute;ltimos comentarios</div></div>
           <div class="esq2 comentarios3"></div>
           <div class="Coment">
@@ -231,7 +231,7 @@ while ($row = mysqli_fetch_array($rs)) {
           <!-- Fin Cuadro Comentarios-->
 
           <!-- Post más votados -->
-          <div class="esq1 votados2"></div>  	
+          <div class="esq1 votados2"></div>
           <div class="franja votados"><div class="size11 negro" style="margin-top: 3px; text-align: center;">Posts m&aacute;s votados</div></div>
           <div class="esq2 votados3"></div>
           <div class="top">
@@ -276,7 +276,7 @@ while ($row = mysqli_fetch_array($request)) {
           <!-- Fin Cuadro Votados-->
   
           <!-- Comienzo Cuadro Usuarios-->
-          <div class="esq1 musuarios2"></div>  	
+          <div class="esq1 musuarios2"></div>
           <div class="franja musuarios"><div class="size11 negro" style="margin-top: 3px; text-align: center;">Usuarios m&aacute;s votados</div></div>
 
           <div class="esq2 musuarios3"></div>
@@ -390,7 +390,7 @@ $comentarios = isset($row['cant']) ? $row['cant'] : 0;
             </div>
             <div class="esq5 estadistica5"></div>
             <div class="estadistica4">&nbsp;</div>
-            <div class="esq6 estadistica6"></div>      
+            <div class="esq6 estadistica6"></div>
             <!-- Fin Cuadro Estadisticas-->
             <br />
             <div class="Footer">
@@ -398,7 +398,7 @@ $comentarios = isset($row['cant']) ? $row['cant'] : 0;
 require_once(dirname(__FILE__) . '/footer.php');
 ?>
             </div>
-          </div>		
+          </div>
         </td>
       </tr>
     </table>

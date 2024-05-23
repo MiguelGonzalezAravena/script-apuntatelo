@@ -1,63 +1,61 @@
-<?
-include('../includes/configuracion.php');
-include('../includes/funciones.php');
-$id = no_injection($_POST['id']);
-$id_extreme = no_injection($_POST['id_extreme']);
-$action = no_injection($_GET['action']);
+<?php
+require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
+require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
+
+$id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
+$id_extreme = isset($_POST['id_extreme']) ? no_injection($_POST['id_extreme']) : '';
+$action = isset($_GET['action']) ? no_injection($_GET['action']) : '';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
 <html>
 <head>
-	<title>APUNTATELO - Tu link-sharing de apuntes</title>
-	<link href='../imagenes/logo/icono.bmp' rel='shortcut icon'/>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<link rel="stylesheet" type="text/css" href="../index.css" />
+  <title><?php echo $name; ?> - Tu link-sharing de apuntes</title>
+  <link href="<?php echo $images; ?>/logo/icono.bmp" rel="shortcut icon"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/index.css" />
 </head>
 <body>
-<table align="center"><tr><td>
-<div class="logo"></div></td></tr></table>
-<br>
-<br>
-<?
-$password1 = $_POST['password1'];
-$password2 = $_POST['password2'];
+  <table align="center">
+    <tr>
+      <td>
+        <div class="logo"></div>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <br />
+</body>
+<?php
+$password1 = isset($_POST['password1']) ? no_injection($_POST['password1']) : '';
+$password2 = isset($_POST['password2']) ? no_injection($_POST['password2']) : '';
 
-if (trim($password1)!="" and trim($password1)==trim($password2) and strlen($password1)>5)
-	{
-		$password = md5($password1);
-		$sql="select nick from usuarios where id='".$id."' and id_extreme='".$id_extreme."'";
-		$rs=mysql_query($sql,$con);
-		if (mysql_num_rows($rs)>0)
-		{
-			$id_apuntatelo = md5(uniqid(rand(), true));
-			$sql2 = "Update usuarios Set id_extreme='".$id_extreme."', password='".$password."' where id='".$id."'";
-			$rs2 = mysql_query($sql2,$con);
-		?>	
-			 <script type="text/javascript">
- 			location.href = "../notificaciones/re-password-correcto.php";
- 			</script>
-		<?
-		}
-		else
-		{
-		?>	
-			 <script type="text/javascript">
- 			location.href = "../notificaciones/re-password-error.php";
- 			</script>
-		<?
-		}
-	mysql_close($con);
-	}
-	else
-	{
-		?>	
-			 <script type="text/javascript">
- 			location.href = "re-password.php?id=<?echo $id?>?<?echo $id_extreme?>&action=error";
- 			</script>
-		<?
-	}
+if ($password1 != '' && $password1 == $password2 && strlen($password1) > 5) {
+  $password = md5($password1);
+  $sql = "
+    SELECT nick
+    FROM usuarios
+    WHERE id = $id
+    AND id_extreme = '$id_extreme'";
+
+  $request = mysqli_query($con, $sql);
+
+  if (mysqli_num_rows($request) > 0) {
+    $id_secret = md5(uniqid(rand(), true));
+
+    $sql = "
+      UPDATE usuarios
+      SET id_extreme = '$id_secret', password = '$password'
+      WHERE id = $id'";
+
+    mysqli_query($con, $sql);
+    mysqli_close($con);
+
+    redirect($url . '/notificaciones/re-password-correcto.php');
+  } else {
+    redirect($url . '/notificaciones/re-password-error.php');
+  }
+} else {
+  redirect($url . "/datos/re-password.php?id=$id?$id_extreme&action=error");
+}
 
 ?>
-</body>
-</html>

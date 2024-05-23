@@ -4,7 +4,7 @@ require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
 require_once(dirname(dirname(__FILE__)) . '/login.php');
 
 $id_autor = isset($_POST['variable']) ? (int) $_POST['variable'] : 0;
-$id_autor2 = $_SESSION['id'];
+$id_autor2 = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $titulo = isset($_POST['titulo']) ? no_injection($_POST['titulo']) : '';
 $mensaje = isset($_POST['cuerpo']) ? no_injection($_POST['cuerpo']) : '';
 $categoria = isset($_POST['categoria']) ? (int) $_POST['categoria'] : 0;
@@ -39,7 +39,7 @@ if ($id_autor == $id_autor2) {
     mysqli_query($con, "UPDATE usuarios SET numposts = numposts + 1 WHERE id = " . $id_autor);
     mysqli_query($con, "UPDATE cantidad SET cant = cant + 1 WHERE id = 1");
 
-    redirect($url . '/notificaciones/c5.php?id=' . $ult_id . '&c=' . $categoria . '&t=' . $titulo);	
+    redirect($url . '/notificaciones/c5.php?id=' . $ult_id . '&c=' . $categoria . '&t=' . $titulo);
   }
 } else {
   redirect($url . '/agregar_post/');

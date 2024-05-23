@@ -87,7 +87,7 @@ if ($rango == 'Administrador') {
       $nombre = $row['nombre'];
       $mail = $row['mail'];
       $sexo = $row['sexo'];
-?>	
+?>
             <tr>
               <td width="25">
                 <font size="1" color="black"><b><?php echo $id_usuario; ?></b>

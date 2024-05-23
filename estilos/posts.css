@@ -1,116 +1,111 @@
 /****** TEXTOS ******/
-.footerpost{
-	top: 7px;
-	left: 0px;
-	height: 85px;
-	width: 980px;
-	margin-left: auto;
-	margin-right: auto;
+.footerpost {
+  top: 7px;
+  left: 0px;
+  height: 85px;
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-h1{
-	font-size:11px; 
-	font-weight:normal;
-
-}
-#maincontainer{
-	text-align:center;
-	width:950px;
-	height:auto; 
-	padding:0px;
-	margin:0 auto;
-	 
+h1 {
+  font-size: 11px; 
+  font-weight: normal;
 }
 
-#cuerpocontainer{
-	width:970px; 
-	height:auto;
+#maincontainer {
+  text-align: center;
+  width: 950px;
+  height: auto; 
+  padding: 0px;
+  margin: 0 auto;
+}
+
+#cuerpocontainer {
+  width: 970px;
+  height: auto;
 }
 
 /****** POST  ******/
-
-#post-izquierda{
-	padding-left:0px;
-	float:left;
-	height:auto;
-	width:160px; 
+#post-izquierda {
+  padding-left: 0px;
+  float: left;
+  height: auto;
+  width: 160px;
 }
 
-#post-centro{
-	padding:2px;
-	padding-left:6px;
-	padding-right:6px;
-	float:left;
-	width:780px;
-	height:auto;
-
+#post-centro {
+  padding: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+  float: left;
+  width: 780px;
+  height: auto;
 }
 
-.box_perfil{
-	background-image: url('../imagenes/cuadro.JPG');
-	background-repeat: repeat-xy;
-	padding: 18px;
-	margin: 0 auto;
-	font-size: 10
-	px;
+.box_perfil {
+  background-image: url('../imagenes/cuadro.JPG');
+  background-repeat: repeat-xy;
+  padding: 18px;
+  margin: 0 auto;
+  font-size: 10px;
 }
 
-.txt_post{
-	font-family:Verdana, sans-serif;
-	font-size:11px;
-	color:#444444;
+.txt_post {
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+  color: #444444;
 }
 
 /***** estilos *****/
-
-.txt{
-	font-family:Verdana, sans-serif;
-	font-size:11px;
-	color:#717171;
+.txt {
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+  color: #717171;
 }
 
-.box_title{
-	background-color:#d2d3d4;
-	padding:0px;
-	height:18px;
+.box_title {
+  background-color: #d2d3d4;
+  padding: 0px;
+  height: 18px;
 }
 
-.box_rss{
-	/*background-image:url('../imagenes/franja4.JPG');*/
-	background-repeat:no-repeat;
-	float:left;
-	background-position:top right;
-	padding-right:5px;
-	padding-top:2px;
-}
-.box_txt{
-	/*background-image: url('../imagenes/franja4.JPG');*/
-	background-repeat: no-repeat;
-	float: left;
-	padding-left: 0px;
-	height: 21px;
-	font-weight: normal;
-	color: #000000;
-	font-size: 11px;
+.box_rss {
+  /*background-image:url('../imagenes/franja4.JPG');*/
+  background-repeat: no-repeat;
+  float: left;
+  background-position: top right;
+  padding-right: 5px;
+  padding-top: 2px;
 }
 
-.box_cuerpo{
-	background-image:url('../imagenes/cuadro.JPG');
-	background-repeat:repeat-xy;
-	padding:8px;
-	margin:0 auto;
-	white-space: normal;
+.box_txt {
+  /*background-image: url('../imagenes/franja4.JPG');*/
+  background-repeat: no-repeat;
+  float: left;
+  padding-left: 0px;
+  height: 21px;
+  font-weight: normal;
+  color: #000000;
+  font-size: 11px;
 }
 
-.box_cuerpo2{
-	background-image:url('../imagenes/cuadro.JPG');
-	background-repeat:repeat-xy;
-	margin:0 auto;
-	white-space: normal;
+.box_cuerpo {
+  background-image: url('../imagenes/cuadro.JPG');
+  background-repeat: repeat-xy;
+  padding: 8px;
+  margin: 0 auto;
+  white-space: normal;
+}
+
+.box_cuerpo2 {
+  background-image: url('../imagenes/cuadro.JPG');
+  background-repeat: repeat-xy;
+  margin: 0 auto;
+  white-space: normal;
 }
 
 br.space {
-	display:block; margin:3px 0; 
+  display: block;
+  margin: 3px 0;
 }
-
-

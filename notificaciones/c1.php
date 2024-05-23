@@ -14,7 +14,7 @@ require_once(dirname(dirname(__FILE__)) . '/header.php');
         <table cellpadding="0" cellspacing="0" width="387" align="center" border="0">
           <tr>
             <td></td>
-            <td> 
+            <td>
               <div class="esq1" style="float: left;"></div>
               <div class="franja" style="float: left; width: 371px;"><div style="padding-top: 2px;">Error</div></div>
               <div class="esq2" style="float: left;"></div>
@@ -22,9 +22,11 @@ require_once(dirname(dirname(__FILE__)) . '/header.php');
           </tr>
         </table>
         <br />
-        <div align="center"><font size="2">Usuario o contrase&ntilde;a incorrectos</font>
-        <br /><br /><br />
-        <a href="<?php echo $url; ?>/datos/?action=recuperar"><font size="1" color="blue">Olvidaste tu contrase&ntilde;a</a></font></div> 
+        <div align="center">
+          <font size="2">Usuario o contrase&ntilde;a incorrectos</font>
+          <br /><br /><br />
+          <a href="<?php echo $url; ?>/datos/?action=recuperar"><font size="1" color="blue">Olvidaste tu contrase&ntilde;a</a></font>
+        </div>
       </td>
       <td width="35%" height="30%" align="center"></td>
     </tr>

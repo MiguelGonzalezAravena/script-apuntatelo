@@ -15,7 +15,7 @@ require_once(dirname(__FILE__) . '/includes/configuracion.php');
 
         <div style="height: 70px; width: 11px; float: left; background-color: #EDEDED;"></div>
       </div>
-    </td>	  
+    </td>
   </tr> 
   <tr>
     <td align="center" style="background-color: #EDEDED;">

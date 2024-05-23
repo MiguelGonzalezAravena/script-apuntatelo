@@ -1,3 +1,3 @@
 <script type="text/javascript">
-	location.href = '..';
+  location.href = '..';
 </script>

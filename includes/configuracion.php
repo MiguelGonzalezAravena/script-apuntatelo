@@ -7,9 +7,10 @@ $url = 'http://localhost/apuntatelo';
 $images = $url . '/imagenes';
 $name = 'Ap&uacute;ntatelo';
 $email = 'miguel.gonzalez.93@gmail.com';
+$recaptcha_private = '6LclVuQpAAAAAINlKq-jZ7aSzqLQrhMBFF4liw_g';
+$recaptcha_public = '6LclVuQpAAAAAB2MK5qMQFJORyaqwF-CLMlAHCPj';
 
 // TO-DO: Agregar llave md5 a encriptar para passwords en BD
-
 $con = mysqli_connect($bd_host, $bd_usuario, $bd_password);
 mysqli_select_db($con, $bd_base);
 

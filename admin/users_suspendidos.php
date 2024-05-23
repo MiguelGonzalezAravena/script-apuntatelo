@@ -192,7 +192,7 @@ if ($tipo == 'ultimos') {
       $fecha1 = $row['fecha1'];
       $activa = $row['activa'];
       $fecha2 = $row['fecha2'];
-?>	
+?>
           <tr>
             <td>
               <font size="1" color="black"><?php echo $activo; ?></font>
@@ -200,7 +200,7 @@ if ($tipo == 'ultimos') {
             <td>
               <font size="1" color="black"><?php echo $nick; ?></font>
             </td>
-            <td>	
+            <td>
               <font size="1" color="black"><?php echo $causa; ?></font>
             </td>
             <td>
@@ -260,7 +260,7 @@ if ($tipo == 'ultimos') {
     <tr>
       <td>
         <div class="esq1" style="float: left;"></div>
-        <div class="franja" style="float: left; width: 384px;"><div style="padding-top:2px;">Restaurar usuario</div></div>
+        <div class="franja" style="float: left; width: 384px;"><div style="padding-top: 2px;">Restaurar usuario</div></div>
         <div class="esq2" style="float: left;"></div>
       </td>
     </tr>
@@ -270,7 +270,7 @@ if ($tipo == 'ultimos') {
           <font size="2">Nick: </font><br/>
           <input type="text" name="nick" maxlength="20" size="22" />
           <br /><br />
-          <input class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro queres restaurar al usuario?')) this.form.submit();" class="button" name="botonsuspender" value="Restaurar" />
+          <input class="submit_button" type="button" style="font-size: 11px" onclick="if(confirm('&iquest;Seguro que deseas restaurar al usuario?')) this.form.submit();" class="button" name="botonsuspender" value="Restaurar" />
         </form>
       </td>
     </tr>

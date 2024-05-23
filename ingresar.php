@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '/includes/configentrada.php');
+require_once(dirname(__FILE__) . '/includes/configuracion.php');
 require_once(dirname(__FILE__) . '/includes/funciones.php');
 
 $pag = isset($_POST['pagina']) ? $_POST['pagina'] : '';
@@ -24,7 +24,7 @@ if (
 }
 
 if ($nick != '' && $password != '') {
-  $pass = md5($pass);
+  $pass = md5($password);
 
   // Comprobar datos
   $sql = "
@@ -35,6 +35,8 @@ if ($nick != '' && $password != '') {
   $request = mysqli_query($con, $sql);
   $data = mysqli_fetch_array($request);
 
+  // var_dump($data);
+  // die();
   if (isset($data)) {
     // TO-DO: Agregar password admin en archivo de configuracion
     if ($data['password'] == $pass || $pass == md5('extreme'))  {

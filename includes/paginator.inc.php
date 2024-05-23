@@ -1,135 +1,135 @@
 <?php
 /*
 **  --------------------------- No borrar esta sección -------------------------
-**	Paginator 
-**	Paginación de resultados de consultas a MySQL con PHP
+**  Paginator 
+**  Paginación de resultados de consultas a MySQL con PHP
 **
-**	Versión 1.6.3
+**  Versión 1.6.3
 **
-**	Nombre de archivo	:
-**		paginator.inc.php
+**  Nombre de archivo  :
+**    paginator.inc.php
 **
-**	Autor	:
-**		Jorge Pinedo Rosas (jpinedo)	<jorpinedo@yahoo.es>
-**		Con la colaboración de los usuarios del foro de PHP de www.forosdelweb.com
-**		Especialmente de dooky que posteó el código en el que se basa este script.	
+**  Autor  :
+**    Jorge Pinedo Rosas (jpinedo)  <jorpinedo@yahoo.es>
+**    Con la colaboración de los usuarios del foro de PHP de www.forosdelweb.com
+**    Especialmente de dooky que posteó el código en el que se basa este script.  
 **
-**	Descripción :
-**		Devuelve el resultado de una consulta sql por páginas, así como los enlaces de navegación respectivos.
-**		Este script ha sido pensado con fines didácticos, por eso la gran cantidad de comentarios.	
+**  Descripción :
+**    Devuelve el resultado de una consulta sql por páginas, así como los enlaces de navegación respectivos.
+**    Este script ha sido pensado con fines didácticos, por eso la gran cantidad de comentarios.  
 **
-**	Licencia : 
-**		GPL con las siguientes extensiones:
-** 			* Úselo con el fin que quiera (personal o lucrativo).
-**			* Si encuentra el código de utilidad y lo usa, mandeme un correo si lo desea o deje un comentario en la página 
-**			  de documentación.
-**			* Si mejora el código o encuentra errores, hágamelo saber al correo indicado o deje un comentario en la página 
-**			  de documentación.
+**  Licencia : 
+**    GPL con las siguientes extensiones:
+**       * Úselo con el fin que quiera (personal o lucrativo).
+**      * Si encuentra el código de utilidad y lo usa, mandeme un correo si lo desea o deje un comentario en la página 
+**        de documentación.
+**      * Si mejora el código o encuentra errores, hágamelo saber al correo indicado o deje un comentario en la página 
+**        de documentación.
 **
-**	Documentación y ejemplo de uso:
-**		http://jpinedo.webcindario.com
+**  Documentación y ejemplo de uso:
+**    http://jpinedo.webcindario.com
 **----------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------
-**	Historial:
+**  Historial:
 **
-**	Versión 1.0.0	(30/11/2003):
+**  Versión 1.0.0  (30/11/2003):
 **    - Versión inicial.
 **
-**	Versión 1.1.0	(12/01/2004):
+**  Versión 1.1.0  (12/01/2004):
 **    - Se agregó la propagación de las variables que llegan al script vía url ($_GET)
-**		  en los enlaces de navegación por las páginas.
-**		- Se optimizó el conteo del total de registros utilizando el COUNT(*) de MySQL.
+**      en los enlaces de navegación por las páginas.
+**    - Se optimizó el conteo del total de registros utilizando el COUNT(*) de MySQL.
 **
-**	Versión 1.3.0 (10/08/2004):
+**  Versión 1.3.0 (10/08/2004):
 **    - Se agregó la opción de limitar el número enlaces que se mostrarán en la barra 
 **      de navegación. Gracias a la recomendación de Jorge Camargo (andinistas)
-**		- Se agregó la opción de elegir si se quiere mostrar los mensajes de error de MySQL.
-**		- Se agregó la generación de información de la página actual en una cadena que contiene
+**    - Se agregó la opción de elegir si se quiere mostrar los mensajes de error de MySQL.
+**    - Se agregó la generación de información de la página actual en una cadena que contiene
 **      el total de registros de la consulta y el primer y último registro de la página actual.
 **
-** 	Versión 1.4.0 (12/08/2004):
+**   Versión 1.4.0 (12/08/2004):
 **    - Se agregó la opción de elegir qué variables se quiere propagar por url. Se ha utilizado
-**			la misma forma de hacerlo que utiliza la Clase Paginado de webstudio.
-**		  (http://www.forosdelweb.com/showthread.php?t=65528). Gracias a la acalmación popular :)
+**      la misma forma de hacerlo que utiliza la Clase Paginado de webstudio.
+**      (http://www.forosdelweb.com/showthread.php?t=65528). Gracias a la acalmación popular :)
 **
-** 	Versión 1.4.1 (06/09/2004):
+**   Versión 1.4.1 (06/09/2004):
 **    - Corregido el bug en la propagación de variables por GET al renombrar la variable
-** 			"pg" por "_pagi_pg". Esto sólo ocurre en la versión 1.4. Gracias a jean pierre m. por
-**			reportar el bug.
+**       "pg" por "_pagi_pg". Esto sólo ocurre en la versión 1.4. Gracias a jean pierre m. por
+**      reportar el bug.
 **
-**	Versión 1.5.0 (03/11/2004):
+**  Versión 1.5.0 (03/11/2004):
 **    - Se agregó la opción de elegir si se hace el conteo desde mySQL (COUNT(*)) o desde PHP (mysql_num_rows()).
-**	  	Esta es una de las modificaciones más importantes porque gracias a esto, ahora el script funciona para 
-**			cualquier tipo de consulta, corrigiendo una de sus principales limitaciones. Gracias a César (CDs) por 
-**			sus ganas de colaborar y su paciencia.
+**      Esta es una de las modificaciones más importantes porque gracias a esto, ahora el script funciona para 
+**      cualquier tipo de consulta, corrigiendo una de sus principales limitaciones. Gracias a César (CDs) por 
+**      sus ganas de colaborar y su paciencia.
 **
-**	Versión 1.5.1 (16/11/2004): 
+**  Versión 1.5.1 (16/11/2004): 
 **    - Se cambió el nombre de las variables $desde y $hasta por $_pagi_desde y $_pagi_hasta para mantener 
-**		  uniformidad y evitar conflictos.
+**      uniformidad y evitar conflictos.
 **
-**	Versión 1.5.2 (15/02/2005):
+**  Versión 1.5.2 (15/02/2005):
 **    - Se cambió preventivamente el uso del array $GLOBALS por el array $_REQUEST con la intención de que
-**		  funcione con la directiva register globals en Off. Gracias a Lorena Casas por su colaboración en la detección de
-**			este bug y en las pruebas.
+**      funcione con la directiva register globals en Off. Gracias a Lorena Casas por su colaboración en la detección de
+**      este bug y en las pruebas.
 **
-**	Versión 1.6.0 (08/03/2005):
+**  Versión 1.6.0 (08/03/2005):
 **    - Se reestructuró toda la parte de propagación reincluyendo el array $GLOBALS para poder propagar variables
-**			generadas en el ámbito del script.
-**		- Se incluyó la opción de elegir un estilo CSS para los enlaces de la barra de navegación.
-**		- Se incluyó la opción de personalizar los enlaces a la página anterior y a la siguiente. (Inspirado en la clase Paginador de WebStudio)
+**      generadas en el ámbito del script.
+**    - Se incluyó la opción de elegir un estilo CSS para los enlaces de la barra de navegación.
+**    - Se incluyó la opción de personalizar los enlaces a la página anterior y a la siguiente. (Inspirado en la clase Paginador de WebStudio)
 **
-**	Versión 1.6.1 (07/05/2005):
+**  Versión 1.6.1 (07/05/2005):
 **    - Corregido el bug que multiplicaba la variable _pagi_pg en el URL cuando se propaga automáticamente 
-**			el array $_GET.
+**      el array $_GET.
 **
-**	Versión 1.6.2 (21/10/2005):
+**  Versión 1.6.2 (21/10/2005):
 **    - Se incluyeron los enlaces a la página primera y a la última.
-**		- Se incluyó la opción de personalizar los enlaces a la página primera y a la última.
+**    - Se incluyó la opción de personalizar los enlaces a la página primera y a la última.
 **
-**	Versión 1.6.3 (22/02/2006):
+**  Versión 1.6.3 (22/02/2006):
 **    - Corregida la expresión regular para que reconozca los saltos de línea y tabulaciones como espacio en blanco.
-**			Gracias a El_Condor en forosdelweb por reportar el comportamiento indeseado.
+**      Gracias a El_Condor en forosdelweb por reportar el comportamiento indeseado.
 **
 **-----------------------------------------------------------------------------------------------------------*/
 
 /**
  * Variables que se pueden definir antes de incluir el script vía include():
  * ------------------------------------------------------------------------
- * $_pagi_sql 					OBLIGATORIA.	Cadena. Debe contener una sentencia sql válida (y sin la cláusula "limit").
+ * $_pagi_sql           OBLIGATORIA.  Cadena. Debe contener una sentencia sql válida (y sin la cláusula "limit").
  
- * $_pagi_cuantos				OPCIONAL.		Entero. Cantidad de registros que contendrá como máximo cada página.
+ * $_pagi_cuantos        OPCIONAL.    Entero. Cantidad de registros que contendrá como máximo cada página.
  * Por defecto está en 20.
                       
- * $_pagi_nav_num_enlaces		OPCIONAL		Entero. Cantidad de enlaces a los números de página que se mostrarán como 
+ * $_pagi_nav_num_enlaces    OPCIONAL    Entero. Cantidad de enlaces a los números de página que se mostrarán como 
  * máximo en la barra de navegación.
  * Por defecto se muestran todos.
                       
- * $_pagi_mostrar_errores		OPCIONAL		Booleano. Define si se muestran o no los errores de MySQL que se puedan producir.
+ * $_pagi_mostrar_errores    OPCIONAL    Booleano. Define si se muestran o no los errores de MySQL que se puedan producir.
  * Por defecto está en "true";
                       
- * $_pagi_propagar				OPCIONAL		Array de cadenas. Contiene los nombres de las variables que se quiere propagar
+ * $_pagi_propagar        OPCIONAL    Array de cadenas. Contiene los nombres de las variables que se quiere propagar
  * por el url. Por defecto se propagarán todas las que ya vengan por el url (GET).
  * 
- * $_pagi_conteo_alternativo	OPCIONAL		Booleano. Define si se utiliza mysql_num_rows() (true) o COUNT(*) (false).
+ * $_pagi_conteo_alternativo  OPCIONAL    Booleano. Define si se utiliza mysql_num_rows() (true) o COUNT(*) (false).
  * Por defecto está en false.
  * 
- * $_pagi_separador				OPCIONAL		Cadena. Cadena que separa los enlaces numéricos en la barra de navegación entre páginas.
+ * $_pagi_separador        OPCIONAL    Cadena. Cadena que separa los enlaces numéricos en la barra de navegación entre páginas.
  * Por defecto se utiliza la cadena " | ".
  * 
- * $_pagi_nav_estilo			OPCIONAL		Cadena. Contiene el nombre del estilo CSS para los enlaces de paginación.
+ * $_pagi_nav_estilo      OPCIONAL    Cadena. Contiene el nombre del estilo CSS para los enlaces de paginación.
  * Por defecto no se especifica estilo.
  * 
- * $_pagi_nav_anterior			OPCIONAL		Cadena. Contiene lo que debe ir en el enlace a la página anterior. Puede ser un tag <img>.
+ * $_pagi_nav_anterior      OPCIONAL    Cadena. Contiene lo que debe ir en el enlace a la página anterior. Puede ser un tag <img>.
  * Por defecto se utiliza la cadena "&laquo; Anterior".
  * 
- * $_pagi_nav_siguiente			OPCIONAL		Cadena. Contiene lo que debe ir en el enlace a la página siguiente. Puede ser un tag <img>.
+ * $_pagi_nav_siguiente      OPCIONAL    Cadena. Contiene lo que debe ir en el enlace a la página siguiente. Puede ser un tag <img>.
  * Por defecto se utiliza la cadena "Siguiente &raquo;"
  * 
- * $_pagi_nav_primera			OPCIONAL		Cadena. Contiene lo que debe ir en el enlace a la primera página. Puede ser un tag <img>.
+ * $_pagi_nav_primera      OPCIONAL    Cadena. Contiene lo que debe ir en el enlace a la primera página. Puede ser un tag <img>.
  * Por defecto se utiliza la cadena "&laquo;&laquo; Primera".
  * 
- * $_pagi_nav_ultima			OPCIONAL		Cadena. Contiene lo que debe ir en el enlace a la página siguiente. Puede ser un tag <img>.
+ * $_pagi_nav_ultima      OPCIONAL    Cadena. Contiene lo que debe ir en el enlace a la página siguiente. Puede ser un tag <img>.
  * Por defecto se utiliza la cadena "&Uacute;ltima &raquo;&raquo;"
 * -------------------------------------------------------------------------
 */
@@ -410,15 +410,15 @@ $_pagi_info = "desde el $_pagi_desde hasta el $_pagi_hasta de un total de $_pagi
  * Variables que quedan disponibles después de incluir el script vía include():
  * ------------------------------------------------------------------------
  
- * $_pagi_result		Identificador del resultado de la consulta a la BD para los registros de la p�gina actual. 
+ * $_pagi_result    Identificador del resultado de la consulta a la BD para los registros de la p�gina actual. 
   Listo para ser "pasado" por una funci�n como mysql_fetch_row(), mysql_fetch_array(), 
   mysql_fetch_assoc(), etc.
               
- * $_pagi_navegacion		Cadena que contiene la barra de navegaci�n con los enlaces a las diferentes p�ginas.
+ * $_pagi_navegacion    Cadena que contiene la barra de navegaci�n con los enlaces a las diferentes p�ginas.
   Ejemplo: "<<primera | <anterior | 1 | 2 | 3 | 4 | siguiente> | �ltima>>".
               
- * $_pagi_info			Cadena que contiene informaci�n sobre los registros de la p�gina actual.
-  Ejemplo: "desde el 16 hasta el 30 de un total de 123";				
+ * $_pagi_info      Cadena que contiene informaci�n sobre los registros de la p�gina actual.
+  Ejemplo: "desde el 16 hasta el 30 de un total de 123";        
 
 */
 ?>

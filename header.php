@@ -77,15 +77,15 @@ if (isset($_SESSION['user'])) {
   $sql = "
     SELECT id_mensaje
     FROM mensajes
-    WHERE id_receptor = '" . $_SESSION['id'] . "'
-    AND leido_receptor = '0'";
+    WHERE id_receptor = {$_SESSION['id']}
+    AND leido_receptor = 0";
 
-  $rs = mysqli_query($con, $sql);
-  if (mysqli_num_rows($rs) > 0) {
+  $request = mysqli_query($con, $sql);
+  if (mysqli_num_rows($request) > 0) {
 ?>
           <div class="ini size10" style="padding-top: 1px;">
             <a href="<?php echo $url; ?>/mensajes/" style="font-weight: normal;" title="Nuevo Mensaje Privado">
-              <font color="white">(<?php echo mysqli_num_rows($rs_men); ?>)</font>
+              <font color="red" style="font-weight: bold;">(<?php echo mysqli_num_rows($request); ?>)</font>
             </a>
           </div>
 <?php
@@ -130,7 +130,7 @@ if (isset($_SESSION['user'])) {
             </form> 
           </div>
 <?php
-}	
+}
 
 if (isset($_SESSION['user'])) {
 ?>
@@ -153,6 +153,8 @@ if (isset($_SESSION['user'])) {
                   <td class="size11" valign="middle"><a href="<?php echo $url; ?>/admin/" style="color: #000000;">Administraci&oacute;n</a></td>
                   <td class="size11" valign="middle">|</td>
                   <?php } ?>
+                  <td class="size11" valign="middle"><a href="<?php echo $url; ?>/contacto/" style="color: #000000;">Contacto</a></td>
+                  <td class="size11" valign="middle">|</td>
                 </tr>
               </table>
             </div>

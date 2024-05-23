@@ -57,7 +57,7 @@ require_once(dirname(__FILE__) . '/header.php');
             <ul>
               <li>Cada 24 horas recibir&aacute;s una cantidad de puntos para repartir en los posts que m&aacute;s te interesen, no se podr&aacute; puntuar m&aacute;s de una vez cada post.<br /> 
               &nbsp;&nbsp;La cantidad de puntos para otorgar depende de tu rango en la web.</li>
-            </ul>	
+            </ul>
             <br /><br />
           </div>
         </td>
