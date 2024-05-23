@@ -25,7 +25,7 @@ if ($id_user != '' && $id_user != $id_autor) {
 
   $request = mysqli_query($con, $sql);
   $row = mysqli_fetch_array($request);
-  ?>
+?>
       <font size="1">
         Puntos:
         <form name="puntos" action="<?php echo $url; ?>/posts_acciones/darpuntos.php" method="post">
@@ -40,7 +40,7 @@ if ($id_user != '' && $id_user != $id_autor) {
 ?>
               <option value="<?php echo $cont; ?>"><?php echo $cont; ?></option>
 <?php
-    $cont = $cont+1;
+    $cont = $cont + 1;
   }
 ?>
           </select>

@@ -198,25 +198,11 @@ function sexo($valor) {
 }
 
 function pais($valor) {
-  $valor = str_replace('ar', 'Argentina', $valor);
-  $valor = str_replace('bo', 'Bolivia', $valor);
-  $valor = str_replace('br', 'Brasil', $valor);
-  $valor = str_replace('cl', 'Chile', $valor);
-  $valor = str_replace('co', 'Colombia', $valor);
-  $valor = str_replace('cr', 'Costa Rica', $valor);
-  $valor = str_replace('cu', 'Cuba', $valor);
-  $valor = str_replace('ec', 'Ecuador', $valor);
-  $valor = str_replace('es', 'Espa&ntilde;a', $valor);
-  $valor = str_replace('gt', 'Guatemala', $valor);
-  $valor = str_replace('it', 'Italia', $valor);
-  $valor = str_replace('mx', 'M&eacute;xico', $valor);
-  $valor = str_replace('py', 'Paraguay', $valor);
-  $valor = str_replace('pe', 'Per&uacute;', $valor);
-  $valor = str_replace('pt', 'Portugal', $valor);
-  $valor = str_replace('pr', 'Puerto Rico', $valor);
-  $valor = str_replace('uy', 'Uruguay', $valor);
-  $valor = str_replace('ve', 'Venezuela', $valor);
-  $valor = str_replace('ot', 'Otro', $valor);
+  $countries = getCountries();
+
+  foreach ($countries as $key => $value) {
+    $valor = str_replace($key, $value, $valor);
+  }
 
   return $valor;
 }
@@ -305,6 +291,51 @@ function recaptcha_validation($response) {
   $decode = json_decode($result);
 
   return $decode->success;
+}
+
+function getMonths() {
+  $months = [
+    1 => 'enero',
+    2 => 'febrero',
+    3 => 'marzo',
+    4 => 'abril',
+    5 => 'mayo',
+    6 => 'junio',
+    7 => 'julio',
+    8 => 'agosto',
+    9 => 'septiembre',
+    10 => 'octubre',
+    11 => 'noviembre',
+    12 => 'diciembre'
+  ];
+
+  return $months;
+}
+
+function getCountries() {
+  $countries = [
+    'ar' => 'Argentina',
+    'bo' => 'Bolivia',
+    'br' => 'Brasil',
+    'cl' => 'Chile',
+    'co' => 'Colombia',
+    'cr' => 'Costa Rica',
+    'cu' => 'Cuba',
+    'ec' => 'Ecuador',
+    'es' => 'Espa&ntilde;a',
+    'gt' => 'Guatemala',
+    'it' => 'Italia',
+    'mx' => 'M&eacute;xico',
+    'py' => 'Paraguay',
+    'pe' => 'Per&uacute;',
+    'pt' => 'Portugal',
+    'pr' => 'Puerto Rico',
+    'uy' => 'Uruguay',
+    've' => 'Venezuela',
+    'ot' => 'Otro'
+  ];
+
+  return $countries;
 }
 
 ?>

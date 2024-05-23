@@ -2,7 +2,7 @@
 require_once(dirname(__FILE__) . '/configuracion.php');
 require_once(dirname(__FILE__) . '/funciones.php');
 
-if(!isset($id_categoria)) {
+if (!isset($id_categoria)) {
   die('&iexcl;Variable <strong>$id_categoria</strong> no ha sido definida!');
 }
 

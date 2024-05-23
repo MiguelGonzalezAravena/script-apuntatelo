@@ -175,6 +175,8 @@ if (isset($_SESSION['user'])) {
                   <td class="size11" valign="middle">|</td>
                   <td class="size11" valign="middle"><a href="<?php echo $url; ?>/faq/" style="color: #000000;">F.A.Q.</a></td>
                   <td class="size11" valign="middle">|</td>
+                  <td class="size11" valign="middle"><a href="<?php echo $url; ?>/contacto/" style="color: #000000;">Contacto</a></td>
+                  <td class="size11" valign="middle">|</td>
                   <td class="size11" valign="middle"><a href="<?php echo $url; ?>/registro/" style="color: #000000;">Registrarse</a></td>
                   <td class="size11" valign="middle">|</td>
                 </tr>

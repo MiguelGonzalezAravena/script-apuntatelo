@@ -1,8 +1,6 @@
-//** Ajax Tabs Content script v2.0- � Dynamic Drive DHTML code library (http://www.dynamicdrive.com)
-//** Updated Oct 21st, 07 to version 2.0. Contains numerous improvements
-
-//** Updated Feb 18th, 08 to version 2.1: Adds a public "tabinstance.cycleit(dir)" method to cycle forward or backward between tabs dynamically. Only .js file changed from v2.0.
-
+/* Ajax Tabs Content script v2.0 - Dynamic Drive DHTML code library (http://www.dynamicdrive.com) */
+/* Updated Oct 21st, 07 to version 2.0. Contains numerous improvements */
+/** Updated Feb 18th, 08 to version 2.1: Adds a public "tabinstance.cycleit(dir)" method to cycle forward or backward between tabs dynamically. Only .js file changed from v2.0. */
 var ddajaxtabssettings = {};
 ddajaxtabssettings.bustcachevar = 1; //bust potential caching of external pages after initial request? (1=yes, 0=no)
 ddajaxtabssettings.loadstatustext = '<div class="Post" style="font-size: 12px; font-weight: bold;">&nbsp;<img src="ajaxtabs/loading.gif" /> Cargando contenido...</div>';
@@ -17,7 +15,7 @@ function ddajaxtabs(tabinterfaceid, contentdivid) {
   this.currentTabIndex = 0; //Index of currently selected hot tab (tab with sub content) within hottabspositions[] array
   this.contentdivid = contentdivid;
   this.defaultHTML = '';
-  this.defaultIframe = '<iframe src="about:blank" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" class="tabcontentiframe" style="width:100%; height:auto; min-height: 100px"></iframe>';
+  this.defaultIframe = '<iframe src="about:blank" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" class="tabcontentiframe" style="width:100%; height: auto; min-height: 100px"></iframe>';
   this.defaultIframe = this.defaultIframe.replace(/<iframe/i, '<iframe name="' + "_ddajaxtabsiframe-" + contentdivid + '" ');
   this.revcontentids = []; //Array to store ids of arbitrary contents to expand/contact as well ("rev" attr values)
   this.selectedClassTarget = 'link'; //keyword to indicate which target element to assign "selected" CSS class ("linkparent" or "link")

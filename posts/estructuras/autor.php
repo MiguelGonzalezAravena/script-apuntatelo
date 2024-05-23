@@ -22,7 +22,7 @@ echo '
   </div>
   <div align="left">
   <div class="box_perfil"' . $style . '>
-    <img src="' . $row['avatar'] . '" style="display: block; margin: auto;" border="0" alt="" title="" />
+    <img src="' . $row['avatar'] . '" style="display: block; margin: auto; border-radius: 5px" border="0" alt="Avatar de ' . $nick . '" title="Avatar de ' . $nick . '" />
     <b class="txt">
       <a href="' . $url . '/perfil/' . $nick . '/">
         <font color="' . $color . '">

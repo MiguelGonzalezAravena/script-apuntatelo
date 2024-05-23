@@ -45,7 +45,7 @@ if ($user != '') {
         </tr>
         <tr>
           <td>
-            <font size="2"><b>Nueva contrase&ntilde;a:</b></font>  
+            <font size="2"><b>Nueva contrase&ntilde;a:</b></font>
           </td>
           <td>
             <input type="password" name="password1" />

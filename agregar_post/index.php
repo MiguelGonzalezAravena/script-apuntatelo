@@ -38,7 +38,7 @@ if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
           <div class="esq2" style="float: left;"></div>
         </div>
       </div>
-      <div class="box_cuerpo" style='width: <?php echo $width; ?>; float: left; margin-left: <?php echo $margin_left; ?>;'>
+      <div class="box_cuerpo" style="width: <?php echo $width; ?>; float: left; margin-left: <?php echo $margin_left; ?>;">
         <table width="90%" border="0" cellspacing="2" cellpadding="2">
           <form name="reg" action="" method="post">
             <input type="hidden" name="variable" value="<?php echo $_SESSION['id']; ?>" />

@@ -29,7 +29,7 @@ $tit = $cant > 50 ? 1 : 0;
 ?>
 <html>
   <head>
-    <title>eXtreme Zone - <?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></title>
+    <title><?php echo $name; ?> - <?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/estilos/posts.css" />
   </head>
@@ -46,10 +46,10 @@ if ($elim == 0 && $esta == 1) {
     contarVisita($id, $ip);
 
     if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-      echo "
-        <table width='980'>
+      echo '
+        <table width="980">
           <tr>
-          <td>";
+            <td>';
     }
 ?>
     <div id="maincontainer">
@@ -87,9 +87,7 @@ if ($elim == 0 && $esta == 1) {
             </tr>
             </table>
             <br />
-            <?php
-            require_once(dirname(__FILE__) . '/estructuras/botonboryedi.php');
-            ?>
+            <?php require_once(dirname(__FILE__) . '/estructuras/botonboryedi.php'); ?>
             <br class="space">
               <div style="width: 100%; float: left; margin-top: 11px;">
               
@@ -101,37 +99,33 @@ if ($elim == 0 && $esta == 1) {
                   </div>
                 </div>
                 <div class="box_cuerpo" style="font-size: 12px; text-align: left">
-                  <?php
-                  require_once(dirname(__FILE__) . '/estructuras/consulta.php');
-                  ?>
+                  <?php require_once(dirname(__FILE__) . '/estructuras/consulta.php'); ?>
                 </div>
               </div>
               <div style="width: 100%; float: left; margin-top: 11px;">
               <br />
-              <?php
-              require_once(dirname(__FILE__) . '/estructuras/comentario.php');
-              ?>
+              <?php require_once(dirname(__FILE__) . '/estructuras/comentario.php'); ?>
               </div>
             </div>
         </div>
       </div>
     </div>
-    <?php
+<?php
     if (!strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-      echo "</td>
-      </tr>
-      </table>";
+      echo '</td>
+        </tr>
+        </table>';
     }
-    ?>
+?>
     </div>
     <div class="bordes" style="height: 55px">
-    <?php
+<?php
     require_once(dirname(dirname(__FILE__)) . '/footer.php');
-    ?>
+?>
     </div>
-    <?php
+<?php
   } else {
-    ?>
+?>
     <div class="bordes">
     <table width="100%" height="365" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -171,11 +165,11 @@ if ($elim == 0 && $esta == 1) {
         </td>
       </tr>
     </table>
-    <?php
+<?php
     require_once(dirname(dirname(__FILE__)) . '/footer.php');
-    ?>
+?>
     </div>
-    <?php
+<?php
   }
 } else {
   ?>
@@ -215,11 +209,11 @@ if ($elim == 0 && $esta == 1) {
       <td></td>
     </tr>
   </table>
-  <?php
-  require_once(dirname(dirname(__FILE__)) . '/footer.php');
-  ?>
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
+?>
   </div>
-  <?php
+<?php
 }
 ?>
 </div>

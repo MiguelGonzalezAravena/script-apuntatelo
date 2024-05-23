@@ -3,7 +3,8 @@ require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
 require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
 
 $id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
-$id_extreme = isset($_POST['id_extreme']) ? no_injection($_POST['id_extreme']) : '';
+// TO-DO: Cambiar id_extreme a id_secret
+$id_secret = isset($_POST['id_extreme']) ? no_injection($_POST['id_extreme']) : '';
 $action = isset($_GET['action']) ? no_injection($_GET['action']) : '';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -35,7 +36,7 @@ if ($password1 != '' && $password1 == $password2 && strlen($password1) > 5) {
     SELECT nick
     FROM usuarios
     WHERE id = $id
-    AND id_extreme = '$id_extreme'";
+    AND id_extreme = '$id_secret'";
 
   $request = mysqli_query($con, $sql);
 
@@ -55,7 +56,7 @@ if ($password1 != '' && $password1 == $password2 && strlen($password1) > 5) {
     redirect($url . '/notificaciones/re-password-error.php');
   }
 } else {
-  redirect($url . "/datos/re-password.php?id=$id?$id_extreme&action=error");
+  redirect($url . "/datos/re-password.php?id=$id?$id_secret&action=error");
 }
 
 ?>

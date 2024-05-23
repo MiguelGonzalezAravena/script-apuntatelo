@@ -55,7 +55,7 @@ if ($id_user != '') {
   <div  style="min-height: 300px;">
     <table width="900" align="center" border="0" cellspacing="0" cellpadding="0" style="font-size: 11px;">
       <tr>
-        <td colspan="5">  
+        <td colspan="5">
           <div class="esq1" style="float: left;"></div>
           <div class="franja" style="float: left; width: 884px;"><div style="padding-top: 2px;">Filtro</div></div>
           <div class="esq2" style="float: left;"></div>
@@ -102,7 +102,7 @@ if ($id_user != '') {
       <input type="hidden" name="pag" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
       <table width="900" align="center" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td colspan="5">  
+          <td colspan="5">
             <div class="esq1" style="float: left;"></div>
             <div class="franja" style="float: left; width: 884px;"><div style="padding-top: 2px;">Mis favoritos</div></div>
             <div class="esq2" style="float: left;"></div>

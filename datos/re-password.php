@@ -9,6 +9,7 @@ $id_secret = $id2[1];
 ?>
 <div class="bordes">
 <?php
+// TO-DO: Cambiar id_extreme a id_secret
 $sql = "
   SELECT nick
   FROM usuarios
@@ -30,7 +31,7 @@ if (mysqli_num_rows($request) > 0) {
 ?>
       <tr>
         <td colspan="2" align="center">
-          <font size="2" color="red"><b>Las contrase&ntilde;as no coinciden y/o tienen menos de 6 caracteres.</b></font>  
+          <font size="2" color="red"><b>Las contrase&ntilde;as no coinciden y/o tienen menos de 6 caracteres.</b></font>
           <br /><br />
         </td>
       </tr>
@@ -46,7 +47,7 @@ if (mysqli_num_rows($request) > 0) {
       </tr>
       <tr>
         <td class="fondo_cuadro" style="padding: 5px;">
-          <font size="2"><b>Nueva contrase&ntilde;a:</b></font>  
+          <font size="2"><b>Nueva contrase&ntilde;a:</b></font>
         </td>
         <td class="fondo_cuadro" style="padding: 5px;">
           <input type="password" name="password1" />

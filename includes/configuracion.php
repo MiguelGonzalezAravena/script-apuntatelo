@@ -5,10 +5,10 @@ $bd_password = '';
 $bd_base = 'apuntatelo';
 $url = 'http://localhost/apuntatelo';
 $images = $url . '/imagenes';
-$name = 'Ap&uacute;ntatelo';
+$name = 'Apunt&aacute;telo';
 $email = 'miguel.gonzalez.93@gmail.com';
-$recaptcha_private = '6LclVuQpAAAAAINlKq-jZ7aSzqLQrhMBFF4liw_g';
-$recaptcha_public = '6LclVuQpAAAAAB2MK5qMQFJORyaqwF-CLMlAHCPj';
+$recaptcha_private = base64_decode('NkxjbFZ1UXBBQUFBQUlObEtxLWpaN2FTenFMUXJoTUJGRjRsaXdfZw==');
+$recaptcha_public = base64_decode('NkxjbFZ1UXBBQUFBQUIyTUs1cU1RRkpPUnlhcXdGLUNMTWxBSENQag==');
 
 // TO-DO: Agregar llave md5 a encriptar para passwords en BD
 $con = mysqli_connect($bd_host, $bd_usuario, $bd_password);

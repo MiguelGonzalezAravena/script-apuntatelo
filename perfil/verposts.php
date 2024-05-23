@@ -6,7 +6,7 @@ $id = isset($_GET['id']) ? no_injection($_GET['id']) : '';
   <br />
   <table width="900" align="center" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td colspan="2">  
+      <td colspan="2">
         <div class="esq1" style="float: left;"></div>
         <div class="franja" style="float: left; width: 884px;"><div style="padding-top: 2px;">Posts de <strong><?php echo $id; ?></strong>:</div></div>
         <div class="esq2" style="float: left;"></div>
@@ -23,7 +23,7 @@ $row = mysqli_fetch_array($rs);
 $id_autor = $row['id']; 
 $_pagi_sql = "
   SELECT id, id_autor, titulo, fecha, privado, categoria, puntos, c.imagen, c.link_categoria
-  FROM posts AS p  
+  FROM posts AS p
   INNER JOIN categorias AS c ON p.categoria = c.id_categoria
   WHERE id_autor = '$id_autor'
   AND elim = '0'

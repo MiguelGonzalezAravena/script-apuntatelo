@@ -17,18 +17,198 @@ $mensajero = isset($_GET['mensajero']) ? $_GET['mensajero'] : '';
 $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<title>Apuntatelo - Tu link-sharing de apuntes</title>
-<script language="javascript" type="text/javascript">
-  
+<div class="bordes">
+  <table width="900" align="center">
+    <tr>
+      <td>
+        <br />
+        <form name="reg" method="post" action="<?php echo $url; ?>/registro/registrar.php" onsubmit="return validate_data();">
+          <table width="900" align="right" border="0" cellspacing="2" cellpadding="2"> 
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Nombre y Apellido:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="nombre" size="28" maxlength="35" value="<?php echo $nombre; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* (M&iacute;n 3 caracteres) Usuario:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="nick" id="verificacion" size="20" maxlength="20" value="<?php echo $nick; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Contrase&ntilde;a:</b></font>
+              </td>
+              <td>
+                <input type="password" name="password1" size="20" maxlength="15" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Confirmar contrase&ntilde;a:</b></font> 
+              </td>
+              <td>
+                <input type="password" name="password2" size="20" maxlength="15" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Correo:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="mail1" size="25" maxlength="40" value="<?php echo $mail1; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Confirmar correo:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="mail2" size="25" maxlength="40" value="<?php echo $mail1; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>Avatar:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="avatar" size="36" maxlength="150" value="<?php echo $avatar; ?>">
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Pa&iacute;s:</b></font>
+              </td>
+              <td> 
+                <select id="pais" name="pais">
+                  <option value="-1">Seleccionar pa&iacute;s</option>
+                  <?php
+                    $countries = getCountries();
+                    foreach($countries as $key => $value) {
+                  ?>
+                    <option value="<?php echo $key; ?>"<?php echo ($pais == $key ? ' selected="selected"' : ''); ?>><?php echo $value; ?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Ciudad:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="ciudad" size="20" maxlength="50" value="<?php echo $ciudad; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Sexo:</b></font> 
+              </td>
+              <td>
+                <input type="radio" name="sexo" value="m"<?php echo ($sexo == 'm' ? ' checked="checked"' : ''); ?> /><font size="2">Masculino</font> 
+                <input type="radio" name="sexo" value="f"<?php echo ($sexo == 'f' ? ' checked="checked"' : ''); ?> /><font size="2">Femenino</font> 
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* Fecha de nacimiento:</b></font> 
+              </td>
+              <td>
+                <!-- Día -->
+                <select name="dia" size="1">
+                  <option value="-1">D&iacute;a</option>
+                  <?php for($i = 1; $i < 32; $i++) { ?>
+                    <option value="<?php echo $i; ?>"<?php echo ($dia == $i ? ' selected="selected"' : ''); ?>><?php echo substr(('0' . $i), -2); ?></option>
+                  <?php } ?>
+                </select>
+
+                <!-- Mes -->
+                <select name="mes" size="1">
+                  <option value="-1">Mes</option>
+                  <?php
+                    $months = getMonths();
+                    foreach ($months as $key => $value) {
+                  ?>
+                  <option value="<?php echo $key; ?>"<?php echo ($mes == $key ? ' selected="selected"' : ''); ?>><?php echo ucfirst($value); ?></option>
+                  <?php } ?>
+                </select>
+
+                <!-- Año -->
+                <select name="ano" size="1">
+                  <option value="-1">A&ntilde;o</option>
+                  <?php
+                    $actualYear = date("Y");
+                    for($i = $actualYear - 18; $i > 1899; $i--) {
+                  ?>
+                    <option value="<?php echo $i; ?>"<?php echo ($ano == $i ? ' selected="selected"' : ''); ?>><?php echo $i; ?></option>
+                  <?php } ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>Mensajero:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="mensajero" size="20" maxlength="42" value="<?php echo $mensajero; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>Mensaje personal:</b></font> 
+              </td>
+              <td>
+                <input type="text" name="mensaje" size="20" maxlength="105" value="<?php echo $mensaje; ?>" />
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="right">
+                <font size="2"><b>* C&oacute;digo de imagen:</b></font> 
+              </td>
+              <td>
+                <div class="g-recaptcha" data-sitekey="<?php echo $recaptcha_public; ?>"></div>
+              </td>
+            </tr>
+            <tr> 
+              <td></td>
+              <td>
+                <input type="checkbox" name="terminos" value="checkbox" checked="checked" />
+                <font size="1">Acepto haber le&iacute;do y estar de acuerdo con el <a href="<?php echo $url; ?>/protocolo/" target="_blank">protocolo</a> de <?php echo $name; ?>.
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" align="center">
+                <br />
+                <font size="1" color="red"><b>* Campos obligatorios</b></font>
+              </td>
+              <td>
+                <input type="submit" name="botonregistrar" class="submit_button" value="Registrar" />
+                <br />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+<?php
+require_once(dirname(dirname(__FILE__)) . '/footer.php');
+?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript">
   function validate_data() {
     var f = document.forms.reg;
     var fit = 'nombre, nick, password1, password2, mail1, mail2, ciudad, dia, mes, ano' . split(', ');
 
     for (var i = 0; i < fit.length; i++) {
-      if (f[fit[i]].value=='') {
+      if (f[fit[i]].value == '') {
         alert('El campo ' + fit[i] + ' es obligatorio.');
         f[fit[i]].focus();
         return false;
@@ -43,190 +223,6 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
     }
   }
 </script>
-</head>
-<body>
-<div class="bordes">
-<table width="900" align="center">
-<tr>
-<td>
-<br>
-<FORM name="reg" method="post" action="<?php echo $url; ?>/registro/registrar.php" onsubmit="return validate_data();">
-<table  width="900" align="right" border="0" cellspacing="2" cellpadding="2"> 
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Nombre y Apellido:</b></font> 
-    </td>
-     <td>
-      <INPUT TYPE="text" NAME="nombre" SIZE="28" MAXLENGTH="35" value="<?php echo $nombre; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* (M&iacute;n 3 caracteres) Usuario:</b></font> 
-    </td>
-    <td>
-      <INPUT TYPE="text" NAME="nick" id="verificacion" SIZE="20" MAXLENGTH="20" value="<?php echo $nick; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Contrase&ntilde;a:</b></font>
-    </td>
-    <td>
-      <INPUT TYPE="password" NAME="password1" SIZE="20" MAXLENGTH="15" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Confirmar contrase&ntilde;a:</b></font> 
-    </td>
-    <td>
-      <INPUT TYPE="password" NAME="password2" SIZE="20" MAXLENGTH="15" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Correo:</b></font> 
-    </td>
-     <td>
-      <INPUT TYPE="text" NAME="mail1" SIZE="25" MAXLENGTH="40" value="<?php echo $mail1; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Confirmar correo:</b></font> 
-    </td>
-     <td>
-      <INPUT TYPE="text" NAME="mail2" SIZE="25" MAXLENGTH="40" value="<?php echo $mail1; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>Avatar:</b></font> 
-    </td>
-     <td>
-      <INPUT TYPE="text" NAME="avatar" SIZE="36" MAXLENGTH="150" value="<?php echo $avatar; ?>">
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Pa&iacute;s:</b></font>
-    </td>
-     <td> 
-       <select id="pais" name="pais">
-        <option value="-1">Seleccionar Pa&iacute;s</option>
-        <option value="ar" <?php if ($pais == "ar") { echo 'selected="selected"'; } ?>>Argentina</option>
-        <option value="bo" <?php if ($pais == "bo") { echo 'selected="selected"'; } ?>>Bolivia</option>
-        <option value="br" <?php if ($pais == "br") { echo 'selected="selected"'; } ?>>Brasil</option>
-        <option value="cl" <?php if ($pais == "cl") { echo 'selected="selected"'; } ?>>Chile</option>
-
-        <option value="co" <?php if ($pais == "co") { echo 'selected="selected"'; } ?>>Colombia</option>
-        <option value="cr" <?php if ($pais == "cr") { echo 'selected="selected"'; } ?>>Costa Rica</option>
-        <option value="cu" <?php if ($pais == "cu") { echo 'selected="selected"'; } ?>>Cuba</option>
-        <option value="ec" <?php if ($pais == "ec") { echo 'selected="selected"'; } ?>>Ecuador</option>
-        <option value="es" <?php if ($pais == "es") { echo 'selected="selected"'; } ?>>Espa&ntilde;a</option>
-        <option value="gt" <?php if ($pais == "gt") { echo 'selected="selected"'; } ?>>Guatemala</option>
-
-        <option value="it" <?php if ($pais == "it") { echo 'selected="selected"'; } ?>>Italia</option>
-        <option value="mx" <?php if ($pais == "mx") { echo 'selected="selected"'; } ?>>Mexico</option>
-        <option value="py" <?php if ($pais == "py") { echo 'selected="selected"'; } ?>>Paraguay</option>
-        <option value="pe" <?php if ($pais == "pe") { echo 'selected="selected"'; } ?>>Peru</option>
-        <option value="pt" <?php if ($pais == "pt") { echo 'selected="selected"'; } ?>>Portugal</option>
-        <option value="pr" <?php if ($pais == "pr") { echo 'selected="selected"'; } ?>>Puerto Rico</option>
-
-        <option value="uy" <?php if ($pais == "uy") { echo 'selected="selected"'; } ?>>Uruguay</option>
-        <option value="ve" <?php if ($pais == "ve") { echo 'selected="selected"'; } ?>>Venezuela</option>
-        <option value="ot" <?php if ($pais == "ot") { echo 'selected="selected"'; } ?>>Otro</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Ciudad:</b></font> 
-    </td>
-    <td>
-      <INPUT TYPE="text" NAME="ciudad" SIZE="20" MAXLENGTH="50" value="<?php echo $ciudad; ?>">
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Sexo:</b></font> 
-    </td>
-     <td>
-      <input type="radio" name="sexo" value="m" <?php echo ($sexo == 'm' ? 'checked="checked"' : ''); ?>><font size="2"><b>Masculino</b></font> 
-      <input type="radio" name="sexo" value="f" <?php echo ($sexo == 'f' ? 'checked="checked"' : ''); ?>><font size="2"><b>Femenino</b></font> 
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* Fecha de Nacimiento:</b></font> 
-     </td>
-     <td>
-      <INPUT TYPE="text" NAME="dia" SIZE="1" MAXLENGTH="2" value="<?php echo $dia; ?>">
-      <INPUT TYPE="text" NAME="mes" SIZE="1" MAXLENGTH="2" value="<?php echo $mes; ?>">
-      <INPUT TYPE="text" NAME="ano" SIZE="4" MAXLENGTH="4" value="<?php echo $ano; ?>">
-    </td>
-  </tr>       
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>Mensajero:</b></font> 
-    </td>
-     <td>
-      <INPUT TYPE="text" NAME="mensajero" SIZE="20" MAXLENGTH="42" value="<?php echo $mensajero; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>Mensaje personal:</b></font> 
-     </td>
-     <td>
-      <INPUT TYPE="text" NAME="mensaje" SIZE="20" MAXLENGTH="105" value="<?php echo $mensaje; ?>" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="right">
-      <font size="2"><b>* C&oacute;digo de imagen:</b></font> 
-    </td>
-     <td>
-      <div class="g-recaptcha" data-sitekey="<?php echo $recaptcha_public; ?>"></div>
-    </td>
-  </tr>
-  <tr> 
-    <td></td>
-    <td>
-       <input type="checkbox" name="terminos" CHECKED value="checkbox"><font size="2">Acepto haber le&iacute;do y estar de acuerdo con los t&eacute;rminos de <?php echo $name; ?>.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <br />
-      <font size="2"><b>* Campos obligatorios</b></font>
-    </td>
-    <td>
-      <INPUT TYPE="submit" NAME="botonregistrar" class="submit_button" VALUE="Registrar" />
-      <br />
-    </td>
-  </tr>  
-</font>
-</table>
-</FORM>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<?php
-require_once(dirname(dirname(__FILE__)) . '/footer.php');
-?>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</body>
-</html>
 <?php
 switch ($error) {
   case "1":
@@ -245,4 +241,5 @@ switch ($error) {
     echo "<script>alert('Código incorrecto');</script>";
     break;
 }
+
 ?>

@@ -5,6 +5,7 @@ require_once(dirname(__FILE__) . '/includes/funciones.php');
 session_start();
 
 // Borrar cookie
+// TO-DO: Cambiar id_extreme a id_secret
 setcookie('id_extreme', 'x', time() - 3600, '/');
 
 // Borrar sesión

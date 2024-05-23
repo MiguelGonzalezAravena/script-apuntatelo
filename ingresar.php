@@ -49,6 +49,7 @@ if ($nick != '' && $password != '') {
 
           // Crear cookie y actualizar le nonce (md5 aleatorio para hacerlo más seguro.)
           $id_secret2 = $data['id'] . '%' . $id_secret . '%' . $ip;
+          // TO-DO: Cambiar id_extreme a id_secret
           setcookie('id_extreme', $id_secret2, time()+7776000,'/');
 
           $sql = "

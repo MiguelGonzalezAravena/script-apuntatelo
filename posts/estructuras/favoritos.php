@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])) {
       <input type="hidden" name="post" value="<?php echo $id; ?>" />
       <div style="font-size: 11px; text-align: center;">
         <img src="<?php echo $images; ?>/iconos/favoritos_a.png" />
-        <a href="#" onclick="javascript: document.favoritos.submit();" style="color:#000000;">Agregar a favoritos</a>
+        <a href="#" onclick="javascript:document.favoritos.submit();" style="color:#000000;">Agregar a favoritos</a>
       </div>
     </form>
 <?php

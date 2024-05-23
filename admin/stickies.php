@@ -1,9 +1,8 @@
 <?php
 require_once(dirname(dirname(__FILE__)) . '/header.php');
-require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
 
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-$rango = rango_color($user);
+$rango = rango_propio($user);
 ?>
 <div class="bordes">
   <br />

@@ -1,6 +1,6 @@
 <?php
 $id_user = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$user = $_SESSION['user'];
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
 $rango = rango_propio($user);
 ?>
 <table>
