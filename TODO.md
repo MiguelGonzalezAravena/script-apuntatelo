@@ -5,9 +5,13 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 ### TO-DO
 
 
+- [ ] Eliminar el 0 que aparece arriba de la cabecera.
+- [ ] Mejorar SEO en algunas URLs con parámetros.
+
 ### In Progress
 
 - [ ] Aplicar redireccionamiento con archivo `.htaccess`.
+- [ ] Generar README.md
 
 ### Done ✓
 
