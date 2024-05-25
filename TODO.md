@@ -4,14 +4,18 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 
 ### TO-DO
 
-
-- [ ] Eliminar el 0 que aparece arriba de la cabecera.
+- [ ] Cambiar campo `id_extreme` a `id_secret` en base de datos.
+- [ ] Actualizar archivo `apuntatelo_nuevo.sql`
+- [ ] Mejorar diseño de enlaces a URLs con subrayado en azul a negro (dependiendo cada caso).
+- [ ] Mejorar diseño de botones en vista de Mensaje privado (recibidos).
+- [ ] Mejorar diseño de botones en vista de Mensaje privado (enviados).
 - [ ] Mejorar SEO en algunas URLs con parámetros.
+- [ ] Actualizar directorio `/chat/` para que sea compatible con PHP 8.
+- [ ] Agregar archivo `/chat/ingresar.php` con diseño antiguo.
 
 ### In Progress
 
 - [ ] Aplicar redireccionamiento con archivo `.htaccess`.
-- [ ] Generar README.md
 
 ### Done ✓
 
@@ -42,3 +46,5 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 - [x] Eliminar directorio `/recaptcha/`.
 - [x] Agregar archivo `protocolo.php`.
 - [x] Agregar archivo `faq.php`.
+- [x] Eliminar el 0 que aparece arriba de la cabecera.
+- [x] Generar README.md
