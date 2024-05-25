@@ -5,7 +5,9 @@ require_once(dirname(__FILE__) . '/includes/funciones.php');
 require_once(dirname(__FILE__) . '/login.php');
 
 if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != 'index.php') {
+  echo '<div style="display: none;">';
   require_once(dirname(__FILE__) . '/online.php');
+  echo '</div>';
 }
 
 $iexp = $_SERVER['HTTP_USER_AGENT'];
