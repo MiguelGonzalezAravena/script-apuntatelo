@@ -3,8 +3,7 @@ require_once(dirname(dirname(__FILE__)) . '/includes/configuracion.php');
 require_once(dirname(dirname(__FILE__)) . '/includes/funciones.php');
 
 $id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
-// TO-DO: Cambiar id_extreme a id_secret
-$id_secret = isset($_POST['id_extreme']) ? no_injection($_POST['id_extreme']) : '';
+$id_secret = isset($_POST['id_secret']) ? no_injection($_POST['id_secret']) : '';
 $action = isset($_GET['action']) ? no_injection($_GET['action']) : '';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -36,7 +35,7 @@ if ($password1 != '' && $password1 == $password2 && strlen($password1) > 5) {
     SELECT nick
     FROM usuarios
     WHERE id = $id
-    AND id_extreme = '$id_secret'";
+    AND id_secret = '$id_secret'";
 
   $request = mysqli_query($con, $sql);
 
@@ -45,7 +44,7 @@ if ($password1 != '' && $password1 == $password2 && strlen($password1) > 5) {
 
     $sql = "
       UPDATE usuarios
-      SET id_extreme = '$id_secret', password = '$password'
+      SET id_secret = '$id_secret', password = '$password'
       WHERE id = $id'";
 
     mysqli_query($con, $sql);

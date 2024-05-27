@@ -9,12 +9,11 @@ $id_secret = $id2[1];
 ?>
 <div class="bordes">
 <?php
-// TO-DO: Cambiar id_extreme a id_secret
 $sql = "
   SELECT nick
   FROM usuarios
   WHERE id = $id
-  AND id_extreme = '$id_secret'";
+  AND id_secret = '$id_secret'";
 
 $request = mysqli_query($con, $sql);
 
@@ -24,7 +23,7 @@ if (mysqli_num_rows($request) > 0) {
   <br /><br /><br /><br /><br />
   <form name="password" method="post" action="<?php echo $url; ?>/datos/re-cambiar.php">
     <input type="hidden" name="id" value="<?php echo $id; ?>" />
-    <input type="hidden" name="id_extreme" value="<?php echo $id_secret; ?>" />
+    <input type="hidden" name="id_secret" value="<?php echo $id_secret; ?>" />
     <table align="center" cellspacing="0" cellpadding="0">
 <?php
   if ($action == 'error') {

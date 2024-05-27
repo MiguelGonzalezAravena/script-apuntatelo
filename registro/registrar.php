@@ -23,11 +23,9 @@ $mes = isset($_REQUEST['mes']) ? (int) $_REQUEST['mes'] : 1;
 $ano = isset($_REQUEST['ano']) ? (int) $_REQUEST['ano'] : 1970;
 $mensajero = isset($_REQUEST['mensajero']) ? no_injection($_REQUEST['mensajero']) : '';
 $mensaje = isset($_REQUEST['mensaje']) ? no_injection($_REQUEST['mensaje']) : '';
-// TO-DO: Cambiar id_extreme a id_secret
 $id_secret = md5(uniqid(rand(), true));
 $register_url = $url . '/registro/?nombre=' . $nombre . '&nick=' . $nick . '&mail1=' . $mail1 . '&mail2=' . $mail2 . '&avatar=' . $avatar . '&pais=' . $pais . '&ciudad=' . $ciudad . '&sexo=' . $sexo . '&dia= ' . $dia . '&mes=' . $mes . '&ano=' . $ano . '&mensajero=' . $mensajero . '&mensaje=' . $mensaje;
 
-// TO-DO: Cambiar id_extreme a id_secret
 if ($challenge) {
   $sql = "
     SELECT id
@@ -52,9 +50,8 @@ if ($challenge) {
       if (strlen(trim($nick)) < 3) {
         header('Location: ' . $register_url . '&error=3');
       } else {
-        // TO-DO: Cambiar id_extreme a id_secret
         $sql = "
-          INSERT INTO usuarios (id_extreme, activacion, ban, rango, nombre, nick, password, puntos, puntosdar, mail, avatar, pais,  ciudad, sexo, dia, mes, ano, mensajero, mensaje, fecha)
+          INSERT INTO usuarios (id_secret, activacion, ban, rango, nombre, nick, password, puntos, puntosdar, mail, avatar, pais,  ciudad, sexo, dia, mes, ano, mensajero, mensaje, fecha)
           VALUES ('$id_secret', $activacion, $ban, '$rango', '$nombre', '$nick', '$password1', $puntos, $puntosdar, '$mail1', '$avatar', '$pais', '$ciudad', '$sexo', '$dia', '$mes', $ano, '$mensajero', '$mensaje', NOW())";
 
         mysqli_query($con, $sql);

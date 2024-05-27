@@ -8,12 +8,11 @@ $cad = explode('?', $cadena);
 $id = $cad[0];
 $id_secret = $cad[1];
 
-// TO-DO: Cambiar id_extreme a id_secret
 $sql = "
   UPDATE usuarios
   SET activacion = 1
   WHERE id = '" . $id . "'
-  AND id_extreme = '" . $id_secret . "'";
+  AND id_secret = '" . $id_secret . "'";
 
 $request = mysqli_query($con, $sql);
 

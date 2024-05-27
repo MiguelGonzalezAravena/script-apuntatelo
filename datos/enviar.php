@@ -8,9 +8,8 @@ $challenge = recaptcha_validation($recaptcha_response);
 if ($challenge) {
   $mail = isset($_POST['mail']) ? no_injection($_POST['mail']) : '';
 
-  // TO-DO: Cambiar id_extreme a id_secret
   $sql = "
-    SELECT id, id_extreme
+    SELECT id, id_secret
     FROM usuarios
     WHERE mail = '$mail'";
 
@@ -19,7 +18,7 @@ if ($challenge) {
   if (mysqli_num_rows($request) > 0) {
     while ($row = mysqli_fetch_array($request)) {
       $id = $row['id'];
-      $id_secret = $row['id_extreme'];
+      $id_secret = $row['id_secret'];
       $cadena = $id . '?' . $id_secret;
       $url_repassword = $url . '/datos/re-password.php?id=' . $cadena;
       $asunto = "[$name] Recuperaci&oacute;n de contrase&ntilde;a";

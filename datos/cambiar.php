@@ -32,10 +32,9 @@ if ($user != null) {
 
     if ($passwordant == $passwordbase) {
       $id_secret = md5(uniqid(rand(), true));
-      // TO-DO: Cambiar id_extreme a id_secret
       $sql = "
         UPDATE usuarios
-        SET id_extreme = '$id_secret', password = '$password'
+        SET id_secret = '$id_secret', password = '$password'
         WHERE nick = '$user'";
 
       mysqli_query($con, $sql);
