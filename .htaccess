@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteBase /apuntatelo/
 RewriteRule ^faq/$ faq.php
+RewriteRule ^perfil/(.*)/posts$ perfil/verposts.php?id=$1
 RewriteRule ^perfil/(.*)/$ perfil/index.php?id=$1
 RewriteRule ^posts/(.*)/(.*)/(.*)\.html$ posts/mostrar.php?id=$1
 RewriteRule ^posts/(.*)/$ posts/mostrar.php?id=$1

@@ -855,3 +855,12 @@ fon.comienzo {
 .fondo_cuadro {
   background-color: #ededed;
 }
+
+a.user_profile {
+  font-weight: bold !important;
+  color: black;
+}
+
+a.post_url {
+  color: black !important;
+}

@@ -23,13 +23,15 @@ $sql = "
 $request = mysqli_query($con, $sql);
 
 while ($row = mysqli_fetch_array($request)) {
+  $id = $row['id'];
+  $title = $row['titulo'];
   $privado = $row['privado'];
   $img = $row['imagen'];
   $cat = $row['link_categoria'];
-  $cant = strlen($row['titulo']);
-  $titulo2 = $cant > 41 ? substr(stripslashes($row['titulo']), 0, 38) : $row['titulo'];
+  $cant = strlen($title);
+  $titulo2 = $cant > 41 ? substr(stripslashes($title), 0, 38) : $title;
   $tit = $cant > 41 ? 1 : 0;
-  $url_post = $url . '/posts/' . $row['id'] . '/' . $cat . '/' . correcciones(corregir($row['titulo'])) . '.html';
+  $url_post = generatePostLink($id, $cat, $title);
   $url_image = $images . '/iconos/' . $img;
 
   echo '
@@ -37,8 +39,8 @@ while ($row = mysqli_fetch_array($request)) {
       <td>
         <img src="' . $url_image . '" border="0" />
         ' . ($privado == 1 ? '<img src="' . $images . '/iconos/candado.gif" border="0" />' : '') . '
-        <a href="' . $url_post . '" title="' . $row['titulo'] . '">
-          <font size="2" color="black">' . correcciones($titulo2) . ($tit == 1 ? '...' : '') . '</font>
+        <a href="' . $url_post . '" title="' . $title . '" class="post_url">
+          <font size="2">' . correcciones($titulo2) . ($tit == 1 ? '...' : '') . '</font>
         </a>
       </td>
     </tr>';

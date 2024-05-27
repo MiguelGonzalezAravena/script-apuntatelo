@@ -5,8 +5,10 @@ $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $titulo = isset($_GET['t']) ? no_injection($_GET['t']) : '';
 $categoria = isset($_GET['c']) ? (int) $_GET['c'] : 0;
 
+$url_post = generatePostLink($id, $categoria, $titulo);
 // TO-DO: Asignar función con los distintos identificadores en BD
-// getCategoriaURL($id)
+// getCategoriaURL($categoria)
+// $categoria = ID CATEGORIA
 switch ($categoria) {
   case "0":
     $cat = "Apuntes";
@@ -51,7 +53,7 @@ switch ($categoria) {
           <br /><br />
           <a href="<?php echo $url; ?>"><font color="blue">Ir a Inicio</font></a>
           -
-          <a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $cat; ?>/<?php echo corregir($titulo) . ".html"; ?>"><font color="blue">Ir al Post</font></a>
+          <a href="<?php echo $url_post; ?>"><font color="blue">Ir al post</font></a>
         </div> 
         <br />
       </td>

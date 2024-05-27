@@ -15,7 +15,7 @@ $margin_top = strstr($iexp, 'MSIE') ? '0px;' : '1px;';
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
 $rango = rango_propio($user);
 ?> 
-<!--APUNTATELO v 3.0 - TODOS LOS DERECHOS RESERVADOS-->
+<!-- Apuntátelo v3.0 - Todos los derechos reservados -->
 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
 <html>
   <head>
@@ -50,9 +50,7 @@ if (isset($_SESSION['user'])) {
 ?>
             <div class="user">
               <div class="size11">
-                <a href="<?php echo $url; ?>/perfil/<?php echo $_SESSION['user']; ?>/" title="Perfil">
-                  <font color="black"><?php echo $_SESSION['user']; ?></font>
-                </a>
+                <a href="<?php echo $url; ?>/perfil/<?php echo $_SESSION['user']; ?>/" title="Perfil" class="user_profile"><?php echo $_SESSION['user']; ?></a>
                 [
                 <a href="<?php echo $url; ?>/salir.php"><font color="black">x</font></a>
                 ]

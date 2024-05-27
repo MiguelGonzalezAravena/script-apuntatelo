@@ -18,8 +18,8 @@ $sql = "
   FROM usuarios
   WHERE nick = '$id'";
 
-$rs = mysqli_query($con, $sql);
-$row = mysqli_fetch_array($rs);
+$request = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($request);
 $id_autor = $row['id']; 
 $_pagi_sql = "
   SELECT id, id_autor, titulo, fecha, privado, categoria, puntos, c.imagen, c.link_categoria
@@ -38,28 +38,26 @@ $sql = "
   AND elim = '0'
   ORDER BY id DESC";
 
-$rs = mysqli_query($con, $sql);
+$request = mysqli_query($con, $sql);
 require_once(dirname(dirname(__FILE__)) . '/includes/paginator.inc.php');
 
-if (mysqli_num_rows($rs) > 0) {
+if (mysqli_num_rows($request) > 0) {
   while ($row = mysqli_fetch_array($_pagi_result)) {
+    $id = $row['id'];
+    $category = $row['link_categoria'];
+    $title = $row['titulo'];
     $privado = $row['privado'];
-    $cant = strlen($row['titulo']);
-    
-    if ($cant > 30) {
-      $titulo2 = substr(stripslashes($row['titulo']), 0, 30);
-      $tit = 1;
-    } else {
-      $titulo2 = $row['titulo'];
-      $tit = 0;
-    }
+    $cant = strlen($title);
+    $titulo2 = $cant > 30 ? substr(stripslashes($title), 0, 30) : $title;
+    $tit = $cant > 30 ? 1 : 0;
+    $url_post = generatePostLink($id, $category, $title);
 ?>
     <tr>
       <td width="440" class="fondo_cuadro" style="padding: 2px;">
         <img src="<?php echo $images; ?>/iconos/<?php echo $row['imagen']; ?>" border="0" />
         <?php echo ($privado == 1 ? '<img src="' . $images . '/iconos/candado.gif" border="0" />' : ''); ?>
-        <a href="<?php echo $url; ?>/posts/<?php echo $row['id']; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . '.html'; ?>" title="<?php echo $row['titulo']; ?>">
-          <font size="2" color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
+        <a href="<?php echo $url_post; ?>" title="<?php echo $title; ?>" class="post_url">
+          <font size="2"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
         </a>
       </td>
       <td class="fondo_cuadro" align="right" style="padding: 2px;">
@@ -90,7 +88,7 @@ if (mysqli_num_rows($rs) > 0) {
 <?php
   require_once(dirname(dirname(__FILE__)) . '/footer.php');
 } else {
-  redirect($url);
+  // redirect($url);
 }
 
 ?>

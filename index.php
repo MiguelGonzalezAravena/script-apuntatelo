@@ -57,18 +57,14 @@ while ($row = mysqli_fetch_array($rs)) {
   $request = mysqli_query($con, "SELECT p.*, c.* FROM posts AS p INNER JOIN categorias AS c ON p.categoria = c.id_categoria WHERE p.elim = '0' ORDER BY id DESC");
   while ($row = mysqli_fetch_array($request)) {
     $privado = $row['privado'];
-    $cant = strlen($row['titulo']);
-
-    if ($cant > 41) {
-      $titulo2 = substr(stripslashes($row['titulo']), 0, 38);
-      $tit = 1;
-    } else {
-      $titulo2 = $row['titulo'];
-      $tit = 0;
-    }
-
+    $title = $row['titulo'];
+    $cant = strlen($title);
+    $titulo2 = $cant > 41 ? substr(stripslashes($title), 0, 38) : $title;
+    $tit = $cant > 41 ? 1 : 0;
     $img = $row['imagen'];
     $cat = $row['link_categoria'];
+    $id = $row['id'];
+    $link = generatePostLink($id, $cat, $title);
 ?>
               <tr>
                 <td>
@@ -83,7 +79,7 @@ while ($row = mysqli_fetch_array($rs)) {
     }
 ?>
                   &nbsp;
-                  <a href="<?php echo $url; ?>/posts/<?php echo $row['id']; ?>/<?php echo $cat; ?>/<?php echo correcciones(corregir($row['titulo'])) . ".html"; ?>" title="<?php echo $row['titulo']; ?>">
+                  <a href="<?php echo $link; ?>" title="<?php echo $title; ?>">
                     <font size="2" color="black"><?php echo correcciones($titulo2) . ($tit == 1 ? '...' : ''); ?></font>
                   </a>
                 </td>
@@ -249,20 +245,27 @@ $sql = "
   LIMIT 0, 15";
 
 $request = mysqli_query($con, $sql);
+$i = 1;
+
 while ($row = mysqli_fetch_array($request)) {
-  $titu = $row['titulo'];
-  $puntos = $row['puntos'];
   $id = $row['id'];
-  $contcom = $contcom+1;
-  $cant = strlen($titu);
-  $titulo2 = $cant > 41 ? substr(stripslashes($titu), 0, 38) : $titu;
+  $category = $row['link_categoria'];
+  $title = $row['titulo'];
+  $puntos = $row['puntos'];
+  $contcom = $contcom + 1;
+  $cant = strlen($title);
+  $titulo2 = $cant > 41 ? substr(stripslashes($title), 0, 38) : $title;
   $tit = $cant > 41 ? 1 : 0;
+  $url_post = generatePostLink($id, $category, $title);
 ?>
                     <font size="1">
-                      <a href="<?php echo $url; ?>/posts/<?php echo $id; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . '.html'; ?>"><font color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font></a><?php echo ' (' . $puntos . ')'; ?>
+                      <strong><?php echo $i; ?>.</strong>
+                      <a href="<?php echo $url_post; ?>" class="post_url"><font color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font></a>
+                      (<?php echo $puntos; ?>)
                     </font>
                     <br />
 <?php
+  $i++;
 }
 ?>
                   </td>
@@ -300,11 +303,7 @@ while ($row = mysqli_fetch_array($request)) {
   $puntos = $row['puntos'];
 ?>
                     <font size="1">
-                      <a href="<?php echo $url; ?>/perfil/<?php echo $nick; ?>/">
-                        <font color="black">
-                          <b><?php echo $nick; ?></b>
-                        </font>
-                      </a>
+                      <a href="<?php echo $url; ?>/perfil/<?php echo $nick; ?>/" class="user_profile"><?php echo $nick; ?></a>
                       (<?php echo $puntos; ?>)
                     </font>
                     <br />

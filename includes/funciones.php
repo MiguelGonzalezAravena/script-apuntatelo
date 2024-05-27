@@ -338,4 +338,14 @@ function getCountries() {
   return $countries;
 }
 
+function getFriendlyURL($text) {
+  return strtolower(preg_replace("/[^a-zA-Z0-9-]+/i", '', str_replace(' ', '-', iconv('UTF-8', 'ASCII//TRANSLIT', html_entity_decode($text)))));
+}
+
+function generatePostLink($id, $category, $title) {
+  global $url;
+
+  return $url . '/posts/' . $id . '/' . getFriendlyURL($category) . '/' . getFriendlyURL($title) . '.html';
+}
+
 ?>

@@ -13,31 +13,24 @@
     ORDER BY c.id DESC
     LIMIT 0, 15";
 
-  $rs = mysqli_query($con, $sql);
+  $request = mysqli_query($con, $sql);
 
-  if (mysqli_num_rows($rs) > 0) {
-    while ($row = mysqli_fetch_array($rs)) {
+  if (mysqli_num_rows($request) > 0) {
+    while ($row = mysqli_fetch_array($request)) {
+      $id_comment = $row['id'];
       $id_post = $row['id_post'];
-      $titu = $row['titulo'];
+      $category = $row['link_categoria'];
+      $title = $row['titulo'];
+      $cant = strlen($title);
+      $titulo2 = $cant > 24 ? substr(stripslashes($title), 0, 24) : $title;
+      $tit = $cant > 24 ? 1 : 0;
+      $url_comment = generatePostLink($id_post, $category, $title) . '#comentario_' . $id_comment;
 ?>
           <font size="1">
-            <b><?php echo "&nbsp;" . $row['autor']; ?></b>
-<?php
-      $cant = strlen($titu);
-
-      if ($cant > 24) {
-        $titulo2 = substr(stripslashes($titu), 0, 24);
-        $tit = 1;
-      } else {
-        $titulo2 = $titu;
-        $tit = 0;
-      }
-?>
-              <a href="<?php echo $url; ?>/posts/<?php echo $id_post; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($titu) . ".html#comentario_" . $row['id']; ?>">
-                <font color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
-              </a>
-            </font>
-            <br />
+            <a href="<?php echo $url; ?>/perfil/<?php echo $row['autor']; ?>/" class="user_profile"><?php echo $row['autor']; ?></a>
+            <a href="<?php echo $url_comment; ?>" class="post_url"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></a>
+          </font>
+          <br />
 <?php
     }
   }

@@ -125,12 +125,15 @@ if ($id_user != '') {
       $cant = strlen($titulo);
       $titulo2 = $cant > 30 ? substr(stripslashes($titulo), 0, 30) : $titulo;
       $tit = $cant > 30 ? 1 : 0;
+      $url_post = generatePostLink($id_post, $link_categoria, $titulo);
 ?>
         <tr class="fondo_cuadro" style="font-size: 11px;">
           <td width="300">
             <img src="<?php echo $images; ?>/iconos/<?php echo $imagen; ?>" border="0" width="15" />
             <?php echo ($privado == 1 ? '<img src="' . $images . '/iconos/candado.gif" border="0" width="15" />' : ''); ?>
-            <a href="<?php echo $url; ?>/posts/<?php echo $id_post; ?>/<?php echo $link_categoria; ?>/<?php echo corregir($titulo) . ".html"; ?>" title="<?php echo $titulo; ?>"><font size="2" color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font></a>
+            <a href="<?php echo $url_post; ?>" title="<?php echo $titulo; ?>" class="post_url">
+              <font size="2"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
+            </a>
           </td>
           <td align="left" width="280">
             Posteado por

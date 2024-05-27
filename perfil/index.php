@@ -5,6 +5,8 @@ require_once(dirname(dirname(__FILE__)) . '/header.php');
 <div class="bordes">
 <?php
 $id = isset($_GET['id']) ? no_injection($_GET['id']) : '';
+$nick = $id;
+
 $sql = "
   SELECT id, nick, rango, puntos, avatar, pais, ciudad, sexo, mensajero, mensaje, fecha, numposts, numcomentarios
   FROM usuarios
@@ -139,17 +141,22 @@ if (mysqli_num_rows($rs) > 0) {
     $request = mysqli_query($con, $sql);
     
     while ($row = mysqli_fetch_array($request)) {
+      $id = $row['id'];
+      $category = $row['link_categoria'];
+      $title = $row['titulo'];
       $privado = $row['privado'];
-      $cant = strlen($row['titulo']);
-      $titulo2 = $cant > 38 ? substr(stripslashes($row['titulo']), 0, 38) : $row['titulo'];
+      $cant = strlen($title);
+      $titulo2 = $cant > 38 ? substr(stripslashes($title), 0, 38) : $title;
       $tit = $cant > 38 ? 1 : 0;
+      $url_post = generatePostLink($id, $category, $title);
+
 ?>
       <tr>
         <td width="420" class="fondo_cuadro" style="padding: 2px;">
           <img src="<?php echo $images; ?>/iconos/<?php echo $row['imagen']; ?>" border="0" />
           <?php echo ($privado == 1 ? '<img src="' . $images . '/iconos/candado.gif" border="0" />' : ''); ?>
-          <a href="<?php echo $url; ?>/posts/<?php echo $row['id']; ?>/<?php echo $row['link_categoria']; ?>/<?php echo corregir($row['titulo']) . '.html'; ?>" title="<?php echo $row['titulo']; ?>">
-            <font size="2" color="black"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
+          <a href="<?php echo $url_post; ?>" title="<?php echo $title; ?>" class="post_url">
+            <font size="2"><?php echo $titulo2 . ($tit == 1 ? '...' : ''); ?></font>
           </a>
         </td>
         <td class="fondo_cuadro" align="right" style="padding: 2px;">
@@ -167,7 +174,7 @@ if (mysqli_num_rows($rs) > 0) {
 ?>
       <tr>
         <td style="padding-top: 10px">
-          <input type="button" class="submit_button" value="Ver todos" onclick="location.href='<?php echo $url; ?>/perfil/verposts.php?id=<?php echo $id; ?>'" />
+          <input type="button" class="submit_button" value="Ver todos" onclick="location.href='<?php echo $url; ?>/perfil/<?php echo $nick; ?>/posts'" />
         </td>
       </tr>
     </table>
