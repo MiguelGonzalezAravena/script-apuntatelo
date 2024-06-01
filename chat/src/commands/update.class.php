@@ -56,24 +56,21 @@ class pfcCommand_update extends pfcCommand
       }
 
       // get new message posted on each channels
-      $cmd =& pfcCommand::Factory("getnewmsg");
-      foreach( $u->channels as $id => $chan )
-      {
-        $cmdp["recipient"]   = $chan["recipient"];
-        $cmdp["recipientid"] = $id;  
+      $cmd = &pfcCommand::Factory('getnewmsg');
+      foreach ($u->channels as $id => $chan) {
+        $cmdp['recipient']   = $chan['recipient'];
+        $cmdp['recipientid'] = $id;  
         $cmd->run($xml_reponse, $cmdp);
       }
-      foreach( $u->privmsg as $id => $pv )
-      {
-        $cmdp["recipient"]   = $pv["recipient"];
-        $cmdp["recipientid"] = $id;
+
+      foreach ($u->privmsg as $id => $pv) {
+        $cmdp['recipient']   = $pv['recipient'];
+        $cmdp['recipientid'] = $id;
         $cmd->run($xml_reponse, $cmdp);
       }
 
       $xml_reponse->script("pfc.handleResponse('update', 'ok', '');");
-    }
-    else
-    {
+    } else {
       $xml_reponse->script("pfc.handleResponse('update', 'ko', '');");
     }
 

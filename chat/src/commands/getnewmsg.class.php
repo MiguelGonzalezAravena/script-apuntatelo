@@ -20,7 +20,7 @@
  * Boston, MA  02110-1301  USA
  */
 
-require_once(dirname(__FILE__)."/../pfccommand.class.php");
+require_once(dirname(__FILE__) . '/../pfccommand.class.php');
 
 class pfcCommand_getnewmsg extends pfcCommand
 {

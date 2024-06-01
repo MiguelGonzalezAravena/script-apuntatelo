@@ -326,12 +326,11 @@ class csstidy_optimise
         }
         
         // #aabbcc -> #abc
-        if(strlen($color) == 7)
-        {
+        if (strlen($color) == 7) {
             $color_temp = strtolower($color);
-            if($color_temp{0} == '#' && $color_temp{1} == $color_temp{2} && $color_temp{3} == $color_temp{4} && $color_temp{5} == $color_temp{6})
-            {
-                $color = '#'.$color{1}.$color{3}.$color{5};
+
+            if ($color_temp[0] == '#' && $color_temp[1] == $color_temp[2] && $color_temp[3] == $color_temp[4] && $color_temp[5] == $color_temp[6]) {
+                $color = '#' . $color[1] . $color[3] . $color[5];
             }
         }
         
@@ -383,8 +382,7 @@ class csstidy_optimise
         for ($l = 0; $l < count($temp); $l++)
         {
             // continue if no numeric value
-            if (!(strlen($temp[$l]) > 0 && ( is_numeric($temp[$l]{0}) || $temp[$l]{0} == '+' || $temp[$l]{0} == '-' ) ))
-            {
+            if (!(strlen($temp[$l]) > 0 && ( is_numeric($temp[$l][0]) || $temp[$l][0] == '+' || $temp[$l][0] == '-' ) )) {
                 continue;
             }
 
@@ -540,50 +538,40 @@ class csstidy_optimise
      * @return array
      * @version 1.0
      */
-    function explode_ws($sep,$string)
-    {
+    function explode_ws($sep, $string) {
         $status = 'st';
         $to = '';
         
         $output = array();
         $num = 0;
-        for($i = 0, $len = strlen($string);$i < $len; $i++)
-        {
-            switch($status)
-            {
+
+        for($i = 0, $len = strlen($string); $i < $len; $i++) {
+            switch ($status) {
                 case 'st':
-                if($string{$i} == $sep && !csstidy::escaped($string,$i))
-                {
+                if ($string[$i] == $sep && !csstidy::escaped($string, $i)) {
                     ++$num;
-                }
-                elseif($string{$i} == '"' || $string{$i} == '\'' || $string{$i} == '(' && !csstidy::escaped($string,$i))
-                {
+                } else if ($string[$i] == '"' || $string[$i] == '\'' || $string[$i] == '(' && !csstidy::escaped($string, $i)) {
                     $status = 'str';
-                    $to = ($string{$i} == '(') ? ')' : $string{$i};
-                    (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
+                    $to = ($string[$i] == '(') ? ')' : $string[$i];
+                    (isset($output[$num])) ? $output[$num] .= $string[$i] : $output[$num] = $string[$i];
+                } else {
+                    (isset($output[$num])) ? $output[$num] .= $string[$i] : $output[$num] = $string[$i];
                 }
-                else
-                {
-                    (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
-                }
+
                 break;
                 
                 case 'str':
-                if($string{$i} == $to && !csstidy::escaped($string,$i))
-                {
+                if ($string[$i] == $to && !csstidy::escaped($string, $i)) {
                     $status = 'st';
                 }
-                (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
+                (isset($output[$num])) ? $output[$num] .= $string[$i] : $output[$num] = $string[$i];
                 break;
             }
         }
         
-        if(isset($output[0]))
-        {
+        if(isset($output[0])) {
             return $output;
-        }
-        else
-        {
+        } else {
             return array($output);
         }
     }
@@ -595,36 +583,34 @@ class csstidy_optimise
      * @version 1.2
      * @see dissolve_4value_shorthands()
      */
-    function merge_4value_shorthands($array)
-    {
+    function merge_4value_shorthands($array) {
         $return = $array;
         $shorthands =& $GLOBALS['csstidy']['shorthands'];
-        
-        foreach($shorthands as $key => $value)
-        {
-            if(isset($array[$value[0]]) && isset($array[$value[1]])
-            && isset($array[$value[2]]) && isset($array[$value[3]]) && $value !== 0)
-            {
+        foreach($shorthands as $key => $value) {
+            if (
+                $value !== 0 &&
+                isset($array[$value[0]]) && isset($array[$value[1]]) &&
+                isset($array[$value[2]]) && isset($array[$value[3]])
+            ) {
                 $return[$key] = '';
-                
                 $important = '';
-                for($i = 0; $i < 4; $i++)
-                {
+
+                for ($i = 0; $i < 4; $i++) {
                     $val = $array[$value[$i]];
-                    if(csstidy::is_important($val))
-                    {
+                    if(csstidy::is_important($val)) {
                         $important = '!important';
                         $return[$key] .= csstidy::gvw_important($val).' ';
-                    }
-                    else
-                    {
+                    } else {
                         $return[$key] .= $val.' ';
                     }
+
                     unset($return[$value[$i]]);
                 }
+
                 $return[$key] = csstidy_optimise::shorthand(trim($return[$key].$important));		
             }
         }
+
         return $return;
     }
 

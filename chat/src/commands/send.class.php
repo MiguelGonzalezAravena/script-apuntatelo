@@ -1,20 +1,18 @@
 <?php
 
-require_once(dirname(__FILE__)."/../pfccommand.class.php");
+require_once(dirname(__FILE__) . '/../pfccommand.class.php');
 
-class pfcCommand_send extends pfcCommand
-{
-  function run(&$xml_reponse, $p)
-  {
+class pfcCommand_send extends pfcCommand {
+  function run(&$xml_reponse, $p) {
     $clientid    = $p["clientid"];
     $param       = $p["param"];
     $sender      = $p["sender"];
     $recipient   = $p["recipient"];
     $recipientid = $p["recipientid"];
     
-    $c  =& pfcGlobalConfig::Instance();
-    $u  =& pfcUserConfig::Instance();
-    $ct =& pfcContainer::Instance();
+    $c  = &pfcGlobalConfig::Instance();
+    $u  = &pfcUserConfig::Instance();
+    $ct = &pfcContainer::Instance();
     
     $nick = $ct->getNickname($u->nickid); //phpFreeChat::FilterSpecialChar($sender);
     $text = phpFreeChat::PreFilterMsg($param);
@@ -63,14 +61,13 @@ class pfcCommand_send extends pfcCommand
 
     
     // Now send the message if there is no errors
-    if ($can_send)
-    {
-      $msgid = $ct->write($recipient, $nick, "send", $text);
-      if (is_array($msgid))
-      {
+    if ($can_send) {
+      $msgid = $ct->write($recipient, $nick, 'send', $text);
+      // var_dump($text);
+      if (is_array($msgid)) {
         $cmdp = $p;
-        $cmdp["param"] = implode(",",$msgid);
-        $cmd =& pfcCommand::Factory("error");
+        $cmdp['param'] = implode(",", $msgid);
+        $cmd = &pfcCommand::Factory('error');
         $cmd->run($xml_reponse, $cmdp);
         return;
       }

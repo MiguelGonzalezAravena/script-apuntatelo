@@ -20,12 +20,12 @@
  * Boston, MA  02110-1301  USA
  */
 
-require_once dirname(__FILE__).'/pfccommand.class.php';
-require_once dirname(__FILE__).'/pfcglobalconfig.class.php';
-require_once dirname(__FILE__).'/pfcuserconfig.class.php';
-require_once dirname(__FILE__).'/pfctemplate.class.php';
-require_once dirname(__FILE__).'/../lib/utf8/utf8_substr.php';
-require_once dirname(__FILE__).'/pfcresponse.class.php';
+require_once(dirname(__FILE__) . '/pfccommand.class.php');
+require_once(dirname(__FILE__) . '/pfcglobalconfig.class.php');
+require_once(dirname(__FILE__) . '/pfcuserconfig.class.php');
+require_once(dirname(__FILE__) . '/pfctemplate.class.php');
+require_once(dirname(__FILE__) . '/../lib/utf8/utf8_substr.php');
+require_once(dirname(__FILE__) . '/pfcresponse.class.php');
 
 /**
  * phpFreeChat is the entry point for developpers
@@ -33,31 +33,30 @@ require_once dirname(__FILE__).'/pfcresponse.class.php';
  * @example ../demo/demo1_simple.php
  * @author Stephane Gully <stephane.gully@gmail.com>
  */
-class phpFreeChat
-{
-  function phpFreeChat( &$params )
-  {
+class phpFreeChat {
+  function __construct(&$params) {
     if (!is_array($params))
       die('phpFreeChat parameters must be an array');
-    
+
     // initialize the global config object
-    $c =& pfcGlobalConfig::Instance( $params );
+    $c = &pfcGlobalConfig::Instance($params);
 
     // need to initiate the user config object here because it uses sessions
-    $u =& pfcUserConfig::Instance();
+    $u = &pfcUserConfig::Instance();
 
     // this code is used to handle the AJAX call and build the response
-    if (isset($_REQUEST['pfc_ajax']))
-    {
+    if (isset($_REQUEST['pfc_ajax'])) {
       $function = isset($_REQUEST['f']) ? $_REQUEST['f'] : '';
       $cmd      = isset($_REQUEST['cmd']) ? stripslashes($_REQUEST['cmd']) : '';
       $r = null;
-      if ($function && method_exists($this,$function))
-      {
-        require_once dirname(__FILE__).'/pfcresponse.class.php';
-        $r =& $this->$function($cmd);
+
+      if ($function && method_exists($this, $function)) {
+        require_once(dirname(__FILE__) . '/pfcresponse.class.php');
+        $r = &$this->$function($cmd);
       }
+
       echo $r->getOutput();
+
       die();
     }
   }
@@ -94,35 +93,35 @@ class phpFreeChat
    *   <?php $chat->printChat(); ?>
    * </code>
    */
-  function printChat( $return = false )
-  {
-    $c =& pfcGlobalConfig::Instance();
-    $u =& pfcUserConfig::Instance();
+  function printChat($return = false) {
+    $c = &pfcGlobalConfig::Instance();
+    $u = &pfcUserConfig::Instance();
     
     $output = '';
 
-    if (count($c->getErrors()) > 0)
-    {
-      $output .= "<p>phpFreeChat cannot be initialized, please correct these errors:</p><ul>";
-      foreach( $c->getErrors() as $e ) $output .= "<li>".$e."</li>"; $output .= "</ul>";
-    }
-    else
-    {    
+    if (count($c->getErrors()) > 0) {
+      $output .= '<p>phpFreeChat cannot be initialized, please correct these errors:</p><ul>';
+
+      foreach ($c->getErrors() as $e) {
+        $output .= '<li>' . $e . '</li>';
+      }
+
+      $output .= '</ul>';
+    } else {    
       pfcI18N::SwitchOutputEncoding($c->output_encoding);
-      
       $path = $c->getFilePathFromTheme('chat.js.tpl.php');
       $t = new pfcTemplate($path);
-      $t->assignObject($u,"u");
-      $t->assignObject($c,"c");
+      $t->assignObject($u, 'u');
+      $t->assignObject($c, 'c');
       $output .= $t->getOutput();
-      
       pfcI18N::SwitchOutputEncoding();
     }
     
-    if($return) 
+    if ($return) {
       return $output;
-    else 
+    } else {
       echo $output;
+    }
   }
   
   /**
@@ -559,8 +558,7 @@ if (pfc_connect_at_startup) pfc.connect_disconnect();
     return $xml_reponse;    
   }
 
-  function &loadChat($theme = 'default')
-  {
+  function &loadChat($theme = 'default') {
     $xml_reponse = new pfcResponse();
 
     $this->loadInterface($theme,$xml_reponse);

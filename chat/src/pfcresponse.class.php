@@ -24,46 +24,38 @@
  * pfcResponse is used to build each ajax response
  * Commands stack contains characteres strings with javascript instructions.
  */
-class pfcResponse
-{
+class pfcResponse {
   var $_commands = array();
 
-  function pfcResponse()
-  {
-  }
-  
-  function remove($id)
-  {
+  function __construct() { }
+
+  function remove($id) {
     $this->_commands[] = '$(\''.$id.'\').remove();';
   }
   
-  function update($id,$data)
-  {
-    $data = preg_replace("/'/","\'",$data);
-    $data = preg_replace("/[\n\r]/","",$data);      
-    $data = preg_replace("/\s*</"," <",$data);      
-    $data = preg_replace("/>\s*/","> ",$data);      
-    $this->_commands[] = '$(\''.$id.'\').update(\''.$data.'\');';
+  function update($id, $data) {
+    $data = preg_replace("/'/", "\'", $data);
+    $data = preg_replace("/[\n\r]/", "", $data);
+    $data = preg_replace("/\s*</", " <", $data);
+    $data = preg_replace("/>\s*/", "> ", $data);
+    $this->_commands[] = '$(\'' . $id . '\').update(\'' . $data . '\');';
   }
   
-  function script($js)
-  {
+  function script($js) {
     $this->_commands[] = $js;
   }
 
-  function redirect($url)
-  {
-    $this->script('window.location = "'.$url.'";');
+  function redirect($url) {
+    $this->script('window.location = "' . $url . '";');
   }
-  
-  function getCommandCount()
-  {
+
+  function getCommandCount() {
     return count($this->_commands);
   }
-    
-  function getOutput()
-  {
-    return implode("\n",$this->_commands);
+
+  function getOutput() {
+    return implode("\n", $this->_commands);
   }
 }
+
 ?>

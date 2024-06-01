@@ -70,7 +70,7 @@ pfcClient.prototype = {
   loadChat: function() {
     new Ajax.Request(pfc_server_script_url, {
       method: 'get',
-      parameters: {pfc_ajax: 1, f: 'loadChat'},
+      parameters: { pfc_ajax: 1, f: 'loadChat' },
       onSuccess: function(transport) {
         eval( transport.responseText );
       }
@@ -175,6 +175,7 @@ pfcClient.prototype = {
    */
   handleResponse: function(cmd, resp, param)
   {
+    // console.log('handleResponse cmd, param:', cmd, param);
     // display some debug messages
     if (pfc_debug)
       if (cmd != "update")
@@ -500,21 +501,14 @@ pfcClient.prototype = {
         }
         this.displayMsg( cmd, msg );
       }
-    }
-    else if (cmd == "getnewmsg")
-    {
-      if (resp == "ok") 
-      {
+    } else if (cmd == 'getnewmsg') {
+      if (resp == 'ok') {
         this.handleComingRequest(param);
       }
-    }
-    else if (cmd == "send")
-    {
-    }
-	 else if (cmd == "nocensor") {
-
-	 }
-    else
+    } else if (cmd == 'send') {
+      
+    } else if (cmd == 'nocensor') {
+    } else
       alert(cmd + "-"+resp+"-"+param);
   },
   
@@ -947,6 +941,7 @@ pfcClient.prototype = {
       var fromtoday   = cmds[mid][7];
       var oldmsg      = cmds[mid][8];
       
+      // console.log(cmds);
       // format and post message
       var line = '';
       line += '<div id="pfc_msg_'+recipientid+'_'+id+'" class="pfc_cmd_'+ cmd +' pfc_message';
@@ -974,7 +969,7 @@ pfcClient.prototype = {
       else if (cmd == 'me')
         line += '<span class="pfc_words">* '+ sender.escapeHTML() + ' ' + this.parseMessage(param) +'</span> ';
       else
-        line += '<span class="pfc_words">'+ this.parseMessage(param) +'</span> ';
+        line += '<span class="pfc_words">' + this.parseMessage(param) + '</span> ';
       line += '</div>';
 
       if (oldmsg == 0)
@@ -1884,8 +1879,7 @@ pfcClient.prototype = {
   /**
    * BBcode ToolBar
    */
-  insert_text: function(open, close, promptifselempty) 
-  {
+  insert_text: function(open, close, promptifselempty) {
     var msgfield = $('pfc_words');
 
     var pfcp = this.getPrompt();
