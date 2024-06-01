@@ -59,13 +59,14 @@ if ($rango == 'Moderador' || $rango == 'Administrador') {
             <tr>
               <td align="center" valign="middle">
                 <font size="2" color="black">
-                Nick: <input type="text" name="palabra" size="20" MAXLENGTH="200" value="<?php echo $a?>"><br><br>
-                <input type="radio" name="tipo" value="ultimos" <?php if ($tipo!="usuario" && $tipo!="moderador") echo "checked"?>>&Uacute;ltimos
-                <input type="radio" name="tipo" value="usuario" <?php if ($tipo=="usuario") echo "checked"?>>Usuario 
-                <input type="radio" name="tipo" value="moderador" <?php if ($tipo=="moderador") echo "checked"?>>Moderador
-                <br><br>
-                <input type="hidden" name="var" value="1">
-                <input type="submit" name="Submit" class="submit_button" value="Ver/Buscar" />
+                  Nick:
+                  <input type="text" name="palabra" size="20" maxlength="200" value="<?php echo $a; ?>" /><br /><br />
+                  <input type="radio" name="tipo" value="ultimos"<?php echo ($tipo != 'usuario' && $tipo != 'moderador' ? ' checked="checked"' : ''); ?> />&Uacute;ltimos
+                  <input type="radio" name="tipo" value="usuario"<?php echo ($tipo == 'usuario' ? ' checked="checked"' : ''); ?> />Usuario 
+                  <input type="radio" name="tipo" value="moderador"<?php echo ($tipo == 'moderador' ? ' checked="checked"' : ''); ?> />Moderador
+                  <br /><br />
+                  <input type="hidden" name="var" value="1" />
+                  <input type="submit" name="Submit" class="submit_button" value="Ver/Buscar" />
                 </font>
               </td>
             </tr>

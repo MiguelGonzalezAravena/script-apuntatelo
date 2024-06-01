@@ -77,7 +77,7 @@ $mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
                 <font size="2"><b>Avatar:</b></font> 
               </td>
               <td>
-                <input type="text" name="avatar" size="36" maxlength="150" value="<?php echo $avatar; ?>">
+                <input type="text" name="avatar" size="36" maxlength="150" value="<?php echo $avatar; ?>" />
               </td>
             </tr>
             <tr>
@@ -225,20 +225,20 @@ require_once(dirname(dirname(__FILE__)) . '/footer.php');
 </script>
 <?php
 switch ($error) {
-  case "1":
-    echo "<script>alert('Usuario existente');</script>";
+  case 1:
+    alert('Usuario existente');
     break;
-  case "2":
-    echo "<script>alert('Correo ya existente en nuestra base de datos');</script>";
+  case 2:
+    alert('Correo ya utilizado');
     break;
-  case "3":
-    echo "<script>alert('El nick debe tener por lo menos 3 caracteres');</script>";
+  case 3:
+    alert('El nick debe tener por lo menos 3 caracteres');
     break;
-  case "4":
-    echo "<script>alert('Existen campos vacíos o los campos de contraseña y/o correos no son iguales');</script>";
+  case 4:
+    alert('Existen campos vac&iacute;os o los campos de contrase&ntilde;a y/o correos no son iguales');
     break;
-  case "5":
-    echo "<script>alert('Código incorrecto');</script>";
+  case 5:
+    alert('C&oacute;digo incorrecto');
     break;
 }
 

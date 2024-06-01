@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_array($rs)) {
                   &nbsp;
                   <img src="<?php echo $images; ?>/iconos/<?php echo $img; ?>" border="0" />
 <?php
-    if ($privado == "1") {
+    if ($privado == 1) {
 ?>
                   &nbsp;
                   <img src="<?php echo $images; ?>/iconos/candado.gif" border="0" />
@@ -104,7 +104,7 @@ while ($row = mysqli_fetch_array($rs)) {
         <div style="width: 980px; top: 17px; position: absolute; text-align: left;" align="center">
           <!-- Comienzo Cuadro Novedades-->
           <div class="esq1 novedad2"></div>
-          <div class="franja novedad"><div class="size11 negro" style="margin-top:3px; text-align: center;">Destacados</div></div>
+          <div class="franja novedad"><div class="size11 negro" style="margin-top: 3px; text-align: center;">Destacados</div></div>
           <div class="esq2 novedad3"></div>
           <div class="destacados">
             <table cellspacing="0" cellpadding="0" width="300" height="180">
@@ -142,9 +142,9 @@ while ($row = mysqli_fetch_array($rs)) {
                     <table style="margin-top: 5px; font-size: 11px; text-align: center;" align="center" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>Buscar con:</td>
-                        <td><input type="radio" name="tipo_busqueda" value="1" checked="checked"; onclick="javascript:activar();"></td>
+                        <td><input type="radio" name="tipo_busqueda" value="1" checked="checked"; onclick="javascript:activar();" /></td>
                         <td><?php echo $name; ?></td>
-                        <td><input type="radio" name="tipo_busqueda" value="2"  onclick="javascript:desactivar();"></td>
+                        <td><input type="radio" name="tipo_busqueda" value="2"  onclick="javascript:desactivar();" /></td>
                         <td><img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" /></td>
                       </tr>
                     </table>
@@ -237,7 +237,7 @@ while ($row = mysqli_fetch_array($rs)) {
                   <td valign="top">
 <?php
 $sql = "
-  SELECT id,titulo, puntos, categoria, c.link_categoria
+  SELECT id, titulo, puntos, categoria, c.link_categoria
   FROM posts AS p
   INNER JOIN categorias AS c ON p.categoria = c.id_categoria
   WHERE elim = 0
@@ -277,7 +277,7 @@ while ($row = mysqli_fetch_array($request)) {
           <div class="votados4">&nbsp;</div>
           <div class="esq6 votados6"></div>
           <!-- Fin Cuadro Votados-->
-  
+
           <!-- Comienzo Cuadro Usuarios-->
           <div class="esq1 musuarios2"></div>
           <div class="franja musuarios"><div class="size11 negro" style="margin-top: 3px; text-align: center;">Usuarios m&aacute;s votados</div></div>

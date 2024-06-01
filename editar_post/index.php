@@ -188,7 +188,9 @@ if ($_SESSION['id'] == $id_autor && $elim == 0) {
               </td>
             </tr>
             <tr> 
-              <td colspan="2" align="center"><input type="button" onclick="show_preview(this.form.titulo.value, this.form.cuerpo.value, this.form.tipo.value, this.form.id.value, this.form.variable.value, this.form.categoria.value, this.form.tags.value, this.form.privado.value, this.form.coments.value, this.form)" class="submit_button" value="   Vista previa   " title="Preview" tabindex="8"></td>
+              <td colspan="2" align="center">
+                <input type="button" onclick="show_preview(this.form.titulo.value, this.form.cuerpo.value, this.form.tipo.value, this.form.id.value, this.form.variable.value, this.form.categoria.value, this.form.tags.value, this.form.privado.value, this.form.coments.value, this.form)" class="submit_button" value="   Vista previa   " title="Preview" tabindex="8" />
+              </td>
             </tr>
           </form> 
         </table>

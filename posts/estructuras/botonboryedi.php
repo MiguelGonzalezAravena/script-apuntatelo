@@ -14,7 +14,8 @@ if ($id_user != $id_autor && ($rango == 'Administrador' || $rango == 'Moderador'
         <input type="hidden" name="nom" value="<?php echo $titulo; ?>" />
         <input type="hidden" name="num" value="<?php echo $id; ?>" />
         <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
-        <font size="2"><b>Causa:</b></font> <input type="text" name="causa" size="30" maxlength="200" value="" />
+        <font size="2"><b>Causa:</b></font>
+        <input type="text" name="causa" size="30" maxlength="200" value="" />
         <input type="button" class="submit_button" onclick="if(confirm('&iquest;Seguro que deseas borrar el post?'))this.form.submit();" name="botonborrar" value="Borrar post del usuario">
       </form>
     </td>
@@ -29,7 +30,7 @@ if ($id_user == $id_autor) {
         <input type="hidden" name="nom" value="<?php echo $titulo; ?>" />
         <input type="hidden" name="num" value="<?php echo $id; ?>" />
         <td>
-          <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+          <input type="hidden" name="pagina" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
           <input type="button" class="submit_button" onclick="if(confirm('&iquest;Seguro que deseas borrar el post?'))this.form.submit();" name="botonborrar" value="Borrar post" />
         </td>
         <td>
