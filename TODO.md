@@ -4,7 +4,7 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 
 ### TO-DO
 
-- [ ] Actualizar archivo `apuntatelo_nuevo.sql`
+
 - [ ] Mejorar diseño de enlaces a URLs con subrayado en azul a negro (dependiendo cada caso).
 - [ ] Mejorar diseño de botones en vista de Mensaje privado (recibidos).
 - [ ] Mejorar diseño de botones en vista de Mensaje privado (enviados).
@@ -20,6 +20,7 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 ### Done ✓
 
 - [x] Crear archivo TODO.md
+- [x] Generar README.md
 - [x] Agregar directorio `/chat/`.
 - [x] Cambiar todos los `mysql_query()` a `mysqli_query()`.
 - [x] Generar versión ejecutable sin errores.
@@ -49,4 +50,4 @@ A continuación se muestran las tareas que se encuentran pendientes o si es que 
 - [x] Eliminar el 0 que aparece arriba de la cabecera.
 - [x] Mejorar redireccionamiento a Posts, ya que en algunos casos no funciona (Error 404).
 - [x] Cambiar campo `id_extreme` a `id_secret` en base de datos.
-- [x] Generar README.md
+- [x] Actualizar archivo `apuntatelo_nuevo.sql` a `apuntatelo.sql`.
